@@ -1,6 +1,6 @@
 import aiohttp
-from aioketraapi.endpoints.keypad_operations_api import KeypadOperationsApi
-from aioketraapi.endpoints.group_operations_api import GroupOperationsApi
+from aioketraapi.api.keypad_operations_api import KeypadOperationsApi
+from aioketraapi.api.group_operations_api import GroupOperationsApi
 from aioketraapi.api_client import ApiClient
 from aioketraapi.configuration import Configuration
 from aioketraapi.keypad import Keypad

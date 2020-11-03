@@ -1,5 +1,6 @@
 # Scene
 
+a scene
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -11,4 +12,5 @@ Name | Type | Description | Notes
 **parent_group_ids** | **list[str]** | Ids of parent groups of this scene.  This indicates which groups are valid for which the scene can be active. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 

@@ -17,48 +17,65 @@ Method | HTTP request | Description
 [**push_button_post**](KeypadOperationsApi.md#push_button_post) | **POST** /PushButton | Deactivate a button
 [**root_get**](KeypadOperationsApi.md#root_get) | **GET** / | Get keypads and groups  (and scenes in API schema 4 or later)
 
+
 # **activate_button_post**
-> InlineResponse2009 activate_button_post(body, keypad_name, button_name, basicauthuser=basicauthuser, basicauthpassword=basicauthpassword)
+> InlineResponse2009 activate_button_post(keypad_name, button_name, level, basicauthuser=basicauthuser, basicauthpassword=basicauthpassword)
 
 Activate a button
 
 Activates the scene or show represented by the button 
 
 ### Example
+
+* Basic Authentication (basicAuth):
 ```python
 from __future__ import print_function
 import time
 import aioketraapi
 from aioketraapi.rest import ApiException
 from pprint import pprint
-# Configure HTTP basic authorization: basicAuth
-configuration = aioketraapi.Configuration()
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+# Defining the host is optional and defaults to https://localhost/ketra.cgi/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = aioketraapi.Configuration(
+    host = "https://localhost/ketra.cgi/api/v1"
+)
 
-# create an instance of the API class
-api_instance = aioketraapi.KeypadOperationsApi(aioketraapi.ApiClient(configuration))
-body = aioketraapi.Level() # Level | The level
-keypad_name = 'keypad_name_example' # str | Specifies a keypad name
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = aioketraapi.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with aioketraapi.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = aioketraapi.KeypadOperationsApi(api_client)
+    keypad_name = 'keypad_name_example' # str | Specifies a keypad name
 button_name = 'button_name_example' # str | Specifies a button name
+level = aioketraapi.Level() # Level | The level
 basicauthuser = 'basicauthuser_example' # str | Username to use in place of username in basic authentication header.  For a secure installation, this value is ignored but still must be supplied unless a basic authentication header is sent with the request. (optional)
 basicauthpassword = 'basicauthpassword_example' # str | Password to use in place of password in basic authentication header. For a secure installation, this should be an oauth token for a user with access to the installation.  If a basic authentication header is sent, this parameter is ignored.  If no basic authentication header is sent, this parameter as well as the basicauthuser parameter must be supplied if the hub is a member of a secure installation. (optional)
 
-try:
-    # Activate a button
-    api_response = api_instance.activate_button_post(body, keypad_name, button_name, basicauthuser=basicauthuser, basicauthpassword=basicauthpassword)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling KeypadOperationsApi->activate_button_post: %s\n" % e)
+    try:
+        # Activate a button
+        api_response = api_instance.activate_button_post(keypad_name, button_name, level, basicauthuser=basicauthuser, basicauthpassword=basicauthpassword)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling KeypadOperationsApi->activate_button_post: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Level**](Level.md)| The level | 
  **keypad_name** | **str**| Specifies a keypad name | 
  **button_name** | **str**| Specifies a button name | 
+ **level** | [**Level**](Level.md)| The level | 
  **basicauthuser** | **str**| Username to use in place of username in basic authentication header.  For a secure installation, this value is ignored but still must be supplied unless a basic authentication header is sent with the request. | [optional] 
  **basicauthpassword** | **str**| Password to use in place of password in basic authentication header. For a secure installation, this should be an oauth token for a user with access to the installation.  If a basic authentication header is sent, this parameter is ignored.  If no basic authentication header is sent, this parameter as well as the basicauthuser parameter must be supplied if the hub is a member of a secure installation. | [optional] 
 
@@ -75,50 +92,71 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful response.  Returns the new state of the keypad |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deactivate_button_post**
-> InlineResponse2009 deactivate_button_post(body, keypad_name, button_name, basicauthuser=basicauthuser, basicauthpassword=basicauthpassword)
+> InlineResponse2009 deactivate_button_post(keypad_name, button_name, level, basicauthuser=basicauthuser, basicauthpassword=basicauthpassword)
 
 Deactivate a button
 
 Deactivates the scene or show represented by the button 
 
 ### Example
+
+* Basic Authentication (basicAuth):
 ```python
 from __future__ import print_function
 import time
 import aioketraapi
 from aioketraapi.rest import ApiException
 from pprint import pprint
-# Configure HTTP basic authorization: basicAuth
-configuration = aioketraapi.Configuration()
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+# Defining the host is optional and defaults to https://localhost/ketra.cgi/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = aioketraapi.Configuration(
+    host = "https://localhost/ketra.cgi/api/v1"
+)
 
-# create an instance of the API class
-api_instance = aioketraapi.KeypadOperationsApi(aioketraapi.ApiClient(configuration))
-body = aioketraapi.Level() # Level | The level
-keypad_name = 'keypad_name_example' # str | Specifies a keypad name
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = aioketraapi.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with aioketraapi.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = aioketraapi.KeypadOperationsApi(api_client)
+    keypad_name = 'keypad_name_example' # str | Specifies a keypad name
 button_name = 'button_name_example' # str | Specifies a button name
+level = aioketraapi.Level() # Level | The level
 basicauthuser = 'basicauthuser_example' # str | Username to use in place of username in basic authentication header.  For a secure installation, this value is ignored but still must be supplied unless a basic authentication header is sent with the request. (optional)
 basicauthpassword = 'basicauthpassword_example' # str | Password to use in place of password in basic authentication header. For a secure installation, this should be an oauth token for a user with access to the installation.  If a basic authentication header is sent, this parameter is ignored.  If no basic authentication header is sent, this parameter as well as the basicauthuser parameter must be supplied if the hub is a member of a secure installation. (optional)
 
-try:
-    # Deactivate a button
-    api_response = api_instance.deactivate_button_post(body, keypad_name, button_name, basicauthuser=basicauthuser, basicauthpassword=basicauthpassword)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling KeypadOperationsApi->deactivate_button_post: %s\n" % e)
+    try:
+        # Deactivate a button
+        api_response = api_instance.deactivate_button_post(keypad_name, button_name, level, basicauthuser=basicauthuser, basicauthpassword=basicauthpassword)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling KeypadOperationsApi->deactivate_button_post: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Level**](Level.md)| The level | 
  **keypad_name** | **str**| Specifies a keypad name | 
  **button_name** | **str**| Specifies a button name | 
+ **level** | [**Level**](Level.md)| The level | 
  **basicauthuser** | **str**| Username to use in place of username in basic authentication header.  For a secure installation, this value is ignored but still must be supplied unless a basic authentication header is sent with the request. | [optional] 
  **basicauthpassword** | **str**| Password to use in place of password in basic authentication header. For a secure installation, this should be an oauth token for a user with access to the installation.  If a basic authentication header is sent, this parameter is ignored.  If no basic authentication header is sent, this parameter as well as the basicauthuser parameter must be supplied if the hub is a member of a secure installation. | [optional] 
 
@@ -134,6 +172,11 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful response.   Returns the new state of the keypad |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -145,31 +188,47 @@ Get keypads
 Gets the list of Ketra keypads.  By default, unless the includeall parameter is provided and set to true, cascaded and mirrored keypads are not returned in the list. However, the buttons of cascaded keypads are returned with their respective master keypad. 
 
 ### Example
+
+* Basic Authentication (basicAuth):
 ```python
 from __future__ import print_function
 import time
 import aioketraapi
 from aioketraapi.rest import ApiException
 from pprint import pprint
-# Configure HTTP basic authorization: basicAuth
-configuration = aioketraapi.Configuration()
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+# Defining the host is optional and defaults to https://localhost/ketra.cgi/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = aioketraapi.Configuration(
+    host = "https://localhost/ketra.cgi/api/v1"
+)
 
-# create an instance of the API class
-api_instance = aioketraapi.KeypadOperationsApi(aioketraapi.ApiClient(configuration))
-basicauthuser = 'basicauthuser_example' # str | Username to use in place of username in basic authentication header.  For a secure installation, this value is ignored but still must be supplied unless a basic authentication header is sent with the request. (optional)
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = aioketraapi.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with aioketraapi.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = aioketraapi.KeypadOperationsApi(api_client)
+    basicauthuser = 'basicauthuser_example' # str | Username to use in place of username in basic authentication header.  For a secure installation, this value is ignored but still must be supplied unless a basic authentication header is sent with the request. (optional)
 basicauthpassword = 'basicauthpassword_example' # str | Password to use in place of password in basic authentication header. For a secure installation, this should be an oauth token for a user with access to the installation.  If a basic authentication header is sent, this parameter is ignored.  If no basic authentication header is sent, this parameter as well as the basicauthuser parameter must be supplied if the hub is a member of a secure installation. (optional)
 name = 'name_example' # str | If specified, returns only the keypads matching the name provided (optional)
-includeall = false # bool | if true, cascaded and mirrored keypads will be returned in the list.  If false or the parameter is not provided, cascaded keypad buttons will be returned as children of their master keypad. (optional) (default to false)
-nobuttons = false # bool | if true, the buttons array will not be populated and only the keypad objects will be returned.  For an installation with a large number of keypads this can be much quicker than returning the full set of keypads along with all buttons. (optional) (default to false)
+includeall = False # bool | if true, cascaded and mirrored keypads will be returned in the list.  If false or the parameter is not provided, cascaded keypad buttons will be returned as children of their master keypad. (optional) (default to False)
+nobuttons = False # bool | if true, the buttons array will not be populated and only the keypad objects will be returned.  For an installation with a large number of keypads this can be much quicker than returning the full set of keypads along with all buttons. (optional) (default to False)
 
-try:
-    # Get keypads
-    api_response = api_instance.keypads_get(basicauthuser=basicauthuser, basicauthpassword=basicauthpassword, name=name, includeall=includeall, nobuttons=nobuttons)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling KeypadOperationsApi->keypads_get: %s\n" % e)
+    try:
+        # Get keypads
+        api_response = api_instance.keypads_get(basicauthuser=basicauthuser, basicauthpassword=basicauthpassword, name=name, includeall=includeall, nobuttons=nobuttons)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling KeypadOperationsApi->keypads_get: %s\n" % e)
 ```
 
 ### Parameters
@@ -179,8 +238,8 @@ Name | Type | Description  | Notes
  **basicauthuser** | **str**| Username to use in place of username in basic authentication header.  For a secure installation, this value is ignored but still must be supplied unless a basic authentication header is sent with the request. | [optional] 
  **basicauthpassword** | **str**| Password to use in place of password in basic authentication header. For a secure installation, this should be an oauth token for a user with access to the installation.  If a basic authentication header is sent, this parameter is ignored.  If no basic authentication header is sent, this parameter as well as the basicauthuser parameter must be supplied if the hub is a member of a secure installation. | [optional] 
  **name** | **str**| If specified, returns only the keypads matching the name provided | [optional] 
- **includeall** | **bool**| if true, cascaded and mirrored keypads will be returned in the list.  If false or the parameter is not provided, cascaded keypad buttons will be returned as children of their master keypad. | [optional] [default to false]
- **nobuttons** | **bool**| if true, the buttons array will not be populated and only the keypad objects will be returned.  For an installation with a large number of keypads this can be much quicker than returning the full set of keypads along with all buttons. | [optional] [default to false]
+ **includeall** | **bool**| if true, cascaded and mirrored keypads will be returned in the list.  If false or the parameter is not provided, cascaded keypad buttons will be returned as children of their master keypad. | [optional] [default to False]
+ **nobuttons** | **bool**| if true, the buttons array will not be populated and only the keypad objects will be returned.  For an installation with a large number of keypads this can be much quicker than returning the full set of keypads along with all buttons. | [optional] [default to False]
 
 ### Return type
 
@@ -195,50 +254,73 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful response |  -  |
+**401** | No user credentials specified. |  -  |
+**403** | Invalid user credentials specified |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **keypads_keypad_id_buttons_button_id_activate_post**
-> InlineResponse2009 keypads_keypad_id_buttons_button_id_activate_post(body, keypad_id, button_id, basicauthuser=basicauthuser, basicauthpassword=basicauthpassword)
+> InlineResponse2009 keypads_keypad_id_buttons_button_id_activate_post(keypad_id, button_id, level, basicauthuser=basicauthuser, basicauthpassword=basicauthpassword)
 
 Activate a button
 
 Activates the scene or show represented by the button 
 
 ### Example
+
+* Basic Authentication (basicAuth):
 ```python
 from __future__ import print_function
 import time
 import aioketraapi
 from aioketraapi.rest import ApiException
 from pprint import pprint
-# Configure HTTP basic authorization: basicAuth
-configuration = aioketraapi.Configuration()
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+# Defining the host is optional and defaults to https://localhost/ketra.cgi/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = aioketraapi.Configuration(
+    host = "https://localhost/ketra.cgi/api/v1"
+)
 
-# create an instance of the API class
-api_instance = aioketraapi.KeypadOperationsApi(aioketraapi.ApiClient(configuration))
-body = aioketraapi.Level() # Level | The level
-keypad_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | The keypad's name or unique identifier (uuid)
-button_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | The button's name or unique identifier (uuid)
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = aioketraapi.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with aioketraapi.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = aioketraapi.KeypadOperationsApi(api_client)
+    keypad_id = 'keypad_id_example' # str | The keypad's name or unique identifier (uuid)
+button_id = 'button_id_example' # str | The button's name or unique identifier (uuid)
+level = aioketraapi.Level() # Level | The level
 basicauthuser = 'basicauthuser_example' # str | Username to use in place of username in basic authentication header.  For a secure installation, this value is ignored but still must be supplied unless a basic authentication header is sent with the request. (optional)
 basicauthpassword = 'basicauthpassword_example' # str | Password to use in place of password in basic authentication header. For a secure installation, this should be an oauth token for a user with access to the installation.  If a basic authentication header is sent, this parameter is ignored.  If no basic authentication header is sent, this parameter as well as the basicauthuser parameter must be supplied if the hub is a member of a secure installation. (optional)
 
-try:
-    # Activate a button
-    api_response = api_instance.keypads_keypad_id_buttons_button_id_activate_post(body, keypad_id, button_id, basicauthuser=basicauthuser, basicauthpassword=basicauthpassword)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling KeypadOperationsApi->keypads_keypad_id_buttons_button_id_activate_post: %s\n" % e)
+    try:
+        # Activate a button
+        api_response = api_instance.keypads_keypad_id_buttons_button_id_activate_post(keypad_id, button_id, level, basicauthuser=basicauthuser, basicauthpassword=basicauthpassword)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling KeypadOperationsApi->keypads_keypad_id_buttons_button_id_activate_post: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Level**](Level.md)| The level | 
- **keypad_id** | [**str**](.md)| The keypad&#x27;s name or unique identifier (uuid) | 
- **button_id** | [**str**](.md)| The button&#x27;s name or unique identifier (uuid) | 
+ **keypad_id** | [**str**](.md)| The keypad&#39;s name or unique identifier (uuid) | 
+ **button_id** | [**str**](.md)| The button&#39;s name or unique identifier (uuid) | 
+ **level** | [**Level**](Level.md)| The level | 
  **basicauthuser** | **str**| Username to use in place of username in basic authentication header.  For a secure installation, this value is ignored but still must be supplied unless a basic authentication header is sent with the request. | [optional] 
  **basicauthpassword** | **str**| Password to use in place of password in basic authentication header. For a secure installation, this should be an oauth token for a user with access to the installation.  If a basic authentication header is sent, this parameter is ignored.  If no basic authentication header is sent, this parameter as well as the basicauthuser parameter must be supplied if the hub is a member of a secure installation. | [optional] 
 
@@ -255,50 +337,71 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful response.  Returns the new state of the keypad |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **keypads_keypad_id_buttons_button_id_deactivate_post**
-> InlineResponse2009 keypads_keypad_id_buttons_button_id_deactivate_post(body, keypad_id, button_id, basicauthuser=basicauthuser, basicauthpassword=basicauthpassword)
+> InlineResponse2009 keypads_keypad_id_buttons_button_id_deactivate_post(keypad_id, button_id, level, basicauthuser=basicauthuser, basicauthpassword=basicauthpassword)
 
 Deactivate a button
 
 Deactivates the scene or show represented by the button 
 
 ### Example
+
+* Basic Authentication (basicAuth):
 ```python
 from __future__ import print_function
 import time
 import aioketraapi
 from aioketraapi.rest import ApiException
 from pprint import pprint
-# Configure HTTP basic authorization: basicAuth
-configuration = aioketraapi.Configuration()
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+# Defining the host is optional and defaults to https://localhost/ketra.cgi/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = aioketraapi.Configuration(
+    host = "https://localhost/ketra.cgi/api/v1"
+)
 
-# create an instance of the API class
-api_instance = aioketraapi.KeypadOperationsApi(aioketraapi.ApiClient(configuration))
-body = aioketraapi.Level() # Level | The level
-keypad_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | The keypad's name or unique identifier (uuid)
-button_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | The button's name or unique identifier (uuid)
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = aioketraapi.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with aioketraapi.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = aioketraapi.KeypadOperationsApi(api_client)
+    keypad_id = 'keypad_id_example' # str | The keypad's name or unique identifier (uuid)
+button_id = 'button_id_example' # str | The button's name or unique identifier (uuid)
+level = aioketraapi.Level() # Level | The level
 basicauthuser = 'basicauthuser_example' # str | Username to use in place of username in basic authentication header.  For a secure installation, this value is ignored but still must be supplied unless a basic authentication header is sent with the request. (optional)
 basicauthpassword = 'basicauthpassword_example' # str | Password to use in place of password in basic authentication header. For a secure installation, this should be an oauth token for a user with access to the installation.  If a basic authentication header is sent, this parameter is ignored.  If no basic authentication header is sent, this parameter as well as the basicauthuser parameter must be supplied if the hub is a member of a secure installation. (optional)
 
-try:
-    # Deactivate a button
-    api_response = api_instance.keypads_keypad_id_buttons_button_id_deactivate_post(body, keypad_id, button_id, basicauthuser=basicauthuser, basicauthpassword=basicauthpassword)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling KeypadOperationsApi->keypads_keypad_id_buttons_button_id_deactivate_post: %s\n" % e)
+    try:
+        # Deactivate a button
+        api_response = api_instance.keypads_keypad_id_buttons_button_id_deactivate_post(keypad_id, button_id, level, basicauthuser=basicauthuser, basicauthpassword=basicauthpassword)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling KeypadOperationsApi->keypads_keypad_id_buttons_button_id_deactivate_post: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Level**](Level.md)| The level | 
- **keypad_id** | [**str**](.md)| The keypad&#x27;s name or unique identifier (uuid) | 
- **button_id** | [**str**](.md)| The button&#x27;s name or unique identifier (uuid) | 
+ **keypad_id** | [**str**](.md)| The keypad&#39;s name or unique identifier (uuid) | 
+ **button_id** | [**str**](.md)| The button&#39;s name or unique identifier (uuid) | 
+ **level** | [**Level**](Level.md)| The level | 
  **basicauthuser** | **str**| Username to use in place of username in basic authentication header.  For a secure installation, this value is ignored but still must be supplied unless a basic authentication header is sent with the request. | [optional] 
  **basicauthpassword** | **str**| Password to use in place of password in basic authentication header. For a secure installation, this should be an oauth token for a user with access to the installation.  If a basic authentication header is sent, this parameter is ignored.  If no basic authentication header is sent, this parameter as well as the basicauthuser parameter must be supplied if the hub is a member of a secure installation. | [optional] 
 
@@ -314,6 +417,11 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful response.  Returns the new state of the keypad |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -325,38 +433,54 @@ Gets the specified button for a specified keypad
 Gets the button specified by {button-id} for the keypad specified by {keypad-id}. 
 
 ### Example
+
+* Basic Authentication (basicAuth):
 ```python
 from __future__ import print_function
 import time
 import aioketraapi
 from aioketraapi.rest import ApiException
 from pprint import pprint
-# Configure HTTP basic authorization: basicAuth
-configuration = aioketraapi.Configuration()
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+# Defining the host is optional and defaults to https://localhost/ketra.cgi/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = aioketraapi.Configuration(
+    host = "https://localhost/ketra.cgi/api/v1"
+)
 
-# create an instance of the API class
-api_instance = aioketraapi.KeypadOperationsApi(aioketraapi.ApiClient(configuration))
-keypad_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | The keypad's name or unique identifier (uuid)
-button_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | The button's name or unique identifier (uuid)
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = aioketraapi.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with aioketraapi.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = aioketraapi.KeypadOperationsApi(api_client)
+    keypad_id = 'keypad_id_example' # str | The keypad's name or unique identifier (uuid)
+button_id = 'button_id_example' # str | The button's name or unique identifier (uuid)
 basicauthuser = 'basicauthuser_example' # str | Username to use in place of username in basic authentication header.  For a secure installation, this value is ignored but still must be supplied unless a basic authentication header is sent with the request. (optional)
 basicauthpassword = 'basicauthpassword_example' # str | Password to use in place of password in basic authentication header. For a secure installation, this should be an oauth token for a user with access to the installation.  If a basic authentication header is sent, this parameter is ignored.  If no basic authentication header is sent, this parameter as well as the basicauthuser parameter must be supplied if the hub is a member of a secure installation. (optional)
 
-try:
-    # Gets the specified button for a specified keypad
-    api_response = api_instance.keypads_keypad_id_buttons_button_id_get(keypad_id, button_id, basicauthuser=basicauthuser, basicauthpassword=basicauthpassword)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling KeypadOperationsApi->keypads_keypad_id_buttons_button_id_get: %s\n" % e)
+    try:
+        # Gets the specified button for a specified keypad
+        api_response = api_instance.keypads_keypad_id_buttons_button_id_get(keypad_id, button_id, basicauthuser=basicauthuser, basicauthpassword=basicauthpassword)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling KeypadOperationsApi->keypads_keypad_id_buttons_button_id_get: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **keypad_id** | [**str**](.md)| The keypad&#x27;s name or unique identifier (uuid) | 
- **button_id** | [**str**](.md)| The button&#x27;s name or unique identifier (uuid) | 
+ **keypad_id** | [**str**](.md)| The keypad&#39;s name or unique identifier (uuid) | 
+ **button_id** | [**str**](.md)| The button&#39;s name or unique identifier (uuid) | 
  **basicauthuser** | **str**| Username to use in place of username in basic authentication header.  For a secure installation, this value is ignored but still must be supplied unless a basic authentication header is sent with the request. | [optional] 
  **basicauthpassword** | **str**| Password to use in place of password in basic authentication header. For a secure installation, this should be an oauth token for a user with access to the installation.  If a basic authentication header is sent, this parameter is ignored.  If no basic authentication header is sent, this parameter as well as the basicauthuser parameter must be supplied if the hub is a member of a secure installation. | [optional] 
 
@@ -373,6 +497,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful response |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **keypads_keypad_id_buttons_button_id_push_button_post**
@@ -383,39 +512,55 @@ Pushes a button
 Performs the same action as a physical press of the button.  The action performed is determined by the current state of the button and the type of keypad.   Added in hub firmware version 1.12 (API schema 2). 
 
 ### Example
+
+* Basic Authentication (basicAuth):
 ```python
 from __future__ import print_function
 import time
 import aioketraapi
 from aioketraapi.rest import ApiException
 from pprint import pprint
-# Configure HTTP basic authorization: basicAuth
-configuration = aioketraapi.Configuration()
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+# Defining the host is optional and defaults to https://localhost/ketra.cgi/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = aioketraapi.Configuration(
+    host = "https://localhost/ketra.cgi/api/v1"
+)
 
-# create an instance of the API class
-api_instance = aioketraapi.KeypadOperationsApi(aioketraapi.ApiClient(configuration))
-keypad_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | The keypad's name or unique identifier (uuid)
-button_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | The button's name or unique identifier (uuid)
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = aioketraapi.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with aioketraapi.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = aioketraapi.KeypadOperationsApi(api_client)
+    keypad_id = 'keypad_id_example' # str | The keypad's name or unique identifier (uuid)
+button_id = 'button_id_example' # str | The button's name or unique identifier (uuid)
 basicauthuser = 'basicauthuser_example' # str | Username to use in place of username in basic authentication header.  For a secure installation, this value is ignored but still must be supplied unless a basic authentication header is sent with the request. (optional)
 basicauthpassword = 'basicauthpassword_example' # str | Password to use in place of password in basic authentication header. For a secure installation, this should be an oauth token for a user with access to the installation.  If a basic authentication header is sent, this parameter is ignored.  If no basic authentication header is sent, this parameter as well as the basicauthuser parameter must be supplied if the hub is a member of a secure installation. (optional)
 idempotency_key = 'idempotency_key_example' # str | optional string to guarantee this action will execute only once on the server.  Set this to a random string  and future requests with the same string will be ignored (optional)
 
-try:
-    # Pushes a button
-    api_response = api_instance.keypads_keypad_id_buttons_button_id_push_button_post(keypad_id, button_id, basicauthuser=basicauthuser, basicauthpassword=basicauthpassword, idempotency_key=idempotency_key)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling KeypadOperationsApi->keypads_keypad_id_buttons_button_id_push_button_post: %s\n" % e)
+    try:
+        # Pushes a button
+        api_response = api_instance.keypads_keypad_id_buttons_button_id_push_button_post(keypad_id, button_id, basicauthuser=basicauthuser, basicauthpassword=basicauthpassword, idempotency_key=idempotency_key)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling KeypadOperationsApi->keypads_keypad_id_buttons_button_id_push_button_post: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **keypad_id** | [**str**](.md)| The keypad&#x27;s name or unique identifier (uuid) | 
- **button_id** | [**str**](.md)| The button&#x27;s name or unique identifier (uuid) | 
+ **keypad_id** | [**str**](.md)| The keypad&#39;s name or unique identifier (uuid) | 
+ **button_id** | [**str**](.md)| The button&#39;s name or unique identifier (uuid) | 
  **basicauthuser** | **str**| Username to use in place of username in basic authentication header.  For a secure installation, this value is ignored but still must be supplied unless a basic authentication header is sent with the request. | [optional] 
  **basicauthpassword** | **str**| Password to use in place of password in basic authentication header. For a secure installation, this should be an oauth token for a user with access to the installation.  If a basic authentication header is sent, this parameter is ignored.  If no basic authentication header is sent, this parameter as well as the basicauthuser parameter must be supplied if the hub is a member of a secure installation. | [optional] 
  **idempotency_key** | **str**| optional string to guarantee this action will execute only once on the server.  Set this to a random string  and future requests with the same string will be ignored | [optional] 
@@ -433,6 +578,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful response.  Returns the new state of the keypad |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **keypads_keypad_id_buttons_get**
@@ -443,37 +593,53 @@ Gets the buttons for a keypad
 Gets the buttons for the keypad specified by {keypad-id}.  If a keypad name is specified instead of a uuid, the buttons for the first keypad matching the specified name will be returned 
 
 ### Example
+
+* Basic Authentication (basicAuth):
 ```python
 from __future__ import print_function
 import time
 import aioketraapi
 from aioketraapi.rest import ApiException
 from pprint import pprint
-# Configure HTTP basic authorization: basicAuth
-configuration = aioketraapi.Configuration()
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+# Defining the host is optional and defaults to https://localhost/ketra.cgi/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = aioketraapi.Configuration(
+    host = "https://localhost/ketra.cgi/api/v1"
+)
 
-# create an instance of the API class
-api_instance = aioketraapi.KeypadOperationsApi(aioketraapi.ApiClient(configuration))
-keypad_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | The keypad's name or unique identifier (uuid)
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = aioketraapi.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with aioketraapi.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = aioketraapi.KeypadOperationsApi(api_client)
+    keypad_id = 'keypad_id_example' # str | The keypad's name or unique identifier (uuid)
 basicauthuser = 'basicauthuser_example' # str | Username to use in place of username in basic authentication header.  For a secure installation, this value is ignored but still must be supplied unless a basic authentication header is sent with the request. (optional)
 basicauthpassword = 'basicauthpassword_example' # str | Password to use in place of password in basic authentication header. For a secure installation, this should be an oauth token for a user with access to the installation.  If a basic authentication header is sent, this parameter is ignored.  If no basic authentication header is sent, this parameter as well as the basicauthuser parameter must be supplied if the hub is a member of a secure installation. (optional)
 name = 'name_example' # str | If specified, returns only the buttons matching the name provided (optional)
 
-try:
-    # Gets the buttons for a keypad
-    api_response = api_instance.keypads_keypad_id_buttons_get(keypad_id, basicauthuser=basicauthuser, basicauthpassword=basicauthpassword, name=name)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling KeypadOperationsApi->keypads_keypad_id_buttons_get: %s\n" % e)
+    try:
+        # Gets the buttons for a keypad
+        api_response = api_instance.keypads_keypad_id_buttons_get(keypad_id, basicauthuser=basicauthuser, basicauthpassword=basicauthpassword, name=name)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling KeypadOperationsApi->keypads_keypad_id_buttons_get: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **keypad_id** | [**str**](.md)| The keypad&#x27;s name or unique identifier (uuid) | 
+ **keypad_id** | [**str**](.md)| The keypad&#39;s name or unique identifier (uuid) | 
  **basicauthuser** | **str**| Username to use in place of username in basic authentication header.  For a secure installation, this value is ignored but still must be supplied unless a basic authentication header is sent with the request. | [optional] 
  **basicauthpassword** | **str**| Password to use in place of password in basic authentication header. For a secure installation, this should be an oauth token for a user with access to the installation.  If a basic authentication header is sent, this parameter is ignored.  If no basic authentication header is sent, this parameter as well as the basicauthuser parameter must be supplied if the hub is a member of a secure installation. | [optional] 
  **name** | **str**| If specified, returns only the buttons matching the name provided | [optional] 
@@ -491,6 +657,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful response |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **keypads_keypad_id_get**
@@ -501,36 +672,52 @@ Gets a single keypad
 Gets a Ketra keypad speficied by {keypad-id}.  If a keypad name is specified instead of a uuid, the first keypad matching the specified name will be returned 
 
 ### Example
+
+* Basic Authentication (basicAuth):
 ```python
 from __future__ import print_function
 import time
 import aioketraapi
 from aioketraapi.rest import ApiException
 from pprint import pprint
-# Configure HTTP basic authorization: basicAuth
-configuration = aioketraapi.Configuration()
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+# Defining the host is optional and defaults to https://localhost/ketra.cgi/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = aioketraapi.Configuration(
+    host = "https://localhost/ketra.cgi/api/v1"
+)
 
-# create an instance of the API class
-api_instance = aioketraapi.KeypadOperationsApi(aioketraapi.ApiClient(configuration))
-keypad_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | The keypad's name or unique identifier (uuid)
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = aioketraapi.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with aioketraapi.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = aioketraapi.KeypadOperationsApi(api_client)
+    keypad_id = 'keypad_id_example' # str | The keypad's name or unique identifier (uuid)
 basicauthuser = 'basicauthuser_example' # str | Username to use in place of username in basic authentication header.  For a secure installation, this value is ignored but still must be supplied unless a basic authentication header is sent with the request. (optional)
 basicauthpassword = 'basicauthpassword_example' # str | Password to use in place of password in basic authentication header. For a secure installation, this should be an oauth token for a user with access to the installation.  If a basic authentication header is sent, this parameter is ignored.  If no basic authentication header is sent, this parameter as well as the basicauthuser parameter must be supplied if the hub is a member of a secure installation. (optional)
 
-try:
-    # Gets a single keypad
-    api_response = api_instance.keypads_keypad_id_get(keypad_id, basicauthuser=basicauthuser, basicauthpassword=basicauthpassword)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling KeypadOperationsApi->keypads_keypad_id_get: %s\n" % e)
+    try:
+        # Gets a single keypad
+        api_response = api_instance.keypads_keypad_id_get(keypad_id, basicauthuser=basicauthuser, basicauthpassword=basicauthpassword)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling KeypadOperationsApi->keypads_keypad_id_get: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **keypad_id** | [**str**](.md)| The keypad&#x27;s name or unique identifier (uuid) | 
+ **keypad_id** | [**str**](.md)| The keypad&#39;s name or unique identifier (uuid) | 
  **basicauthuser** | **str**| Username to use in place of username in basic authentication header.  For a secure installation, this value is ignored but still must be supplied unless a basic authentication header is sent with the request. | [optional] 
  **basicauthpassword** | **str**| Password to use in place of password in basic authentication header. For a secure installation, this should be an oauth token for a user with access to the installation.  If a basic authentication header is sent, this parameter is ignored.  If no basic authentication header is sent, this parameter as well as the basicauthuser parameter must be supplied if the hub is a member of a secure installation. | [optional] 
 
@@ -547,6 +734,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful response |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **keypads_keypad_id_set_level_post**
@@ -557,37 +749,53 @@ sets the master intensity level for a single keypad
 Sets the keypad's intensity (brightness) slider to the level specified by the level parameter
 
 ### Example
+
+* Basic Authentication (basicAuth):
 ```python
 from __future__ import print_function
 import time
 import aioketraapi
 from aioketraapi.rest import ApiException
 from pprint import pprint
-# Configure HTTP basic authorization: basicAuth
-configuration = aioketraapi.Configuration()
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+# Defining the host is optional and defaults to https://localhost/ketra.cgi/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = aioketraapi.Configuration(
+    host = "https://localhost/ketra.cgi/api/v1"
+)
 
-# create an instance of the API class
-api_instance = aioketraapi.KeypadOperationsApi(aioketraapi.ApiClient(configuration))
-keypad_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | The keypad's name or unique identifier (uuid)
-level = true # bool | The level
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = aioketraapi.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with aioketraapi.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = aioketraapi.KeypadOperationsApi(api_client)
+    keypad_id = 'keypad_id_example' # str | The keypad's name or unique identifier (uuid)
+level = True # bool | The level
 basicauthuser = 'basicauthuser_example' # str | Username to use in place of username in basic authentication header.  For a secure installation, this value is ignored but still must be supplied unless a basic authentication header is sent with the request. (optional)
 basicauthpassword = 'basicauthpassword_example' # str | Password to use in place of password in basic authentication header. For a secure installation, this should be an oauth token for a user with access to the installation.  If a basic authentication header is sent, this parameter is ignored.  If no basic authentication header is sent, this parameter as well as the basicauthuser parameter must be supplied if the hub is a member of a secure installation. (optional)
 
-try:
-    # sets the master intensity level for a single keypad
-    api_response = api_instance.keypads_keypad_id_set_level_post(keypad_id, level, basicauthuser=basicauthuser, basicauthpassword=basicauthpassword)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling KeypadOperationsApi->keypads_keypad_id_set_level_post: %s\n" % e)
+    try:
+        # sets the master intensity level for a single keypad
+        api_response = api_instance.keypads_keypad_id_set_level_post(keypad_id, level, basicauthuser=basicauthuser, basicauthpassword=basicauthpassword)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling KeypadOperationsApi->keypads_keypad_id_set_level_post: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **keypad_id** | [**str**](.md)| The keypad&#x27;s name or unique identifier (uuid) | 
+ **keypad_id** | [**str**](.md)| The keypad&#39;s name or unique identifier (uuid) | 
  **level** | **bool**| The level | 
  **basicauthuser** | **str**| Username to use in place of username in basic authentication header.  For a secure installation, this value is ignored but still must be supplied unless a basic authentication header is sent with the request. | [optional] 
  **basicauthpassword** | **str**| Password to use in place of password in basic authentication header. For a secure installation, this should be an oauth token for a user with access to the installation.  If a basic authentication header is sent, this parameter is ignored.  If no basic authentication header is sent, this parameter as well as the basicauthuser parameter must be supplied if the hub is a member of a secure installation. | [optional] 
@@ -605,6 +813,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful response |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **push_button_post**
@@ -615,31 +828,47 @@ Deactivate a button
 Performs the same action as a physical press of the button.  The action performed is determined by the current state of the button and the type of keypad. 
 
 ### Example
+
+* Basic Authentication (basicAuth):
 ```python
 from __future__ import print_function
 import time
 import aioketraapi
 from aioketraapi.rest import ApiException
 from pprint import pprint
-# Configure HTTP basic authorization: basicAuth
-configuration = aioketraapi.Configuration()
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+# Defining the host is optional and defaults to https://localhost/ketra.cgi/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = aioketraapi.Configuration(
+    host = "https://localhost/ketra.cgi/api/v1"
+)
 
-# create an instance of the API class
-api_instance = aioketraapi.KeypadOperationsApi(aioketraapi.ApiClient(configuration))
-keypad_name = 'keypad_name_example' # str | Specifies a keypad name
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = aioketraapi.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with aioketraapi.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = aioketraapi.KeypadOperationsApi(api_client)
+    keypad_name = 'keypad_name_example' # str | Specifies a keypad name
 button_name = 'button_name_example' # str | Specifies a button name
 basicauthuser = 'basicauthuser_example' # str | Username to use in place of username in basic authentication header.  For a secure installation, this value is ignored but still must be supplied unless a basic authentication header is sent with the request. (optional)
 basicauthpassword = 'basicauthpassword_example' # str | Password to use in place of password in basic authentication header. For a secure installation, this should be an oauth token for a user with access to the installation.  If a basic authentication header is sent, this parameter is ignored.  If no basic authentication header is sent, this parameter as well as the basicauthuser parameter must be supplied if the hub is a member of a secure installation. (optional)
 idempotency_key = 'idempotency_key_example' # str | optional string to guarantee this action will execute only once on the server.  Set this to a random string  and future requests with the same string will be ignored (optional)
 
-try:
-    # Deactivate a button
-    api_response = api_instance.push_button_post(keypad_name, button_name, basicauthuser=basicauthuser, basicauthpassword=basicauthpassword, idempotency_key=idempotency_key)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling KeypadOperationsApi->push_button_post: %s\n" % e)
+    try:
+        # Deactivate a button
+        api_response = api_instance.push_button_post(keypad_name, button_name, basicauthuser=basicauthuser, basicauthpassword=basicauthpassword, idempotency_key=idempotency_key)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling KeypadOperationsApi->push_button_post: %s\n" % e)
 ```
 
 ### Parameters
@@ -665,6 +894,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful response.   Returns the new state of the keypad |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **root_get**
@@ -675,28 +909,44 @@ Get keypads and groups  (and scenes in API schema 4 or later)
 Gets all keypads and groups in the installation.  Added in hub firmware version 1.14 (API schema 3).   Scenes are also returned in API schema 4.
 
 ### Example
+
+* Basic Authentication (basicAuth):
 ```python
 from __future__ import print_function
 import time
 import aioketraapi
 from aioketraapi.rest import ApiException
 from pprint import pprint
-# Configure HTTP basic authorization: basicAuth
-configuration = aioketraapi.Configuration()
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+# Defining the host is optional and defaults to https://localhost/ketra.cgi/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = aioketraapi.Configuration(
+    host = "https://localhost/ketra.cgi/api/v1"
+)
 
-# create an instance of the API class
-api_instance = aioketraapi.KeypadOperationsApi(aioketraapi.ApiClient(configuration))
-basicauthuser = 'basicauthuser_example' # str | Username to use in place of username in basic authentication header.  For a secure installation, this value is ignored but still must be supplied unless a basic authentication header is sent with the request. (optional)
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = aioketraapi.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with aioketraapi.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = aioketraapi.KeypadOperationsApi(api_client)
+    basicauthuser = 'basicauthuser_example' # str | Username to use in place of username in basic authentication header.  For a secure installation, this value is ignored but still must be supplied unless a basic authentication header is sent with the request. (optional)
 basicauthpassword = 'basicauthpassword_example' # str | Password to use in place of password in basic authentication header. For a secure installation, this should be an oauth token for a user with access to the installation.  If a basic authentication header is sent, this parameter is ignored.  If no basic authentication header is sent, this parameter as well as the basicauthuser parameter must be supplied if the hub is a member of a secure installation. (optional)
 
-try:
-    # Get keypads and groups  (and scenes in API schema 4 or later)
-    api_response = api_instance.root_get(basicauthuser=basicauthuser, basicauthpassword=basicauthpassword)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling KeypadOperationsApi->root_get: %s\n" % e)
+    try:
+        # Get keypads and groups  (and scenes in API schema 4 or later)
+        api_response = api_instance.root_get(basicauthuser=basicauthuser, basicauthpassword=basicauthpassword)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling KeypadOperationsApi->root_get: %s\n" % e)
 ```
 
 ### Parameters
@@ -718,6 +968,13 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful response |  -  |
+**401** | No user credentials specified. |  -  |
+**403** | Invalid user credentials specified |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -1,6 +1,7 @@
 from aioketraapi.models.keypad import Keypad as KeypadModel
 from aioketraapi.models.button import Button as ButtonModel
-from aioketraapi.endpoints.keypad_operations_api import KeypadOperationsApi
+from aioketraapi.models.level import Level as LevelModel
+from aioketraapi.api.keypad_operations_api import KeypadOperationsApi
 
 
 
@@ -41,17 +42,17 @@ class KeypadButton(ButtonModel):
     async def activate(self, level=65535):
         async with self.hub.api_client() as api_client:
             updated_keypad = await KeypadOperationsApi(api_client).keypads_keypad_id_buttons_button_id_activate_post(
-                {"Level": level},
                 self.keypad.id,
-                self.id)
+                self.id,
+                LevelModel(level))
             self.keypad.update_from_model(updated_keypad.content)
 
     async def deactivate(self):
         async with self.hub.api_client() as api_client:
             updated_keypad = await KeypadOperationsApi(api_client).keypads_keypad_id_buttons_button_id_deactivate_post(
-                {},
                 self.keypad.id,
-                self.id)
+                self.id,
+                LevelModel())
             self.keypad.update_from_model(updated_keypad.content)
 
     @property

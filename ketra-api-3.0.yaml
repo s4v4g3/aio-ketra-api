@@ -1,0 +1,1315 @@
+openapi: 3.0.0
+info:
+  version: 1.4.0
+  description: Control your Ketra lights
+  title: Ketra Lighting API
+security:
+  - basicAuth: []
+paths:
+  /:
+    parameters:
+      - $ref: "#/components/parameters/username"
+      - $ref: "#/components/parameters/password"
+    get:
+      summary: Get keypads and groups  (and scenes in API schema 4 or later)
+      description: Gets all keypads and groups in the installation.  Added in hub firmware
+        version 1.14 (API schema 3).   Scenes are also returned in API schema 4.
+      tags:
+        - Keypad Operations
+        - Group Operations
+        - Scene Operations
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: boolean
+                    description: true if the transaction was successful, false if an error
+                      occurred
+                  Error:
+                    type: string
+                    description: error message
+                  Content:
+                    type: object
+                    properties:
+                      Keypads:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/Keypad"
+                      Groups:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/Group"
+                      Scenes:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/Scene"
+        "401":
+          description: No user credentials specified.
+        "403":
+          description: Invalid user credentials specified
+  /lamps:
+    parameters:
+      - $ref: "#/components/parameters/username"
+      - $ref: "#/components/parameters/password"
+    get:
+      summary: Gets lamps in the installation
+      description: placeholder
+      tags:
+        - Lamp operations
+      responses:
+        "200":
+          description: good
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: boolean
+                    description: true if the transaction was successful, false if an error
+                      occurred
+                  Error:
+                    type: string
+                    description: error message
+                  Content:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Lamp"
+  "/lamps/{lamp-id}":
+    parameters:
+      - $ref: "#/components/parameters/username"
+      - $ref: "#/components/parameters/password"
+    get:
+      summary: Gets a lamp by its id
+      description: placeholder
+      tags:
+        - Lamp operations
+      parameters:
+        - $ref: "#/components/parameters/lamp-id"
+      responses:
+        "200":
+          description: good
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: boolean
+                    description: true if the transaction was successful, false if an error
+                      occurred
+                  Error:
+                    type: string
+                    description: error message
+                  Content:
+                    $ref: "#/components/schemas/Lamp"
+  "/lamps/{lamp-id}/state":
+    parameters:
+      - $ref: "#/components/parameters/username"
+      - $ref: "#/components/parameters/password"
+    put:
+      summary: sets a lamp state
+      description: sets a lamp state
+      tags:
+        - Lamp operations
+      parameters:
+        - $ref: "#/components/parameters/lamp-id"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LampState"
+        description: Color settings to apply to the lamp
+        required: true
+      responses:
+        "200":
+          description: good
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: boolean
+                    description: true if the transaction was successful, false if an error
+                      occurred
+                  Error:
+                    type: string
+                    description: error message
+  /Hub:
+    parameters:
+      - $ref: "#/components/parameters/username"
+      - $ref: "#/components/parameters/password"
+    get:
+      summary: Gets properties of the hub
+      description: Gets informational and diagnostic properties of the hub.  Added in hub
+        firmware version 1.14 (API schema 3).
+      tags:
+        - Hub Operations
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: boolean
+                    description: true if the transaction was successful, false if an error
+                      occurred
+                  Error:
+                    type: string
+                    description: error message
+                  Content:
+                    type: object
+                    properties:
+                      APISchema:
+                        type: integer
+                        description: API schema version supported by the hub's firmware
+                      CPUVersion:
+                        type: string
+                        description: the version of the hub's CPU firmware
+                      RadioVersion:
+                        type: string
+                        description: the version of the hub's radio firmware
+                      SerialNumber:
+                        type: string
+                        description: the hub's serial number
+                      ModelName:
+                        type: string
+                        description: the model name of the hub
+                      Id:
+                        type: string
+                        description: the unique identifier of the hub
+                        format: uuid
+                      InstallationId:
+                        type: string
+                        description: the unique identifier of the hub's installation
+                        format: uuid
+                      InstallationName:
+                        type: string
+                        description: the name of the hub's installation
+                      NetworkId:
+                        type: string
+                        description: the unique identifier of the hub's network
+                        format: uuid
+                      Name:
+                        type: string
+                        description: the user-assigned name of the hub
+                      EthernetMAC:
+                        type: string
+                        description: the hub's ethernet MAC address
+                      IPv4Address:
+                        type: string
+                        description: the hub's IPv4 address
+                      EthernetLinkStatus:
+                        description: the link status of the hub's ethernet ports. This is
+                          an array of length equal to the number of ethernet
+                          ports on the hub.  Each element will be true or false
+                          depending on whether a link was detected on the port
+                          or not.
+                        type: array
+                        items:
+                          type: boolean
+                      UpTimeSeconds:
+                        description: the number of seconds since last power cycle or reboot
+                        type: integer
+                      LocalTime:
+                        description: the local time
+                        type: string
+                      UTCTime:
+                        description: the time in UTC
+                        type: string
+                      LastRebootReason:
+                        description: the reason for the last reboot
+                        type: string
+                        enum:
+                          - Power Cycle
+                          - Normal Software Reboot
+                          - Firmware Upgrade
+                      HasInternetConnectivity:
+                        description: does the hub have internet access?
+                        type: boolean
+                      LastTimeUpdateWasSuccessful:
+                        description: was the last time update successful?
+                        type: boolean
+                      RemoteConnectionEnabled:
+                        description: is remote connectivity enabled?
+                        type: boolean
+                      RemoteConnectionEstablished:
+                        description: is the remote connection established?
+                        type: boolean
+                      SupportsZoneKeypads:
+                        description: This property will be true if the hub was published in
+                          Design Studio 2.0 in an installation containing
+                          devices that all have 1.15 firmware.  This signifies
+                          that a keypad's buttons can be configured to control
+                          independent zones and are not restricted to
+                          controlling the same set of groups.
+                        type: boolean
+  /Scenes:
+    parameters:
+      - $ref: "#/components/parameters/username"
+      - $ref: "#/components/parameters/password"
+    get:
+      summary: Get Scenes
+      description: (New in API schema 4)  Gets the list of defined Scenes.   A scene is a
+        predefined state (or states) for one or more groups of lights.
+      tags:
+        - Scene Operations
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: boolean
+                    description: true if the transaction was successful, false if an error
+                      occurred
+                  Error:
+                    type: string
+                    description: error message
+                  Content:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Scene"
+        "401":
+          description: No user credentials specified.
+        "403":
+          description: Invalid user credentials specified
+  "/Scenes/{scene-id}":
+    parameters:
+      - $ref: "#/components/parameters/username"
+      - $ref: "#/components/parameters/password"
+    get:
+      summary: Gets a single scene
+      description: |
+        (New in API schema 4) Gets a Ketra scene specified by {scene-id}.
+      tags:
+        - Scene Operations
+      parameters:
+        - $ref: "#/components/parameters/scene-id"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: boolean
+                    description: true if the transaction was successful, false if an error
+                      occurred
+                  Error:
+                    type: string
+                    description: error message
+                  Content:
+                    $ref: "#/components/schemas/Scene"
+  "/Scenes/{scene-id}/Activate":
+    parameters:
+      - $ref: "#/components/parameters/username"
+      - $ref: "#/components/parameters/password"
+    post:
+      summary: Activates a scene
+      description: >
+        (New in API schema 4)  Activates a Ketra scene specified by
+        {scene-id}.   If a group is specified, the scene will be activated only
+        for that group (and its subgroups).  If no group is specified, the scene
+        will be activated for all groups for which the scene is defined.
+      tags:
+        - Scene Operations
+      parameters:
+        - $ref: "#/components/parameters/scene-id"
+        - name: group
+          in: query
+          description: Specifies the parent group for which the scene should be activated
+          required: false
+          schema:
+            type: string
+        - name: level
+          in: query
+          description: Specifies the master brightness level (from 0 to 65535) at which the
+            scene should be activated.  If this parameter is omitted, the scene
+            will be activated at the maximum level (65535).
+          schema:
+            type: integer
+            format: uint16
+            minimum: 0
+            maximum: 65535
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: boolean
+                    description: true if the transaction was successful, false if an error
+                      occurred
+                  Error:
+                    type: string
+                    description: error message
+                  Content:
+                    type: object
+  /Keypads:
+    parameters:
+      - $ref: "#/components/parameters/username"
+      - $ref: "#/components/parameters/password"
+    get:
+      summary: Get keypads
+      description: >
+        Gets the list of Ketra keypads.  By default, unless the includeall
+        parameter is provided and set to true, cascaded and mirrored keypads are
+        not returned in the list. However, the buttons of cascaded keypads are
+        returned with their respective master keypad.
+      tags:
+        - Keypad Operations
+      parameters:
+        - name: name
+          in: query
+          description: If specified, returns only the keypads matching the name provided
+          required: false
+          schema:
+            type: string
+        - name: includeall
+          in: query
+          description: if true, cascaded and mirrored keypads will be returned in the
+            list.  If false or the parameter is not provided, cascaded keypad
+            buttons will be returned as children of their master keypad.
+          required: false
+          schema:
+            type: boolean
+            default: false
+        - name: nobuttons
+          in: query
+          description: if true, the buttons array will not be populated and only the keypad
+            objects will be returned.  For an installation with a large number
+            of keypads this can be much quicker than returning the full set of
+            keypads along with all buttons.
+          required: false
+          schema:
+            type: boolean
+            default: false
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: boolean
+                    description: true if the transaction was successful, false if an error
+                      occurred
+                  Error:
+                    type: string
+                    description: error message
+                  Content:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Keypad"
+        "401":
+          description: No user credentials specified.
+        "403":
+          description: Invalid user credentials specified
+  "/Keypads/{keypad-id}":
+    parameters:
+      - $ref: "#/components/parameters/username"
+      - $ref: "#/components/parameters/password"
+    get:
+      summary: Gets a single keypad
+      description: >
+        Gets a Ketra keypad speficied by {keypad-id}.  If a keypad name is
+        specified instead of a uuid, the first keypad matching the specified
+        name will be returned
+      tags:
+        - Keypad Operations
+      parameters:
+        - $ref: "#/components/parameters/keypad-id"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: boolean
+                    description: true if the transaction was successful, false if an error
+                      occurred
+                  Error:
+                    type: string
+                    description: error message
+                  Content:
+                    $ref: "#/components/schemas/Keypad"
+  "/Keypads/{keypad-id}/SetLevel":
+    parameters:
+      - $ref: "#/components/parameters/username"
+      - $ref: "#/components/parameters/password"
+    post:
+      summary: sets the master intensity level for a single keypad
+      description: Sets the keypad's intensity (brightness) slider to the level specified
+        by the level parameter
+      tags:
+        - Keypad Operations
+      parameters:
+        - $ref: "#/components/parameters/keypad-id"
+        - name: Level
+          in: query
+          description: The level
+          required: true
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: boolean
+                    description: true if the transaction was successful, false if an error
+                      occurred
+                  Error:
+                    type: string
+                    description: error message
+                  Content:
+                    $ref: "#/components/schemas/Keypad"
+  "/Keypads/{keypad-id}/Buttons":
+    parameters:
+      - $ref: "#/components/parameters/username"
+      - $ref: "#/components/parameters/password"
+    get:
+      summary: Gets the buttons for a keypad
+      description: >
+        Gets the buttons for the keypad specified by {keypad-id}.  If a keypad
+        name is specified instead of a uuid, the buttons for the first keypad
+        matching the specified name will be returned
+      tags:
+        - Keypad Operations
+      parameters:
+        - $ref: "#/components/parameters/keypad-id"
+        - name: name
+          in: query
+          description: If specified, returns only the buttons matching the name provided
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: boolean
+                    description: true if the transaction was successful, false if an error
+                      occurred
+                  Error:
+                    type: string
+                    description: error message
+                  Content:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Button"
+  "/Keypads/{keypad-id}/Buttons/{button-id}":
+    parameters:
+      - $ref: "#/components/parameters/username"
+      - $ref: "#/components/parameters/password"
+    get:
+      summary: Gets the specified button for a specified keypad
+      description: >
+        Gets the button specified by {button-id} for the keypad specified by
+        {keypad-id}.
+      tags:
+        - Keypad Operations
+      parameters:
+        - $ref: "#/components/parameters/keypad-id"
+        - $ref: "#/components/parameters/button-id"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: boolean
+                    description: true if the transaction was successful, false if an error
+                      occurred
+                  Error:
+                    type: string
+                    description: error message
+                  Content:
+                    $ref: "#/components/schemas/Button"
+  "/Keypads/{keypad-id}/Buttons/{button-id}/Activate":
+    parameters:
+      - $ref: "#/components/parameters/username"
+      - $ref: "#/components/parameters/password"
+    post:
+      summary: Activate a button
+      description: |
+        Activates the scene or show represented by the button
+      tags:
+        - Keypad Operations
+      parameters:
+        - $ref: "#/components/parameters/keypad-id"
+        - $ref: "#/components/parameters/button-id"
+      requestBody:
+        $ref: "#/components/requestBodies/Level"
+      responses:
+        "200":
+          description: Successful response.  Returns the new state of the keypad
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: boolean
+                    description: true if the transaction was successful, false if an error
+                      occurred
+                  Error:
+                    type: string
+                    description: error message
+                  Content:
+                    $ref: "#/components/schemas/Keypad"
+  "/Keypads/{keypad-id}/Buttons/{button-id}/Deactivate":
+    parameters:
+      - $ref: "#/components/parameters/username"
+      - $ref: "#/components/parameters/password"
+    post:
+      summary: Deactivate a button
+      description: |
+        Deactivates the scene or show represented by the button
+      tags:
+        - Keypad Operations
+      parameters:
+        - $ref: "#/components/parameters/keypad-id"
+        - $ref: "#/components/parameters/button-id"
+      requestBody:
+        $ref: "#/components/requestBodies/Level"
+      responses:
+        "200":
+          description: Successful response.  Returns the new state of the keypad
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: boolean
+                    description: true if the transaction was successful, false if an error
+                      occurred
+                  Error:
+                    type: string
+                    description: error message
+                  Content:
+                    $ref: "#/components/schemas/Keypad"
+  "/Keypads/{keypad-id}/Buttons/{button-id}/PushButton":
+    parameters:
+      - $ref: "#/components/parameters/username"
+      - $ref: "#/components/parameters/password"
+    post:
+      summary: Pushes a button
+      description: >
+        Performs the same action as a physical press of the button.  The action
+        performed is determined by the current state of the button and the type
+        of keypad.   Added in hub firmware version 1.12 (API schema 2).
+      tags:
+        - Keypad Operations
+      parameters:
+        - $ref: "#/components/parameters/keypad-id"
+        - $ref: "#/components/parameters/button-id"
+        - name: idempotency_key
+          in: query
+          description: optional string to guarantee this action will execute only once on
+            the server.  Set this to a random string  and future requests with
+            the same string will be ignored
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response.  Returns the new state of the keypad
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: boolean
+                    description: true if the transaction was successful, false if an error
+                      occurred
+                  Error:
+                    type: string
+                    description: error message
+                  Content:
+                    $ref: "#/components/schemas/Keypad"
+  /ActivateButton:
+    parameters:
+      - $ref: "#/components/parameters/username"
+      - $ref: "#/components/parameters/password"
+    post:
+      summary: Activate a button
+      description: |
+        Activates the scene or show represented by the button
+      tags:
+        - Keypad Operations
+      parameters:
+        - name: KeypadName
+          in: query
+          description: Specifies a keypad name
+          required: true
+          schema:
+            type: string
+        - name: ButtonName
+          in: query
+          description: Specifies a button name
+          required: true
+          schema:
+            type: string
+      requestBody:
+        $ref: "#/components/requestBodies/Level"
+      responses:
+        "200":
+          description: Successful response.  Returns the new state of the keypad
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: boolean
+                    description: true if the transaction was successful, false if an error
+                      occurred
+                  Error:
+                    type: string
+                    description: error message
+                  Content:
+                    $ref: "#/components/schemas/Keypad"
+  /DeactivateButton:
+    parameters:
+      - $ref: "#/components/parameters/username"
+      - $ref: "#/components/parameters/password"
+    post:
+      summary: Deactivate a button
+      description: |
+        Deactivates the scene or show represented by the button
+      tags:
+        - Keypad Operations
+      parameters:
+        - name: KeypadName
+          in: query
+          description: Specifies a keypad name
+          required: true
+          schema:
+            type: string
+        - name: ButtonName
+          in: query
+          description: Specifies a button name
+          required: true
+          schema:
+            type: string
+      requestBody:
+        $ref: "#/components/requestBodies/Level"
+      responses:
+        "200":
+          description: Successful response.   Returns the new state of the keypad
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: boolean
+                    description: true if the transaction was successful, false if an error
+                      occurred
+                  Error:
+                    type: string
+                    description: error message
+                  Content:
+                    $ref: "#/components/schemas/Keypad"
+  /PushButton:
+    parameters:
+      - $ref: "#/components/parameters/username"
+      - $ref: "#/components/parameters/password"
+    post:
+      summary: Deactivate a button
+      description: >
+        Performs the same action as a physical press of the button.  The action
+        performed is determined by the current state of the button and the type
+        of keypad.
+      tags:
+        - Keypad Operations
+      parameters:
+        - name: KeypadName
+          in: query
+          description: Specifies a keypad name
+          required: true
+          schema:
+            type: string
+        - name: ButtonName
+          in: query
+          description: Specifies a button name
+          required: true
+          schema:
+            type: string
+        - name: idempotency_key
+          in: query
+          description: optional string to guarantee this action will execute only once on
+            the server.  Set this to a random string  and future requests with
+            the same string will be ignored
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response.   Returns the new state of the keypad
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: boolean
+                    description: true if the transaction was successful, false if an error
+                      occurred
+                  Error:
+                    type: string
+                    description: error message
+                  Content:
+                    $ref: "#/components/schemas/Keypad"
+  /Groups:
+    parameters:
+      - $ref: "#/components/parameters/username"
+      - $ref: "#/components/parameters/password"
+    get:
+      summary: Gets the list of groups
+      description: |
+        Gets the list of lamp groups in the system
+      tags:
+        - Group Operations
+      parameters:
+        - name: Name
+          in: query
+          description: If specified, only the groups matching the string provided are
+            returned
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: boolean
+                    description: true if the transaction was successful, false if an error
+                      occurred
+                  Error:
+                    type: string
+                    description: error message
+                  Content:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Group"
+  "/Groups/{group-id}":
+    parameters:
+      - $ref: "#/components/parameters/username"
+      - $ref: "#/components/parameters/password"
+    get:
+      summary: Gets a single group object
+      description: Gets the group specified by {group-id}.  If a group name is specified
+        instead of a uuid, the first group matching the specified name will be
+        returned
+      tags:
+        - Group Operations
+      parameters:
+        - $ref: "#/components/parameters/group-id"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: boolean
+                    description: true if the transaction was successful, false if an error
+                      occurred
+                  Error:
+                    type: string
+                    description: error message
+                  Content:
+                    $ref: "#/components/schemas/Group"
+  "/Groups/{group-id}/State":
+    parameters:
+      - $ref: "#/components/parameters/username"
+      - $ref: "#/components/parameters/password"
+    get:
+      summary: Gets the state of a single lamp group
+      description: Gets the state of the group specified by {group-id}.   If a group name
+        is specified instead of a uuid, the state of the first group matching
+        the specified name will be returned.  Note that for API schema 3 (hub
+        firmware 1.14) or earlier, this will only reflect the state of the last
+        group operation -- light changes due to keypad operations are not
+        reflected in the returned state.  However in API schema 4 / hub firmware
+        1.15, if the hub is published with Design Studio 2.0 (and the
+        'SupportsZoneKeypads' property returned in GET /Hub is true), the lamp
+        state returned will reflect the current state of the group.  Please see
+        the API overview document for more discussion on this topic.
+      tags:
+        - Group Operations
+      parameters:
+        - $ref: "#/components/parameters/group-id"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: boolean
+                    description: true if the transaction was successful, false if an error
+                      occurred
+                  Error:
+                    type: string
+                    description: error message
+                  Content:
+                    $ref: "#/components/schemas/LampState"
+    put:
+      summary: Sets the state of a single lamp group
+      description: Set the state of the group specified by {group-id}.  If a group name is
+        specified instead of a uuid, the state of the first group matching the
+        specified name will be set
+      tags:
+        - Group Operations
+      parameters:
+        - $ref: "#/components/parameters/group-id"
+      requestBody:
+        $ref: "#/components/requestBodies/LampState"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: boolean
+                    description: true if the transaction was successful, false if an error
+                      occurred
+                  Error:
+                    type: string
+                    description: error message
+                  Content:
+                    $ref: "#/components/schemas/LampState"
+  /Groups/State:
+    parameters:
+      - $ref: "#/components/parameters/username"
+      - $ref: "#/components/parameters/password"
+    post:
+      summary: Sets the state of a lamp group
+      description: Sets the state of a lamp group specified by a name query parameters
+      tags:
+        - Group Operations
+      parameters:
+        - name: Name
+          in: query
+          description: name of the group to apply the state
+          required: false
+          schema:
+            type: string
+      requestBody:
+        $ref: "#/components/requestBodies/LampState"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: boolean
+                    description: true if the transaction was successful, false if an error
+                      occurred
+                  Error:
+                    type: string
+                    description: error message
+                  Content:
+                    $ref: "#/components/schemas/LampState"
+servers:
+  - url: https://localhost/ketra.cgi/api/v1
+components:
+  parameters:
+    keypad-id:
+      name: keypad-id
+      in: path
+      description: The keypad's name or unique identifier (uuid)
+      required: true
+      schema:
+        type: string
+        format: uuid
+    scene-id:
+      name: scene-id
+      in: path
+      description: The scene's unique identifier (uuid)
+      required: true
+      schema:
+        type: string
+        format: uuid
+    lamp-id:
+      name: lamp-id
+      in: path
+      description: The lamp's unique identifier (uuid)
+      required: true
+      schema:
+        type: string
+        format: uuid
+    button-id:
+      name: button-id
+      in: path
+      description: The button's name or unique identifier (uuid)
+      required: true
+      schema:
+        type: string
+        format: uuid
+    group-id:
+      name: group-id
+      in: path
+      description: The group's name or unique identifier (uuid)
+      required: true
+      schema:
+        type: string
+        format: uuid
+    username:
+      name: basicauthuser
+      in: query
+      description: Username to use in place of username in basic authentication
+        header.  For a secure installation, this value is ignored but still must
+        be supplied unless a basic authentication header is sent with the
+        request.
+      schema:
+        type: string
+    password:
+      name: basicauthpassword
+      in: query
+      description: Password to use in place of password in basic authentication header. For
+        a secure installation, this should be an oauth token for a user with
+        access to the installation.  If a basic authentication header is sent,
+        this parameter is ignored.  If no basic authentication header is sent,
+        this parameter as well as the basicauthuser parameter must be supplied
+        if the hub is a member of a secure installation.
+      schema:
+        type: string
+  requestBodies:
+    LampState:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/LampState"
+      description: Color settings to apply to the lamp group
+      required: true
+    Level:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Level"
+      description: The level
+      required: true
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+  schemas:
+    LampStateParameters:
+      type: object
+      description: color state of a ketra light.   For a put operation, if an optional
+        parameter is not provided, the previous value is used
+      properties:
+        Brightness:
+          description: the brightness of the light
+          minimum: 0
+          maximum: 1
+          type: number
+          format: double
+        MasterBrightness:
+          description: the master brightness value of the light.  This parameter is new for
+            API schema 4 and provides an independent brightness channel that can
+            be varied while 'Brightness' remains constant.
+          minimum: 0
+          maximum: 1
+          type: number
+          format: double
+        NetBrightness:
+          description: The overall brightness of the light (Brightness * MasterBrightness).
+            This parameter is new for API schema 4 and is ignored for a PUT or
+            POST operation.
+          minimum: 0
+          maximum: 1
+          type: number
+          format: double
+        DimCurveActive:
+          description: returns true if a dimming curve is currently active on the lamp
+            group.  New for API schema 4.
+          type: boolean
+        DimCurve:
+          description: if DimCurveActive is true, indicates which dimming curve is
+            active.  New for API schema 4.
+          type: string
+          enum:
+            - Xenon
+            - GE Ultra Soft White
+            - Philips EcoVantage A19
+            - Philips Halogen PAR38
+            - none
+        PowerOn:
+          description: true if the light is on, false if the light is off
+          type: boolean
+        Vibrancy:
+          description: the ratio of RGB to phosphor-converted white LED content.  A value
+            of 0 indicates to use as little RGB as possible.  A value of 1
+            indicates to use as much RGB as possible
+          minimum: 0
+          maximum: 1
+          type: number
+          format: double
+        CCT:
+          description: the correlated color temperature of the light.  If cct is provided
+            and within the valid range, it will be used instead of x and y
+            chromaticity
+          type: integer
+          minimum: 0
+          maximum: 25000
+          format: uint32
+        xChromaticity:
+          description: the x chromaticity of the light.  This parameter will be ignored if
+            a valid cct value is provided on a put/post operation.  A get
+            operation will return a valid value always
+          minimum: 0
+          maximum: 1
+          type: number
+          format: double
+        yChromaticity:
+          description: the y chromaticity of the light.  This parameter will be ignored if
+            a valid cct value is provided on a put/post operation.  A get
+            operation will return a valid value always
+          minimum: 0
+          maximum: 1
+          type: number
+          format: double
+    LampState:
+      type: object
+      description: color state of a ketra light.   The StartState property can be
+        optionally provided in a put/post operation, but will not be returned in
+        a get operation.  If it is provided for a put/post operation, the light
+        will transition immediately to the color specified by the StartState
+        properties and will transition to the specified color over the time
+        specified by TransitionTime.   Note that the same set of
+        LampStateParameters properties must be provided for the StartState
+        object as for the LampState object itself or the StartState parameters
+        will be ignored.
+      allOf:
+        - $ref: "#/components/schemas/LampStateParameters"
+        - properties:
+            TransitionTime:
+              type: integer
+              format: uint32
+              description: transition time, in ms.  (Required)
+              minimum: 0
+              maximum: 6553500
+            UpdatedAt:
+              description: the time at which the group was last updated.  New for API
+                schema 4.
+              type: string
+            TransitionComplete:
+              description: returns true if the lamp is finished transitioning to the last
+                updated color.  New for API schema 4.
+              type: boolean
+            ActiveShows:
+              description: indicates the show groups that are currently active for the
+                group.  New for API schema 4.
+              type: array
+              items:
+                type: integer
+            StartState:
+              $ref: "#/components/schemas/LampStateParameters"
+    Button:
+      type: object
+      description: Button
+      properties:
+        Active:
+          type: boolean
+          description: is the button active?
+        Id:
+          type: string
+          description: Id of the button
+          format: uuid
+        Level:
+          type: integer
+          format: uint16
+          description: intensity level of the button's scene or show
+        Name:
+          type: string
+          description: Name of the button
+        Position:
+          type: integer
+          description: Zero-based position of the button on the keypad
+        IsPowerButton:
+          type: boolean
+          description: is this button a power button?  (added in firmware version 1.12)
+        SceneIsModified:
+          type: boolean
+          description: is the scene modified by a child keypad?   (added in firmware
+            version 1.12)
+    Keypad:
+      type: object
+      description: Keypad
+      properties:
+        Id:
+          type: string
+          description: Unique id of the keypad
+          format: uuid
+        IsVirtual:
+          type: boolean
+          description: Is the keypad virtual or physical?
+        Level:
+          type: integer
+          format: uint16
+          description: intensity level of the keypad's slider
+        Name:
+          type: string
+          description: Name of the keypad
+        SerialNumber:
+          type: string
+          description: if the keypad is not virtual, specifies the serial number of the
+            keypad
+        Buttons:
+          type: array
+          items:
+            $ref: "#/components/schemas/Button"
+    Level:
+      type: object
+      description: Level
+      properties:
+        Level:
+          type: integer
+          description: level
+    Scene:
+      type: object
+      description: a scene
+      properties:
+        Id:
+          type: string
+          description: Unique id of the scene
+        ContentId:
+          type: integer
+          format: uint16
+          description: content id for the scene
+        IsShow:
+          type: boolean
+          description: true if the scene represents a trigger for a show (or group of shows)
+        ShowGroupNumber:
+          type: integer
+          description: if the scene represents a show trigger, this value indicates which
+            show group is activated by this scene.
+        Name:
+          type: string
+          description: Name of the scene
+        ParentGroupIds:
+          type: array
+          items:
+            type: string
+          description: Ids of parent groups of this scene.  This indicates which groups are
+            valid for which the scene can be active.
+    Lamp:
+      type: object
+      description: a lamp
+      properties:
+        Id:
+          type: string
+          description: Unique id of the lamp
+          format: uuid
+        Name:
+          type: string
+          description: Name of the lamp
+        Channel:
+          type: integer
+          format: int32
+        ParentGroupIds:
+          type: array
+          items:
+            type: string
+          description: Ids of parent groups of this lamp
+        SerialNumber:
+          type: string
+          description: serial number of the lamp
+        NumberOfSubchannels:
+          type: integer
+          format: int32
+        LogicalAddress:
+          type: integer
+          format: int32
+    Group:
+      type: object
+      description: a lamp group
+      properties:
+        Id:
+          type: string
+          description: Unique id of the group
+          format: uuid
+        Name:
+          type: string
+          description: Name of the group
+        ChildGroups:
+          type: array
+          items:
+            type: string
+          description: Ids of child groups of this group.  Added in API Schema 4 (firmware
+            version 1.15).  For this to be populated, the hub must be published
+            with Design Studio 2.0 and the SupportsZoneKeypads property returned
+            in GET /Hub must be true.  See the API overview document for more
+            explanation.
+        ParentGroups:
+          type: array
+          items:
+            type: string
+          description: Ids of parent groups of this group.  Added in API Schema 4 (firmware
+            version 1.15).  For this to be populated, the hub must be published
+            with Design Studio 2.0 and the SupportsZoneKeypads property returned
+            in GET /Hub must be true.  See the API overview document for more
+            explanation.
+        Address:
+          type: integer
+          description: The logical address of the group.  Added in API Schema 4 (firmware
+            version 1.15)
+        State:
+          $ref: "#/components/schemas/LampState"
