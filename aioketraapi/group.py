@@ -8,12 +8,14 @@ from aioketraapi.model_helper import model_to_json
 class Group(GroupModel):
     def __init__(self, group_model: GroupModel, hub):
         super().__init__(**group_model.to_dict())
+        self.state = group_model.state
         self.hub = hub
 
 
     def update_from_model(self, group_model: GroupModel):
         for k,v in group_model.to_dict().items():
             setattr(self, k, v)
+        self.state = group_model.state
 
     async def update_state(self):
         async with self.hub.api_client() as api_client:
