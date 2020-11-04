@@ -13,7 +13,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "aioketraapi"
-VERSION = "1.0.0"
+VERSION = "0.1.0"
 # To install the library, run the following
 #
 # python setup.py install
@@ -28,14 +28,14 @@ setup(
     name=NAME,
     version=VERSION,
     description="Ketra Lighting API",
-    author="OpenAPI Generator community",
-    author_email="team@openapitools.org",
+    author="Joe Savage",
+    author_email="joe@savage.zone",
     url="",
     keywords=["OpenAPI", "OpenAPI-Generator", "Ketra Lighting API"],
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
     long_description="""\
-    Control your Ketra lights  # noqa: E501
+    Python Client SDK for controlling Ketra lighting products, based on aiohttp  # noqa: E501
     """
 )
