@@ -19,7 +19,7 @@ if sys.version_info < (3, 6):
 HERE = pathlib.Path(__file__).parent
 
 NAME = "aioketraapi"
-VERSION = "0.1.3"
+VERSION = "0.1.4"
 # To install the library, run the following
 #
 # python setup.py install
