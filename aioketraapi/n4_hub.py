@@ -50,11 +50,11 @@ class N4Hub():
             response_model = await kp_api.keypads_get(**kwargs)
             return [Keypad(keypad, self) for keypad in response_model.content]
 
-    async def get_groups(self, **kwargs):
+    async def get_groups(self, include_internal=False, **kwargs):
         async with self.api_client() as api_client:
             kp_api = GroupOperationsApi(api_client)
             response_model = await kp_api.groups_get(**kwargs)
-            return [Group(group, self) for group in response_model.content]
+            return [Group(group, self) for group in response_model.content if include_internal or 'Internal_MasterGroup' not in group.name]
 
 
 

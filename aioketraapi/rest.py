@@ -70,7 +70,8 @@ class RESTClientObject(object):
 
         connector = aiohttp.TCPConnector(
             limit=maxsize,
-            ssl=ssl_context
+            ssl=ssl_context,
+            loop=configuration.loop
         )
 
         self.proxy = configuration.proxy
