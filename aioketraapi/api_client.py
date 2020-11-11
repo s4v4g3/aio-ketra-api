@@ -219,7 +219,8 @@ class ApiClient(object):
             return (return_data, response_data.status,
                     response_data.getheaders())
 
-    def sanitize_for_serialization(self, obj):
+    @classmethod
+    def sanitize_for_serialization(cls, obj, include_null=False):
         """Builds a JSON POST object.
 
         If obj is None, return None.
@@ -235,13 +236,13 @@ class ApiClient(object):
         """
         if obj is None:
             return None
-        elif isinstance(obj, self.PRIMITIVE_TYPES):
+        elif isinstance(obj, cls.PRIMITIVE_TYPES):
             return obj
         elif isinstance(obj, list):
-            return [self.sanitize_for_serialization(sub_obj)
+            return [cls.sanitize_for_serialization(sub_obj)
                     for sub_obj in obj]
         elif isinstance(obj, tuple):
-            return tuple(self.sanitize_for_serialization(sub_obj)
+            return tuple(cls.sanitize_for_serialization(sub_obj)
                          for sub_obj in obj)
         elif isinstance(obj, (datetime.datetime, datetime.date)):
             return obj.isoformat()
@@ -256,9 +257,9 @@ class ApiClient(object):
             # model definition for request.
             obj_dict = {obj.attribute_map[attr]: getattr(obj, attr)
                         for attr, _ in six.iteritems(obj.openapi_types)
-                        if getattr(obj, attr) is not None}
+                        if getattr(obj, attr) is not None or include_null}
 
-        return {key: self.sanitize_for_serialization(val)
+        return {key: cls.sanitize_for_serialization(val)
                 for key, val in six.iteritems(obj_dict)}
 
     def deserialize(self, response, response_type):

@@ -85,6 +85,10 @@ class RESTClientObject(object):
     async def close(self):
         await self.pool_manager.close()
 
+    @property
+    def client_session(self) -> aiohttp.ClientSession:
+        return self.pool_manager
+
     async def request(self, method, url, query_params=None, headers=None,
                       body=None, post_params=None, _preload_content=True,
                       _request_timeout=None):

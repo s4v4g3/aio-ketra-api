@@ -15,7 +15,14 @@ from __future__ import absolute_import
 
 # import models into model package
 from aioketraapi.models.button import Button
+from aioketraapi.models.button_change import ButtonChange
+from aioketraapi.models.button_change_all_of import ButtonChangeAllOf
+from aioketraapi.models.button_change_notification import ButtonChangeNotification
 from aioketraapi.models.group import Group
+from aioketraapi.models.group_state_change import GroupStateChange
+from aioketraapi.models.group_state_change_all_of import GroupStateChangeAllOf
+from aioketraapi.models.hub_ready import HubReady
+from aioketraapi.models.hub_ready_all_of import HubReadyAllOf
 from aioketraapi.models.inline_response200 import InlineResponse200
 from aioketraapi.models.inline_response2001 import InlineResponse2001
 from aioketraapi.models.inline_response20010 import InlineResponse20010
@@ -39,4 +46,7 @@ from aioketraapi.models.lamp_state import LampState
 from aioketraapi.models.lamp_state_all_of import LampStateAllOf
 from aioketraapi.models.lamp_state_parameters import LampStateParameters
 from aioketraapi.models.level import Level
+from aioketraapi.models.publish_begin import PublishBegin
+from aioketraapi.models.publish_begin_all_of import PublishBeginAllOf
 from aioketraapi.models.scene import Scene
+from aioketraapi.models.websocket_v2_notification import WebsocketV2Notification

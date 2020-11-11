@@ -1313,3 +1313,137 @@ components:
             version 1.15)
         State:
           $ref: "#/components/schemas/LampState"
+    ButtonChangeNotification:
+      type: object
+      properties:
+        button_id:
+          type: string
+        client_id:
+          type: string
+        level:
+          type: integer
+          format: uint16
+        activated:
+          type: boolean
+        time_utc:
+          type: string
+          description: time of notification
+          format: date-time
+    WebsocketV2Notification:
+      type: object
+      description: websocket v2 notification
+      required:
+      - notification_type
+      - time_utc
+      properties:
+        notification_type:
+          type: string
+          description: type of notification
+          enum:
+            - ButtonChange
+            - PublishBegin
+            - HubReady
+            - GroupStateChange
+        time_utc:
+          type: string
+          description: time of notification
+          format: date-time
+      discriminator:
+        propertyName: notification_type
+    PublishBegin:
+      allOf:
+        - $ref: '#/components/schemas/WebsocketV2Notification'
+        - type: object
+          description: websocket v2 notification for publishbegin
+          required:
+            - notification_type
+            - time_utc
+          properties:
+            notification_type:
+              type: string
+              description: type of notification
+              enum:
+                - ButtonChange
+                - PublishBegin
+                - HubReady
+                - GroupStateChange
+            time_utc:
+              type: string
+              description: time of notification
+              format: date-time
+    HubReady:
+      allOf:
+        - $ref: '#/components/schemas/WebsocketV2Notification'
+        - type: object
+          description: websocket v2 notification for hub ready
+          required:
+            - notification_type
+            - time_utc
+          properties:
+            notification_type:
+              type: string
+              description: type of notification
+              enum:
+                - ButtonChange
+                - PublishBegin
+                - HubReady
+                - GroupStateChange
+            time_utc:
+              type: string
+              description: time of notification
+              format: date-time
+    ButtonChange:
+      allOf:
+        - $ref: '#/components/schemas/WebsocketV2Notification'
+        - type: object
+          description: websocket v2 notification for button change
+          required:
+            - notification_type
+            - time_utc
+            - contents
+          properties:
+            notification_type:
+              type: string
+              description: type of notification
+              enum:
+                - ButtonChange
+                - PublishBegin
+                - HubReady
+                - GroupStateChange
+            time_utc:
+              type: string
+              description: time of notification
+              format: date-time
+            contents:
+              $ref: '#/components/schemas/ButtonChangeNotification'
+    GroupStateChange:
+      allOf:
+        - $ref: '#/components/schemas/WebsocketV2Notification'
+        - type: object
+          description: websocket v2 notification for group state change
+          required:
+            - notification_type
+            - time_utc
+            - client_id
+            - group_ids
+          properties:
+            notification_type:
+              type: string
+              description: type of notification
+              enum:
+                - ButtonChange
+                - PublishBegin
+                - HubReady
+                - GroupStateChange
+            time_utc:
+              type: string
+              description: time of notification
+              format: date-time
+            client_id:
+              type: string
+              nullable: true
+            group_ids:
+              type: array
+              items:
+                type: string
+                format: uuid
