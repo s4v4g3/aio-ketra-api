@@ -14,12 +14,12 @@ class Group(GroupModel):
         self.state = lamp_state
 
     async def update_state(self):
-        async with self.hub.api_client() as api_client:
+        async with self.hub.create_client_session() as api_client:
             updated_group = await GroupOperationsApi(api_client).groups_group_id_state_get(self.id)
             self.update_state_from_model(updated_group.content)
 
     async def set_state(self, lamp_state: LampStateModel, **kwargs):
-        async with self.hub.api_client() as api_client:
+        async with self.hub.create_client_session() as api_client:
             updated_group = await GroupOperationsApi(api_client).groups_group_id_state_put(self.id, lamp_state, **kwargs)
             self.update_state_from_model(updated_group.content)
 
