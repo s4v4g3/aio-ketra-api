@@ -48,7 +48,12 @@ class N4HubWebSocketConnection:
 
 
 class N4Hub():
-    def __init__(self, url_base :str, oauth_token :str, loop :AbstractEventLoop=None):
+
+    def __init__(self, internal_ip: str, serial_number: str, installation_id: str, url_base :str, oauth_token :str,
+                 loop :AbstractEventLoop=None):
+        self.internal_ip = internal_ip
+        self.serial_number = serial_number
+        self.installation_id = installation_id
         self.url_base = url_base
         ws_url_tmp, _, _ = url_base.rpartition('/')
         self.ws_url = f"{ws_url_tmp.replace('https', 'wss')}/notifications"
@@ -83,12 +88,14 @@ class N4Hub():
                     hub_query_resp = await response.json()
                     if hub_query_resp['success'] == 'true' and len(hub_query_resp['content']) > 0:
                         first_hub = hub_query_resp['content'][0]
+                        internal_ip = first_hub['internal_ip']
+                        serial_number = first_hub['serial_number']
                         if use_cloud:
-                            url = f"https://api.goketra.com/{installation_id}/{first_hub['serial_number']}/webAPI"
-                            return N4Hub(url, oauth_token)
+                            url = f"https://api.goketra.com/{installation_id}/{serial_number}/webAPI"
+                            return N4Hub(internal_ip, serial_number, installation_id, url, oauth_token, loop)
                         else:
-                            url = f"https://{first_hub['internal_ip']}/ketra.cgi"
-                            return N4Hub(url, oauth_token, loop)
+                            url = f"https://{internal_ip}/ketra.cgi"
+                            return N4Hub(internal_ip, serial_number, installation_id, url, oauth_token, loop)
             return None
 
     def create_client_session(self):
