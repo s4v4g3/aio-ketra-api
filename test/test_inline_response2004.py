@@ -57,7 +57,7 @@ class TestInlineResponse2004(unittest.TestCase):
                     up_time_seconds = 56, 
                     local_time = '0', 
                     utc_time = '0', 
-                    last_reboot_reason = 'Power Cycle', 
+                    last_reboot_reason = '0', 
                     has_internet_connectivity = True, 
                     last_time_update_was_successful = True, 
                     remote_connection_enabled = True, 

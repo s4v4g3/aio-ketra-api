@@ -1,14 +1,16 @@
 from aiohttp import ClientWebSocketResponse, WSMsgType, ClientSession
-from asyncio import AbstractEventLoop, iscoroutinefunction
-from aioketraapi import KeypadOperationsApi
-from aioketraapi import GroupOperationsApi
-from aioketraapi import ApiClient
-from aioketraapi import Configuration
+from aiohttp.client_exceptions import ClientConnectorError
+from asyncio import AbstractEventLoop, iscoroutinefunction, CancelledError, TimeoutError
+from aioketraapi import KeypadOperationsApi, GroupOperationsApi, ApiClient, Configuration, HubOperationsApi
+from aioketraapi import WebsocketV2Notification
 from aioketraapi.keypad import Keypad
 from aioketraapi.group import Group
-from aioketraapi import WebsocketV2Notification
-import json
+from aioketraapi.exceptions import OpenApiException
 
+WEBSOCKET_HEARTBEAT_INTERVAL = 60.0
+
+class N4HubWebSocketConnectionError(BaseException):
+    pass
 
 class N4HubWebSocketConnection:
     def __init__(self, api_client: ApiClient):
@@ -16,7 +18,9 @@ class N4HubWebSocketConnection:
         self.api_client = api_client
 
     async def connect(self, ws_url, oauth_token):
-        self.ws = await self.api_client.rest_client.client_session.ws_connect(ws_url)
+        self.ws = await self.api_client.rest_client.client_session.ws_connect(ws_url,
+                                                                              heartbeat=WEBSOCKET_HEARTBEAT_INTERVAL,
+                                                                              autoping=True)
         # from https://s3.amazonaws.com/ketra-software/KetraMobileAPI/v1/KetraN4WebsocketProtocol.pdf
         msg = [0x06, 0x00, 0x0F]
         msg.append((len(oauth_token) >> 8) & 0xFF)
@@ -35,7 +39,7 @@ class N4HubWebSocketConnection:
     async def __anext__(self) -> WebsocketV2Notification:
         assert self.ws is not None
         while True:
-            recv_msg = await self.ws.receive()
+            recv_msg = await self.ws.receive(timeout=WEBSOCKET_HEARTBEAT_INTERVAL*3)
             if recv_msg.type == WSMsgType.TEXT:
                 model = self.api_client.deserialize(recv_msg, WebsocketV2Notification)
                 return model
@@ -87,15 +91,17 @@ class N4Hub():
                 if response.status == 200:
                     hub_query_resp = await response.json()
                     if hub_query_resp['success'] == 'true' and len(hub_query_resp['content']) > 0:
-                        first_hub = hub_query_resp['content'][0]
-                        internal_ip = first_hub['internal_ip']
-                        serial_number = first_hub['serial_number']
-                        if use_cloud:
-                            url = f"https://api.goketra.com/{installation_id}/{serial_number}/webAPI"
-                            return N4Hub(internal_ip, serial_number, installation_id, url, oauth_token, loop)
-                        else:
-                            url = f"https://{internal_ip}/ketra.cgi"
-                            return N4Hub(internal_ip, serial_number, installation_id, url, oauth_token, loop)
+                        for hub_query_entry in hub_query_resp['content']:
+                            internal_ip = hub_query_entry['internal_ip']
+                            serial_number = hub_query_entry['serial_number']
+                            if use_cloud:
+                                url = f"https://api.goketra.com/{installation_id}/{serial_number}/webAPI"
+                                hub = N4Hub(internal_ip, serial_number, installation_id, url, oauth_token, loop)
+                            else:
+                                url = f"https://{internal_ip}/ketra.cgi"
+                                hub = N4Hub(internal_ip, serial_number, installation_id, url, oauth_token, loop)
+                            if await hub.test_connectivity():
+                                return hub
             return None
 
     def create_client_session(self):
@@ -103,6 +109,18 @@ class N4Hub():
         Creates and returns an ApiClient session
         """
         return ApiClient(configuration=self.client_config)
+
+
+    async def test_connectivity(self, timeout=5):
+        async with self.create_client_session() as api_client:
+            hub_api = HubOperationsApi(api_client)
+            try:
+                _ = await hub_api.hub_get(_request_timeout=timeout)
+                return True
+            except (TimeoutError, OpenApiException, ClientConnectorError):
+                return False
+
+
 
     async def get_keypads(self, **kwargs):
         """
@@ -151,14 +169,18 @@ class N4Hub():
                Should take one parameter of type WebsocketV2Notification
         """
         async with self.create_client_session() as api_client:
-            ws = await self.__create_websocket_connection(api_client)
-            self.connected_websocket = ws
-            async for notification in ws:
-                if iscoroutinefunction(notify_callback):
-                    await notify_callback(notification)
-                else:
-                    notify_callback(notification)
-            self.connected_websocket = None
+            try:
+                ws = await self.__create_websocket_connection(api_client)
+                self.connected_websocket = ws
+                async for notification in ws:
+                    if iscoroutinefunction(notify_callback):
+                        await notify_callback(notification)
+                    else:
+                        notify_callback(notification)
+            except (ClientConnectorError, CancelledError, TimeoutError):
+                raise N4HubWebSocketConnectionError()
+            finally:
+                self.connected_websocket = None
 
 
     async def disconnect_websocket_callback(self):

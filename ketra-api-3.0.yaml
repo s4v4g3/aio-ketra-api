@@ -229,10 +229,6 @@ paths:
                       LastRebootReason:
                         description: the reason for the last reboot
                         type: string
-                        enum:
-                          - Power Cycle
-                          - Normal Software Reboot
-                          - Firmware Upgrade
                       HasInternetConnectivity:
                         description: does the hub have internet access?
                         type: boolean

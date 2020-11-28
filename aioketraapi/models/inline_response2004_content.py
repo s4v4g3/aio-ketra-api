@@ -545,12 +545,6 @@ class InlineResponse2004Content(object):
         :param last_reboot_reason: The last_reboot_reason of this InlineResponse2004Content.  # noqa: E501
         :type last_reboot_reason: str
         """
-        allowed_values = ["Power Cycle", "Normal Software Reboot", "Firmware Upgrade"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and last_reboot_reason not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `last_reboot_reason` ({0}), must be one of {1}"  # noqa: E501
-                .format(last_reboot_reason, allowed_values)
-            )
 
         self._last_reboot_reason = last_reboot_reason
 
