@@ -16,6 +16,11 @@ class Keypad(KeypadModel):
         for button in self._buttons:
             self._button_map[button.id] = button
 
+    async def update_state(self):
+        async with self.hub.create_client_session() as api_client:
+            updated_keypad = await KeypadOperationsApi(api_client).keypads_keypad_id_get(self.id)
+            self.update_from_model(updated_keypad.content)
+
     def update_from_model(self, keypad_model: KeypadModel):
         for k,v in keypad_model.to_dict().items():
             setattr(self, k, v)
