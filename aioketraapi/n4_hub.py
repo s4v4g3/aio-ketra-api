@@ -20,7 +20,8 @@ class N4HubWebSocketConnection:
     async def connect(self, ws_url, oauth_token):
         self.ws = await self.api_client.rest_client.client_session.ws_connect(ws_url,
                                                                               heartbeat=WEBSOCKET_HEARTBEAT_INTERVAL,
-                                                                              autoping=True)
+                                                                              autoping=True,
+                                                                              headers={"Connection": "Upgrade"})
         # from https://s3.amazonaws.com/ketra-software/KetraMobileAPI/v1/KetraN4WebsocketProtocol.pdf
         msg = [0x06, 0x00, 0x0F]
         msg.append((len(oauth_token) >> 8) & 0xFF)
