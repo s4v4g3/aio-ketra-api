@@ -16,8 +16,11 @@ import unittest
 import datetime
 
 import aioketraapi
-from aioketraapi.models.group_state_change_all_of import GroupStateChangeAllOf  # noqa: E501
+from aioketraapi.models.group_state_change_all_of import (
+    GroupStateChangeAllOf,
+)  # noqa: E501
 from aioketraapi.rest import ApiException
+
 
 class TestGroupStateChangeAllOf(unittest.TestCase):
     """GroupStateChangeAllOf unit test stubs"""
@@ -30,28 +33,28 @@ class TestGroupStateChangeAllOf(unittest.TestCase):
 
     def make_instance(self, include_optional):
         """Test GroupStateChangeAllOf
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
+        include_option is a boolean, when False only required
+        params are included, when True both required and
+        optional params are included"""
         # model = aioketraapi.models.group_state_change_all_of.GroupStateChangeAllOf()  # noqa: E501
-        if include_optional :
+        if include_optional:
             return GroupStateChangeAllOf(
-                notification_type = 'ButtonChange', 
-                time_utc = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                client_id = '0', 
-                group_ids = [
-                    '0'
-                    ]
+                notification_type="ButtonChange",
+                time_utc=datetime.datetime.strptime(
+                    "2013-10-20 19:20:30.00", "%Y-%m-%d %H:%M:%S.%f"
+                ),
+                client_id="0",
+                group_ids=["0"],
             )
-        else :
+        else:
             return GroupStateChangeAllOf(
-                notification_type = 'ButtonChange',
-                time_utc = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                client_id = '0',
-                group_ids = [
-                    '0'
-                    ],
-        )
+                notification_type="ButtonChange",
+                time_utc=datetime.datetime.strptime(
+                    "2013-10-20 19:20:30.00", "%Y-%m-%d %H:%M:%S.%f"
+                ),
+                client_id="0",
+                group_ids=["0"],
+            )
 
     def testGroupStateChangeAllOf(self):
         """Test GroupStateChangeAllOf"""
@@ -59,5 +62,5 @@ class TestGroupStateChangeAllOf(unittest.TestCase):
         inst_req_and_optional = self.make_instance(include_optional=True)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

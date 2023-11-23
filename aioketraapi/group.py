@@ -3,7 +3,6 @@ from aioketraapi.models.lamp_state import LampState as LampStateModel
 from aioketraapi.api.group_operations_api import GroupOperationsApi
 
 
-
 class Group(GroupModel):
     def __init__(self, group_model: GroupModel, hub):
         super().__init__(**group_model.to_dict())
@@ -15,15 +14,14 @@ class Group(GroupModel):
 
     async def update_state(self):
         async with self.hub.create_client_session() as api_client:
-            updated_group = await GroupOperationsApi(api_client).groups_group_id_state_get(self.id)
+            updated_group = await GroupOperationsApi(
+                api_client
+            ).groups_group_id_state_get(self.id)
             self.update_state_from_model(updated_group.content)
 
     async def set_state(self, lamp_state: LampStateModel, **kwargs):
         async with self.hub.create_client_session() as api_client:
-            updated_group = await GroupOperationsApi(api_client).groups_group_id_state_put(self.id, lamp_state, **kwargs)
+            updated_group = await GroupOperationsApi(
+                api_client
+            ).groups_group_id_state_put(self.id, lamp_state, **kwargs)
             self.update_state_from_model(updated_group.content)
-
-
-
-
-

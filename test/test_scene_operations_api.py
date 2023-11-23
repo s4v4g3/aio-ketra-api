@@ -23,7 +23,9 @@ class TestSceneOperationsApi(unittest.TestCase):
     """SceneOperationsApi unit test stubs"""
 
     def setUp(self):
-        self.api = aioketraapi.api.scene_operations_api.SceneOperationsApi()  # noqa: E501
+        self.api = (
+            aioketraapi.api.scene_operations_api.SceneOperationsApi()
+        )  # noqa: E501
 
     def tearDown(self):
         pass
@@ -57,5 +59,5 @@ class TestSceneOperationsApi(unittest.TestCase):
         pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

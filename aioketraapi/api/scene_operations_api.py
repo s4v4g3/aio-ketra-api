@@ -18,10 +18,7 @@ import re  # noqa: F401
 import six
 
 from aioketraapi.api_client import ApiClient
-from aioketraapi.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from aioketraapi.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class SceneOperationsApi(object):
@@ -65,7 +62,7 @@ class SceneOperationsApi(object):
                  returns the request thread.
         :rtype: InlineResponse200
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.root_get_with_http_info(**kwargs)  # noqa: E501
 
     def root_get_with_http_info(self, **kwargs):  # noqa: E501
@@ -107,38 +104,45 @@ class SceneOperationsApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            'basicauthuser',
-            'basicauthpassword'
-        ]
+        all_params = ["basicauthuser", "basicauthpassword"]
         all_params.extend(
             [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+                "_request_auth",
             ]
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method root_get" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if 'basicauthuser' in local_var_params and local_var_params['basicauthuser'] is not None:  # noqa: E501
-            query_params.append(('basicauthuser', local_var_params['basicauthuser']))  # noqa: E501
-        if 'basicauthpassword' in local_var_params and local_var_params['basicauthpassword'] is not None:  # noqa: E501
-            query_params.append(('basicauthpassword', local_var_params['basicauthpassword']))  # noqa: E501
+        if (
+            "basicauthuser" in local_var_params
+            and local_var_params["basicauthuser"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthuser", local_var_params["basicauthuser"])
+            )  # noqa: E501
+        if (
+            "basicauthpassword" in local_var_params
+            and local_var_params["basicauthpassword"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthpassword", local_var_params["basicauthpassword"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -147,28 +151,33 @@ class SceneOperationsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
+        auth_settings = ["basicAuth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/', 'GET',
+            "/",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse200',  # noqa: E501
+            response_type="InlineResponse200",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            _request_auth=local_var_params.get("_request_auth"),
+        )
 
     def scenes_get(self, **kwargs):  # noqa: E501
         """Get Scenes  # noqa: E501
@@ -199,7 +208,7 @@ class SceneOperationsApi(object):
                  returns the request thread.
         :rtype: InlineResponse2005
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.scenes_get_with_http_info(**kwargs)  # noqa: E501
 
     def scenes_get_with_http_info(self, **kwargs):  # noqa: E501
@@ -241,38 +250,45 @@ class SceneOperationsApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            'basicauthuser',
-            'basicauthpassword'
-        ]
+        all_params = ["basicauthuser", "basicauthpassword"]
         all_params.extend(
             [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+                "_request_auth",
             ]
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method scenes_get" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if 'basicauthuser' in local_var_params and local_var_params['basicauthuser'] is not None:  # noqa: E501
-            query_params.append(('basicauthuser', local_var_params['basicauthuser']))  # noqa: E501
-        if 'basicauthpassword' in local_var_params and local_var_params['basicauthpassword'] is not None:  # noqa: E501
-            query_params.append(('basicauthpassword', local_var_params['basicauthpassword']))  # noqa: E501
+        if (
+            "basicauthuser" in local_var_params
+            and local_var_params["basicauthuser"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthuser", local_var_params["basicauthuser"])
+            )  # noqa: E501
+        if (
+            "basicauthpassword" in local_var_params
+            and local_var_params["basicauthpassword"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthpassword", local_var_params["basicauthpassword"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -281,28 +297,33 @@ class SceneOperationsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
+        auth_settings = ["basicAuth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/Scenes', 'GET',
+            "/Scenes",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2005',  # noqa: E501
+            response_type="InlineResponse2005",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            _request_auth=local_var_params.get("_request_auth"),
+        )
 
     def scenes_scene_id_activate_post(self, scene_id, **kwargs):  # noqa: E501
         """Activates a scene  # noqa: E501
@@ -339,10 +360,14 @@ class SceneOperationsApi(object):
                  returns the request thread.
         :rtype: InlineResponse2007
         """
-        kwargs['_return_http_data_only'] = True
-        return self.scenes_scene_id_activate_post_with_http_info(scene_id, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.scenes_scene_id_activate_post_with_http_info(
+            scene_id, **kwargs
+        )  # noqa: E501
 
-    def scenes_scene_id_activate_post_with_http_info(self, scene_id, **kwargs):  # noqa: E501
+    def scenes_scene_id_activate_post_with_http_info(
+        self, scene_id, **kwargs
+    ):  # noqa: E501
         """Activates a scene  # noqa: E501
 
         (New in API schema 4)  Activates a Ketra scene specified by {scene-id}.   If a group is specified, the scene will be activated only for that group (and its subgroups).  If no group is specified, the scene will be activated for all groups for which the scene is defined.   # noqa: E501
@@ -388,54 +413,84 @@ class SceneOperationsApi(object):
         local_var_params = locals()
 
         all_params = [
-            'scene_id',
-            'basicauthuser',
-            'basicauthpassword',
-            'group',
-            'level'
+            "scene_id",
+            "basicauthuser",
+            "basicauthpassword",
+            "group",
+            "level",
         ]
         all_params.extend(
             [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+                "_request_auth",
             ]
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method scenes_scene_id_activate_post" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'scene_id' is set
-        if self.api_client.client_side_validation and ('scene_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['scene_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `scene_id` when calling `scenes_scene_id_activate_post`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "scene_id" not in local_var_params
+            or local_var_params["scene_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `scene_id` when calling `scenes_scene_id_activate_post`"
+            )  # noqa: E501
 
-        if self.api_client.client_side_validation and 'level' in local_var_params and local_var_params['level'] > 65535:  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `level` when calling `scenes_scene_id_activate_post`, must be a value less than or equal to `65535`")  # noqa: E501
-        if self.api_client.client_side_validation and 'level' in local_var_params and local_var_params['level'] < 0:  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `level` when calling `scenes_scene_id_activate_post`, must be a value greater than or equal to `0`")  # noqa: E501
+        if (
+            self.api_client.client_side_validation
+            and "level" in local_var_params
+            and local_var_params["level"] > 65535
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Invalid value for parameter `level` when calling `scenes_scene_id_activate_post`, must be a value less than or equal to `65535`"
+            )  # noqa: E501
+        if (
+            self.api_client.client_side_validation
+            and "level" in local_var_params
+            and local_var_params["level"] < 0
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Invalid value for parameter `level` when calling `scenes_scene_id_activate_post`, must be a value greater than or equal to `0`"
+            )  # noqa: E501
         collection_formats = {}
 
         path_params = {}
-        if 'scene_id' in local_var_params:
-            path_params['scene-id'] = local_var_params['scene_id']  # noqa: E501
+        if "scene_id" in local_var_params:
+            path_params["scene-id"] = local_var_params["scene_id"]  # noqa: E501
 
         query_params = []
-        if 'basicauthuser' in local_var_params and local_var_params['basicauthuser'] is not None:  # noqa: E501
-            query_params.append(('basicauthuser', local_var_params['basicauthuser']))  # noqa: E501
-        if 'basicauthpassword' in local_var_params and local_var_params['basicauthpassword'] is not None:  # noqa: E501
-            query_params.append(('basicauthpassword', local_var_params['basicauthpassword']))  # noqa: E501
-        if 'group' in local_var_params and local_var_params['group'] is not None:  # noqa: E501
-            query_params.append(('group', local_var_params['group']))  # noqa: E501
-        if 'level' in local_var_params and local_var_params['level'] is not None:  # noqa: E501
-            query_params.append(('level', local_var_params['level']))  # noqa: E501
+        if (
+            "basicauthuser" in local_var_params
+            and local_var_params["basicauthuser"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthuser", local_var_params["basicauthuser"])
+            )  # noqa: E501
+        if (
+            "basicauthpassword" in local_var_params
+            and local_var_params["basicauthpassword"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthpassword", local_var_params["basicauthpassword"])
+            )  # noqa: E501
+        if (
+            "group" in local_var_params and local_var_params["group"] is not None
+        ):  # noqa: E501
+            query_params.append(("group", local_var_params["group"]))  # noqa: E501
+        if (
+            "level" in local_var_params and local_var_params["level"] is not None
+        ):  # noqa: E501
+            query_params.append(("level", local_var_params["level"]))  # noqa: E501
 
         header_params = {}
 
@@ -444,28 +499,33 @@ class SceneOperationsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
+        auth_settings = ["basicAuth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/Scenes/{scene-id}/Activate', 'POST',
+            "/Scenes/{scene-id}/Activate",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2007',  # noqa: E501
+            response_type="InlineResponse2007",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            _request_auth=local_var_params.get("_request_auth"),
+        )
 
     def scenes_scene_id_get(self, scene_id, **kwargs):  # noqa: E501
         """Gets a single scene  # noqa: E501
@@ -498,7 +558,7 @@ class SceneOperationsApi(object):
                  returns the request thread.
         :rtype: InlineResponse2006
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.scenes_scene_id_get_with_http_info(scene_id, **kwargs)  # noqa: E501
 
     def scenes_scene_id_get_with_http_info(self, scene_id, **kwargs):  # noqa: E501
@@ -542,45 +602,55 @@ class SceneOperationsApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            'scene_id',
-            'basicauthuser',
-            'basicauthpassword'
-        ]
+        all_params = ["scene_id", "basicauthuser", "basicauthpassword"]
         all_params.extend(
             [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+                "_request_auth",
             ]
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method scenes_scene_id_get" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'scene_id' is set
-        if self.api_client.client_side_validation and ('scene_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['scene_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `scene_id` when calling `scenes_scene_id_get`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "scene_id" not in local_var_params
+            or local_var_params["scene_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `scene_id` when calling `scenes_scene_id_get`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'scene_id' in local_var_params:
-            path_params['scene-id'] = local_var_params['scene_id']  # noqa: E501
+        if "scene_id" in local_var_params:
+            path_params["scene-id"] = local_var_params["scene_id"]  # noqa: E501
 
         query_params = []
-        if 'basicauthuser' in local_var_params and local_var_params['basicauthuser'] is not None:  # noqa: E501
-            query_params.append(('basicauthuser', local_var_params['basicauthuser']))  # noqa: E501
-        if 'basicauthpassword' in local_var_params and local_var_params['basicauthpassword'] is not None:  # noqa: E501
-            query_params.append(('basicauthpassword', local_var_params['basicauthpassword']))  # noqa: E501
+        if (
+            "basicauthuser" in local_var_params
+            and local_var_params["basicauthuser"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthuser", local_var_params["basicauthuser"])
+            )  # noqa: E501
+        if (
+            "basicauthpassword" in local_var_params
+            and local_var_params["basicauthpassword"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthpassword", local_var_params["basicauthpassword"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -589,25 +659,30 @@ class SceneOperationsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
+        auth_settings = ["basicAuth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/Scenes/{scene-id}', 'GET',
+            "/Scenes/{scene-id}",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2006',  # noqa: E501
+            response_type="InlineResponse2006",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            _request_auth=local_var_params.get("_request_auth"),
+        )

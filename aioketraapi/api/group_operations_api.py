@@ -18,10 +18,7 @@ import re  # noqa: F401
 import six
 
 from aioketraapi.api_client import ApiClient
-from aioketraapi.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from aioketraapi.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class GroupOperationsApi(object):
@@ -67,7 +64,7 @@ class GroupOperationsApi(object):
                  returns the request thread.
         :rtype: InlineResponse20012
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.groups_get_with_http_info(**kwargs)  # noqa: E501
 
     def groups_get_with_http_info(self, **kwargs):  # noqa: E501
@@ -111,41 +108,49 @@ class GroupOperationsApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            'basicauthuser',
-            'basicauthpassword',
-            'name'
-        ]
+        all_params = ["basicauthuser", "basicauthpassword", "name"]
         all_params.extend(
             [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+                "_request_auth",
             ]
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method groups_get" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if 'basicauthuser' in local_var_params and local_var_params['basicauthuser'] is not None:  # noqa: E501
-            query_params.append(('basicauthuser', local_var_params['basicauthuser']))  # noqa: E501
-        if 'basicauthpassword' in local_var_params and local_var_params['basicauthpassword'] is not None:  # noqa: E501
-            query_params.append(('basicauthpassword', local_var_params['basicauthpassword']))  # noqa: E501
-        if 'name' in local_var_params and local_var_params['name'] is not None:  # noqa: E501
-            query_params.append(('Name', local_var_params['name']))  # noqa: E501
+        if (
+            "basicauthuser" in local_var_params
+            and local_var_params["basicauthuser"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthuser", local_var_params["basicauthuser"])
+            )  # noqa: E501
+        if (
+            "basicauthpassword" in local_var_params
+            and local_var_params["basicauthpassword"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthpassword", local_var_params["basicauthpassword"])
+            )  # noqa: E501
+        if (
+            "name" in local_var_params and local_var_params["name"] is not None
+        ):  # noqa: E501
+            query_params.append(("Name", local_var_params["name"]))  # noqa: E501
 
         header_params = {}
 
@@ -154,28 +159,33 @@ class GroupOperationsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
+        auth_settings = ["basicAuth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/Groups', 'GET',
+            "/Groups",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20012',  # noqa: E501
+            response_type="InlineResponse20012",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            _request_auth=local_var_params.get("_request_auth"),
+        )
 
     def groups_group_id_get(self, group_id, **kwargs):  # noqa: E501
         """Gets a single group object  # noqa: E501
@@ -208,7 +218,7 @@ class GroupOperationsApi(object):
                  returns the request thread.
         :rtype: InlineResponse20013
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.groups_group_id_get_with_http_info(group_id, **kwargs)  # noqa: E501
 
     def groups_group_id_get_with_http_info(self, group_id, **kwargs):  # noqa: E501
@@ -252,45 +262,55 @@ class GroupOperationsApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            'group_id',
-            'basicauthuser',
-            'basicauthpassword'
-        ]
+        all_params = ["group_id", "basicauthuser", "basicauthpassword"]
         all_params.extend(
             [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+                "_request_auth",
             ]
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method groups_group_id_get" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'group_id' is set
-        if self.api_client.client_side_validation and ('group_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['group_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `group_id` when calling `groups_group_id_get`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "group_id" not in local_var_params
+            or local_var_params["group_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `group_id` when calling `groups_group_id_get`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'group_id' in local_var_params:
-            path_params['group-id'] = local_var_params['group_id']  # noqa: E501
+        if "group_id" in local_var_params:
+            path_params["group-id"] = local_var_params["group_id"]  # noqa: E501
 
         query_params = []
-        if 'basicauthuser' in local_var_params and local_var_params['basicauthuser'] is not None:  # noqa: E501
-            query_params.append(('basicauthuser', local_var_params['basicauthuser']))  # noqa: E501
-        if 'basicauthpassword' in local_var_params and local_var_params['basicauthpassword'] is not None:  # noqa: E501
-            query_params.append(('basicauthpassword', local_var_params['basicauthpassword']))  # noqa: E501
+        if (
+            "basicauthuser" in local_var_params
+            and local_var_params["basicauthuser"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthuser", local_var_params["basicauthuser"])
+            )  # noqa: E501
+        if (
+            "basicauthpassword" in local_var_params
+            and local_var_params["basicauthpassword"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthpassword", local_var_params["basicauthpassword"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -299,28 +319,33 @@ class GroupOperationsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
+        auth_settings = ["basicAuth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/Groups/{group-id}', 'GET',
+            "/Groups/{group-id}",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20013',  # noqa: E501
+            response_type="InlineResponse20013",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            _request_auth=local_var_params.get("_request_auth"),
+        )
 
     def groups_group_id_state_get(self, group_id, **kwargs):  # noqa: E501
         """Gets the state of a single lamp group  # noqa: E501
@@ -353,10 +378,14 @@ class GroupOperationsApi(object):
                  returns the request thread.
         :rtype: InlineResponse20014
         """
-        kwargs['_return_http_data_only'] = True
-        return self.groups_group_id_state_get_with_http_info(group_id, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.groups_group_id_state_get_with_http_info(
+            group_id, **kwargs
+        )  # noqa: E501
 
-    def groups_group_id_state_get_with_http_info(self, group_id, **kwargs):  # noqa: E501
+    def groups_group_id_state_get_with_http_info(
+        self, group_id, **kwargs
+    ):  # noqa: E501
         """Gets the state of a single lamp group  # noqa: E501
 
         Gets the state of the group specified by {group-id}.   If a group name is specified instead of a uuid, the state of the first group matching the specified name will be returned.  Note that for API schema 3 (hub firmware 1.14) or earlier, this will only reflect the state of the last group operation -- light changes due to keypad operations are not reflected in the returned state.  However in API schema 4 / hub firmware 1.15, if the hub is published with Design Studio 2.0 (and the 'SupportsZoneKeypads' property returned in GET /Hub is true), the lamp state returned will reflect the current state of the group.  Please see the API overview document for more discussion on this topic.  # noqa: E501
@@ -397,45 +426,55 @@ class GroupOperationsApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            'group_id',
-            'basicauthuser',
-            'basicauthpassword'
-        ]
+        all_params = ["group_id", "basicauthuser", "basicauthpassword"]
         all_params.extend(
             [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+                "_request_auth",
             ]
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method groups_group_id_state_get" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'group_id' is set
-        if self.api_client.client_side_validation and ('group_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['group_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `group_id` when calling `groups_group_id_state_get`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "group_id" not in local_var_params
+            or local_var_params["group_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `group_id` when calling `groups_group_id_state_get`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'group_id' in local_var_params:
-            path_params['group-id'] = local_var_params['group_id']  # noqa: E501
+        if "group_id" in local_var_params:
+            path_params["group-id"] = local_var_params["group_id"]  # noqa: E501
 
         query_params = []
-        if 'basicauthuser' in local_var_params and local_var_params['basicauthuser'] is not None:  # noqa: E501
-            query_params.append(('basicauthuser', local_var_params['basicauthuser']))  # noqa: E501
-        if 'basicauthpassword' in local_var_params and local_var_params['basicauthpassword'] is not None:  # noqa: E501
-            query_params.append(('basicauthpassword', local_var_params['basicauthpassword']))  # noqa: E501
+        if (
+            "basicauthuser" in local_var_params
+            and local_var_params["basicauthuser"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthuser", local_var_params["basicauthuser"])
+            )  # noqa: E501
+        if (
+            "basicauthpassword" in local_var_params
+            and local_var_params["basicauthpassword"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthpassword", local_var_params["basicauthpassword"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -444,28 +483,33 @@ class GroupOperationsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
+        auth_settings = ["basicAuth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/Groups/{group-id}/State', 'GET',
+            "/Groups/{group-id}/State",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20014',  # noqa: E501
+            response_type="InlineResponse20014",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            _request_auth=local_var_params.get("_request_auth"),
+        )
 
     def groups_group_id_state_put(self, group_id, lamp_state, **kwargs):  # noqa: E501
         """Sets the state of a single lamp group  # noqa: E501
@@ -500,10 +544,14 @@ class GroupOperationsApi(object):
                  returns the request thread.
         :rtype: InlineResponse20014
         """
-        kwargs['_return_http_data_only'] = True
-        return self.groups_group_id_state_put_with_http_info(group_id, lamp_state, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.groups_group_id_state_put_with_http_info(
+            group_id, lamp_state, **kwargs
+        )  # noqa: E501
 
-    def groups_group_id_state_put_with_http_info(self, group_id, lamp_state, **kwargs):  # noqa: E501
+    def groups_group_id_state_put_with_http_info(
+        self, group_id, lamp_state, **kwargs
+    ):  # noqa: E501
         """Sets the state of a single lamp group  # noqa: E501
 
         Set the state of the group specified by {group-id}.  If a group name is specified instead of a uuid, the state of the first group matching the specified name will be set  # noqa: E501
@@ -546,50 +594,63 @@ class GroupOperationsApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            'group_id',
-            'lamp_state',
-            'basicauthuser',
-            'basicauthpassword'
-        ]
+        all_params = ["group_id", "lamp_state", "basicauthuser", "basicauthpassword"]
         all_params.extend(
             [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+                "_request_auth",
             ]
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method groups_group_id_state_put" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'group_id' is set
-        if self.api_client.client_side_validation and ('group_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['group_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `group_id` when calling `groups_group_id_state_put`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "group_id" not in local_var_params
+            or local_var_params["group_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `group_id` when calling `groups_group_id_state_put`"
+            )  # noqa: E501
         # verify the required parameter 'lamp_state' is set
-        if self.api_client.client_side_validation and ('lamp_state' not in local_var_params or  # noqa: E501
-                                                        local_var_params['lamp_state'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `lamp_state` when calling `groups_group_id_state_put`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "lamp_state" not in local_var_params
+            or local_var_params["lamp_state"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `lamp_state` when calling `groups_group_id_state_put`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'group_id' in local_var_params:
-            path_params['group-id'] = local_var_params['group_id']  # noqa: E501
+        if "group_id" in local_var_params:
+            path_params["group-id"] = local_var_params["group_id"]  # noqa: E501
 
         query_params = []
-        if 'basicauthuser' in local_var_params and local_var_params['basicauthuser'] is not None:  # noqa: E501
-            query_params.append(('basicauthuser', local_var_params['basicauthuser']))  # noqa: E501
-        if 'basicauthpassword' in local_var_params and local_var_params['basicauthpassword'] is not None:  # noqa: E501
-            query_params.append(('basicauthpassword', local_var_params['basicauthpassword']))  # noqa: E501
+        if (
+            "basicauthuser" in local_var_params
+            and local_var_params["basicauthuser"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthuser", local_var_params["basicauthuser"])
+            )  # noqa: E501
+        if (
+            "basicauthpassword" in local_var_params
+            and local_var_params["basicauthpassword"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthpassword", local_var_params["basicauthpassword"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -597,35 +658,43 @@ class GroupOperationsApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'lamp_state' in local_var_params:
-            body_params = local_var_params['lamp_state']
+        if "lamp_state" in local_var_params:
+            body_params = local_var_params["lamp_state"]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
+        auth_settings = ["basicAuth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/Groups/{group-id}/State', 'PUT',
+            "/Groups/{group-id}/State",
+            "PUT",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20014',  # noqa: E501
+            response_type="InlineResponse20014",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            _request_auth=local_var_params.get("_request_auth"),
+        )
 
     def groups_state_post(self, lamp_state, **kwargs):  # noqa: E501
         """Sets the state of a lamp group  # noqa: E501
@@ -660,7 +729,7 @@ class GroupOperationsApi(object):
                  returns the request thread.
         :rtype: InlineResponse20014
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.groups_state_post_with_http_info(lamp_state, **kwargs)  # noqa: E501
 
     def groups_state_post_with_http_info(self, lamp_state, **kwargs):  # noqa: E501
@@ -706,46 +775,57 @@ class GroupOperationsApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            'lamp_state',
-            'basicauthuser',
-            'basicauthpassword',
-            'name'
-        ]
+        all_params = ["lamp_state", "basicauthuser", "basicauthpassword", "name"]
         all_params.extend(
             [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+                "_request_auth",
             ]
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method groups_state_post" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'lamp_state' is set
-        if self.api_client.client_side_validation and ('lamp_state' not in local_var_params or  # noqa: E501
-                                                        local_var_params['lamp_state'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `lamp_state` when calling `groups_state_post`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "lamp_state" not in local_var_params
+            or local_var_params["lamp_state"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `lamp_state` when calling `groups_state_post`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if 'basicauthuser' in local_var_params and local_var_params['basicauthuser'] is not None:  # noqa: E501
-            query_params.append(('basicauthuser', local_var_params['basicauthuser']))  # noqa: E501
-        if 'basicauthpassword' in local_var_params and local_var_params['basicauthpassword'] is not None:  # noqa: E501
-            query_params.append(('basicauthpassword', local_var_params['basicauthpassword']))  # noqa: E501
-        if 'name' in local_var_params and local_var_params['name'] is not None:  # noqa: E501
-            query_params.append(('Name', local_var_params['name']))  # noqa: E501
+        if (
+            "basicauthuser" in local_var_params
+            and local_var_params["basicauthuser"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthuser", local_var_params["basicauthuser"])
+            )  # noqa: E501
+        if (
+            "basicauthpassword" in local_var_params
+            and local_var_params["basicauthpassword"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthpassword", local_var_params["basicauthpassword"])
+            )  # noqa: E501
+        if (
+            "name" in local_var_params and local_var_params["name"] is not None
+        ):  # noqa: E501
+            query_params.append(("Name", local_var_params["name"]))  # noqa: E501
 
         header_params = {}
 
@@ -753,35 +833,43 @@ class GroupOperationsApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'lamp_state' in local_var_params:
-            body_params = local_var_params['lamp_state']
+        if "lamp_state" in local_var_params:
+            body_params = local_var_params["lamp_state"]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
+        auth_settings = ["basicAuth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/Groups/State', 'POST',
+            "/Groups/State",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20014',  # noqa: E501
+            response_type="InlineResponse20014",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            _request_auth=local_var_params.get("_request_auth"),
+        )
 
     def root_get(self, **kwargs):  # noqa: E501
         """Get keypads and groups  (and scenes in API schema 4 or later)  # noqa: E501
@@ -812,7 +900,7 @@ class GroupOperationsApi(object):
                  returns the request thread.
         :rtype: InlineResponse200
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.root_get_with_http_info(**kwargs)  # noqa: E501
 
     def root_get_with_http_info(self, **kwargs):  # noqa: E501
@@ -854,38 +942,45 @@ class GroupOperationsApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            'basicauthuser',
-            'basicauthpassword'
-        ]
+        all_params = ["basicauthuser", "basicauthpassword"]
         all_params.extend(
             [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+                "_request_auth",
             ]
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method root_get" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if 'basicauthuser' in local_var_params and local_var_params['basicauthuser'] is not None:  # noqa: E501
-            query_params.append(('basicauthuser', local_var_params['basicauthuser']))  # noqa: E501
-        if 'basicauthpassword' in local_var_params and local_var_params['basicauthpassword'] is not None:  # noqa: E501
-            query_params.append(('basicauthpassword', local_var_params['basicauthpassword']))  # noqa: E501
+        if (
+            "basicauthuser" in local_var_params
+            and local_var_params["basicauthuser"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthuser", local_var_params["basicauthuser"])
+            )  # noqa: E501
+        if (
+            "basicauthpassword" in local_var_params
+            and local_var_params["basicauthpassword"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthpassword", local_var_params["basicauthpassword"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -894,25 +989,30 @@ class GroupOperationsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
+        auth_settings = ["basicAuth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/', 'GET',
+            "/",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse200',  # noqa: E501
+            response_type="InlineResponse200",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            _request_auth=local_var_params.get("_request_auth"),
+        )

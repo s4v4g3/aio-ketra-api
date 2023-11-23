@@ -23,7 +23,9 @@ class TestGroupOperationsApi(unittest.TestCase):
     """GroupOperationsApi unit test stubs"""
 
     def setUp(self):
-        self.api = aioketraapi.api.group_operations_api.GroupOperationsApi()  # noqa: E501
+        self.api = (
+            aioketraapi.api.group_operations_api.GroupOperationsApi()
+        )  # noqa: E501
 
     def tearDown(self):
         pass
@@ -71,5 +73,5 @@ class TestGroupOperationsApi(unittest.TestCase):
         pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -19,6 +19,7 @@ import aioketraapi
 from aioketraapi.models.inline_response20014 import InlineResponse20014  # noqa: E501
 from aioketraapi.rest import ApiException
 
+
 class TestInlineResponse20014(unittest.TestCase):
     """InlineResponse20014 unit test stubs"""
 
@@ -30,19 +31,18 @@ class TestInlineResponse20014(unittest.TestCase):
 
     def make_instance(self, include_optional):
         """Test InlineResponse20014
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
+        include_option is a boolean, when False only required
+        params are included, when True both required and
+        optional params are included"""
         # model = aioketraapi.models.inline_response20014.InlineResponse20014()  # noqa: E501
-        if include_optional :
+        if include_optional:
             return InlineResponse20014(
-                success = True, 
-                error = '0', 
-                content = aioketraapi.models.lamp_state.LampState()
+                success=True,
+                error="0",
+                content=aioketraapi.models.lamp_state.LampState(),
             )
-        else :
-            return InlineResponse20014(
-        )
+        else:
+            return InlineResponse20014()
 
     def testInlineResponse20014(self):
         """Test InlineResponse20014"""
@@ -50,5 +50,5 @@ class TestInlineResponse20014(unittest.TestCase):
         inst_req_and_optional = self.make_instance(include_optional=True)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

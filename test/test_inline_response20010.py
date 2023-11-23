@@ -19,6 +19,7 @@ import aioketraapi
 from aioketraapi.models.inline_response20010 import InlineResponse20010  # noqa: E501
 from aioketraapi.rest import ApiException
 
+
 class TestInlineResponse20010(unittest.TestCase):
     """InlineResponse20010 unit test stubs"""
 
@@ -30,28 +31,28 @@ class TestInlineResponse20010(unittest.TestCase):
 
     def make_instance(self, include_optional):
         """Test InlineResponse20010
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
+        include_option is a boolean, when False only required
+        params are included, when True both required and
+        optional params are included"""
         # model = aioketraapi.models.inline_response20010.InlineResponse20010()  # noqa: E501
-        if include_optional :
+        if include_optional:
             return InlineResponse20010(
-                success = True, 
-                error = '0', 
-                content = [
+                success=True,
+                error="0",
+                content=[
                     aioketraapi.models.button.Button(
-                        active = True, 
-                        id = '0', 
-                        level = 56, 
-                        name = '0', 
-                        position = 56, 
-                        is_power_button = True, 
-                        scene_is_modified = True, )
-                    ]
+                        active=True,
+                        id="0",
+                        level=56,
+                        name="0",
+                        position=56,
+                        is_power_button=True,
+                        scene_is_modified=True,
+                    )
+                ],
             )
-        else :
-            return InlineResponse20010(
-        )
+        else:
+            return InlineResponse20010()
 
     def testInlineResponse20010(self):
         """Test InlineResponse20010"""
@@ -59,5 +60,5 @@ class TestInlineResponse20010(unittest.TestCase):
         inst_req_and_optional = self.make_instance(include_optional=True)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

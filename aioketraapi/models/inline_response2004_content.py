@@ -33,56 +33,81 @@ class InlineResponse2004Content(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'api_schema': 'int',
-        'cpu_version': 'str',
-        'radio_version': 'str',
-        'serial_number': 'str',
-        'model_name': 'str',
-        'id': 'str',
-        'installation_id': 'str',
-        'installation_name': 'str',
-        'network_id': 'str',
-        'name': 'str',
-        'ethernet_mac': 'str',
-        'i_pv4_address': 'str',
-        'ethernet_link_status': 'list[bool]',
-        'up_time_seconds': 'int',
-        'local_time': 'str',
-        'utc_time': 'str',
-        'last_reboot_reason': 'str',
-        'has_internet_connectivity': 'bool',
-        'last_time_update_was_successful': 'bool',
-        'remote_connection_enabled': 'bool',
-        'remote_connection_established': 'bool',
-        'supports_zone_keypads': 'bool'
+        "api_schema": "int",
+        "cpu_version": "str",
+        "radio_version": "str",
+        "serial_number": "str",
+        "model_name": "str",
+        "id": "str",
+        "installation_id": "str",
+        "installation_name": "str",
+        "network_id": "str",
+        "name": "str",
+        "ethernet_mac": "str",
+        "i_pv4_address": "str",
+        "ethernet_link_status": "list[bool]",
+        "up_time_seconds": "int",
+        "local_time": "str",
+        "utc_time": "str",
+        "last_reboot_reason": "str",
+        "has_internet_connectivity": "bool",
+        "last_time_update_was_successful": "bool",
+        "remote_connection_enabled": "bool",
+        "remote_connection_established": "bool",
+        "supports_zone_keypads": "bool",
     }
 
     attribute_map = {
-        'api_schema': 'APISchema',
-        'cpu_version': 'CPUVersion',
-        'radio_version': 'RadioVersion',
-        'serial_number': 'SerialNumber',
-        'model_name': 'ModelName',
-        'id': 'Id',
-        'installation_id': 'InstallationId',
-        'installation_name': 'InstallationName',
-        'network_id': 'NetworkId',
-        'name': 'Name',
-        'ethernet_mac': 'EthernetMAC',
-        'i_pv4_address': 'IPv4Address',
-        'ethernet_link_status': 'EthernetLinkStatus',
-        'up_time_seconds': 'UpTimeSeconds',
-        'local_time': 'LocalTime',
-        'utc_time': 'UTCTime',
-        'last_reboot_reason': 'LastRebootReason',
-        'has_internet_connectivity': 'HasInternetConnectivity',
-        'last_time_update_was_successful': 'LastTimeUpdateWasSuccessful',
-        'remote_connection_enabled': 'RemoteConnectionEnabled',
-        'remote_connection_established': 'RemoteConnectionEstablished',
-        'supports_zone_keypads': 'SupportsZoneKeypads'
+        "api_schema": "APISchema",
+        "cpu_version": "CPUVersion",
+        "radio_version": "RadioVersion",
+        "serial_number": "SerialNumber",
+        "model_name": "ModelName",
+        "id": "Id",
+        "installation_id": "InstallationId",
+        "installation_name": "InstallationName",
+        "network_id": "NetworkId",
+        "name": "Name",
+        "ethernet_mac": "EthernetMAC",
+        "i_pv4_address": "IPv4Address",
+        "ethernet_link_status": "EthernetLinkStatus",
+        "up_time_seconds": "UpTimeSeconds",
+        "local_time": "LocalTime",
+        "utc_time": "UTCTime",
+        "last_reboot_reason": "LastRebootReason",
+        "has_internet_connectivity": "HasInternetConnectivity",
+        "last_time_update_was_successful": "LastTimeUpdateWasSuccessful",
+        "remote_connection_enabled": "RemoteConnectionEnabled",
+        "remote_connection_established": "RemoteConnectionEstablished",
+        "supports_zone_keypads": "SupportsZoneKeypads",
     }
 
-    def __init__(self, api_schema=None, cpu_version=None, radio_version=None, serial_number=None, model_name=None, id=None, installation_id=None, installation_name=None, network_id=None, name=None, ethernet_mac=None, i_pv4_address=None, ethernet_link_status=None, up_time_seconds=None, local_time=None, utc_time=None, last_reboot_reason=None, has_internet_connectivity=None, last_time_update_was_successful=None, remote_connection_enabled=None, remote_connection_established=None, supports_zone_keypads=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        api_schema=None,
+        cpu_version=None,
+        radio_version=None,
+        serial_number=None,
+        model_name=None,
+        id=None,
+        installation_id=None,
+        installation_name=None,
+        network_id=None,
+        name=None,
+        ethernet_mac=None,
+        i_pv4_address=None,
+        ethernet_link_status=None,
+        up_time_seconds=None,
+        local_time=None,
+        utc_time=None,
+        last_reboot_reason=None,
+        has_internet_connectivity=None,
+        last_time_update_was_successful=None,
+        remote_connection_enabled=None,
+        remote_connection_established=None,
+        supports_zone_keypads=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """InlineResponse2004Content - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -670,18 +695,20 @@ class InlineResponse2004Content(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

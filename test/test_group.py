@@ -19,6 +19,7 @@ import aioketraapi
 from aioketraapi.models.group import Group  # noqa: E501
 from aioketraapi.rest import ApiException
 
+
 class TestGroup(unittest.TestCase):
     """Group unit test stubs"""
 
@@ -30,26 +31,21 @@ class TestGroup(unittest.TestCase):
 
     def make_instance(self, include_optional):
         """Test Group
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
+        include_option is a boolean, when False only required
+        params are included, when True both required and
+        optional params are included"""
         # model = aioketraapi.models.group.Group()  # noqa: E501
-        if include_optional :
+        if include_optional:
             return Group(
-                id = '0', 
-                name = '0', 
-                child_groups = [
-                    '0'
-                    ], 
-                parent_groups = [
-                    '0'
-                    ], 
-                address = 56, 
-                state = aioketraapi.models.lamp_state.LampState()
+                id="0",
+                name="0",
+                child_groups=["0"],
+                parent_groups=["0"],
+                address=56,
+                state=aioketraapi.models.lamp_state.LampState(),
             )
-        else :
-            return Group(
-        )
+        else:
+            return Group()
 
     def testGroup(self):
         """Test Group"""
@@ -57,5 +53,5 @@ class TestGroup(unittest.TestCase):
         inst_req_and_optional = self.make_instance(include_optional=True)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

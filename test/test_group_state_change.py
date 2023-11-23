@@ -19,6 +19,7 @@ import aioketraapi
 from aioketraapi.models.group_state_change import GroupStateChange  # noqa: E501
 from aioketraapi.rest import ApiException
 
+
 class TestGroupStateChange(unittest.TestCase):
     """GroupStateChange unit test stubs"""
 
@@ -30,28 +31,28 @@ class TestGroupStateChange(unittest.TestCase):
 
     def make_instance(self, include_optional):
         """Test GroupStateChange
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
+        include_option is a boolean, when False only required
+        params are included, when True both required and
+        optional params are included"""
         # model = aioketraapi.models.group_state_change.GroupStateChange()  # noqa: E501
-        if include_optional :
+        if include_optional:
             return GroupStateChange(
-                notification_type = 'ButtonChange', 
-                time_utc = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                client_id = '0', 
-                group_ids = [
-                    '0'
-                    ]
+                notification_type="ButtonChange",
+                time_utc=datetime.datetime.strptime(
+                    "2013-10-20 19:20:30.00", "%Y-%m-%d %H:%M:%S.%f"
+                ),
+                client_id="0",
+                group_ids=["0"],
             )
-        else :
+        else:
             return GroupStateChange(
-                notification_type = 'ButtonChange',
-                time_utc = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                client_id = '0',
-                group_ids = [
-                    '0'
-                    ],
-        )
+                notification_type="ButtonChange",
+                time_utc=datetime.datetime.strptime(
+                    "2013-10-20 19:20:30.00", "%Y-%m-%d %H:%M:%S.%f"
+                ),
+                client_id="0",
+                group_ids=["0"],
+            )
 
     def testGroupStateChange(self):
         """Test GroupStateChange"""
@@ -59,5 +60,5 @@ class TestGroupStateChange(unittest.TestCase):
         inst_req_and_optional = self.make_instance(include_optional=True)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

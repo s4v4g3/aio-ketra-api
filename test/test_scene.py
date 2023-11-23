@@ -19,6 +19,7 @@ import aioketraapi
 from aioketraapi.models.scene import Scene  # noqa: E501
 from aioketraapi.rest import ApiException
 
+
 class TestScene(unittest.TestCase):
     """Scene unit test stubs"""
 
@@ -30,24 +31,21 @@ class TestScene(unittest.TestCase):
 
     def make_instance(self, include_optional):
         """Test Scene
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
+        include_option is a boolean, when False only required
+        params are included, when True both required and
+        optional params are included"""
         # model = aioketraapi.models.scene.Scene()  # noqa: E501
-        if include_optional :
+        if include_optional:
             return Scene(
-                id = '0', 
-                content_id = 56, 
-                is_show = True, 
-                show_group_number = 56, 
-                name = '0', 
-                parent_group_ids = [
-                    '0'
-                    ]
+                id="0",
+                content_id=56,
+                is_show=True,
+                show_group_number=56,
+                name="0",
+                parent_group_ids=["0"],
             )
-        else :
-            return Scene(
-        )
+        else:
+            return Scene()
 
     def testScene(self):
         """Test Scene"""
@@ -55,5 +53,5 @@ class TestScene(unittest.TestCase):
         inst_req_and_optional = self.make_instance(include_optional=True)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

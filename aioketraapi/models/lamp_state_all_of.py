@@ -33,22 +33,30 @@ class LampStateAllOf(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'transition_time': 'int',
-        'updated_at': 'str',
-        'transition_complete': 'bool',
-        'active_shows': 'list[int]',
-        'start_state': 'LampStateParameters'
+        "transition_time": "int",
+        "updated_at": "str",
+        "transition_complete": "bool",
+        "active_shows": "list[int]",
+        "start_state": "LampStateParameters",
     }
 
     attribute_map = {
-        'transition_time': 'TransitionTime',
-        'updated_at': 'UpdatedAt',
-        'transition_complete': 'TransitionComplete',
-        'active_shows': 'ActiveShows',
-        'start_state': 'StartState'
+        "transition_time": "TransitionTime",
+        "updated_at": "UpdatedAt",
+        "transition_complete": "TransitionComplete",
+        "active_shows": "ActiveShows",
+        "start_state": "StartState",
     }
 
-    def __init__(self, transition_time=None, updated_at=None, transition_complete=None, active_shows=None, start_state=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        transition_time=None,
+        updated_at=None,
+        transition_complete=None,
+        active_shows=None,
+        start_state=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """LampStateAllOf - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -92,12 +100,22 @@ class LampStateAllOf(object):
         :param transition_time: The transition_time of this LampStateAllOf.  # noqa: E501
         :type transition_time: int
         """
-        if (self.local_vars_configuration.client_side_validation and
-                transition_time is not None and transition_time > 6553500):  # noqa: E501
-            raise ValueError("Invalid value for `transition_time`, must be a value less than or equal to `6553500`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                transition_time is not None and transition_time < 0):  # noqa: E501
-            raise ValueError("Invalid value for `transition_time`, must be a value greater than or equal to `0`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and transition_time is not None
+            and transition_time > 6553500
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `transition_time`, must be a value less than or equal to `6553500`"
+            )  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and transition_time is not None
+            and transition_time < 0
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `transition_time`, must be a value greater than or equal to `0`"
+            )  # noqa: E501
 
         self._transition_time = transition_time
 
@@ -198,18 +216,20 @@ class LampStateAllOf(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

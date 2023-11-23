@@ -19,6 +19,7 @@ import aioketraapi
 from aioketraapi.models.lamp_state_all_of import LampStateAllOf  # noqa: E501
 from aioketraapi.rest import ApiException
 
+
 class TestLampStateAllOf(unittest.TestCase):
     """LampStateAllOf unit test stubs"""
 
@@ -30,33 +31,31 @@ class TestLampStateAllOf(unittest.TestCase):
 
     def make_instance(self, include_optional):
         """Test LampStateAllOf
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
+        include_option is a boolean, when False only required
+        params are included, when True both required and
+        optional params are included"""
         # model = aioketraapi.models.lamp_state_all_of.LampStateAllOf()  # noqa: E501
-        if include_optional :
+        if include_optional:
             return LampStateAllOf(
-                transition_time = 0, 
-                updated_at = '0', 
-                transition_complete = True, 
-                active_shows = [
-                    56
-                    ], 
-                start_state = aioketraapi.models.lamp_state_parameters.LampStateParameters(
-                    brightness = 0, 
-                    master_brightness = 0, 
-                    net_brightness = 0, 
-                    dim_curve_active = True, 
-                    dim_curve = 'Xenon', 
-                    power_on = True, 
-                    vibrancy = 0, 
-                    cct = 0, 
-                    x_chromaticity = 0, 
-                    y_chromaticity = 0, )
+                transition_time=0,
+                updated_at="0",
+                transition_complete=True,
+                active_shows=[56],
+                start_state=aioketraapi.models.lamp_state_parameters.LampStateParameters(
+                    brightness=0,
+                    master_brightness=0,
+                    net_brightness=0,
+                    dim_curve_active=True,
+                    dim_curve="Xenon",
+                    power_on=True,
+                    vibrancy=0,
+                    cct=0,
+                    x_chromaticity=0,
+                    y_chromaticity=0,
+                ),
             )
-        else :
-            return LampStateAllOf(
-        )
+        else:
+            return LampStateAllOf()
 
     def testLampStateAllOf(self):
         """Test LampStateAllOf"""
@@ -64,5 +63,5 @@ class TestLampStateAllOf(unittest.TestCase):
         inst_req_and_optional = self.make_instance(include_optional=True)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

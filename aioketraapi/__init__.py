@@ -32,6 +32,7 @@ from aioketraapi.exceptions import ApiValueError
 from aioketraapi.exceptions import ApiKeyError
 from aioketraapi.exceptions import ApiAttributeError
 from aioketraapi.exceptions import ApiException
+
 # import models into sdk package
 from aioketraapi.models.button import Button
 from aioketraapi.models.button_change import ButtonChange
@@ -69,4 +70,3 @@ from aioketraapi.models.publish_begin import PublishBegin
 from aioketraapi.models.publish_begin_all_of import PublishBeginAllOf
 from aioketraapi.models.scene import Scene
 from aioketraapi.models.websocket_v2_notification import WebsocketV2Notification
-

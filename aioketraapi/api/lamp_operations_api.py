@@ -18,10 +18,7 @@ import re  # noqa: F401
 import six
 
 from aioketraapi.api_client import ApiClient
-from aioketraapi.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from aioketraapi.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class LampOperationsApi(object):
@@ -65,7 +62,7 @@ class LampOperationsApi(object):
                  returns the request thread.
         :rtype: InlineResponse2001
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.lamps_get_with_http_info(**kwargs)  # noqa: E501
 
     def lamps_get_with_http_info(self, **kwargs):  # noqa: E501
@@ -107,38 +104,45 @@ class LampOperationsApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            'basicauthuser',
-            'basicauthpassword'
-        ]
+        all_params = ["basicauthuser", "basicauthpassword"]
         all_params.extend(
             [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+                "_request_auth",
             ]
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method lamps_get" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if 'basicauthuser' in local_var_params and local_var_params['basicauthuser'] is not None:  # noqa: E501
-            query_params.append(('basicauthuser', local_var_params['basicauthuser']))  # noqa: E501
-        if 'basicauthpassword' in local_var_params and local_var_params['basicauthpassword'] is not None:  # noqa: E501
-            query_params.append(('basicauthpassword', local_var_params['basicauthpassword']))  # noqa: E501
+        if (
+            "basicauthuser" in local_var_params
+            and local_var_params["basicauthuser"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthuser", local_var_params["basicauthuser"])
+            )  # noqa: E501
+        if (
+            "basicauthpassword" in local_var_params
+            and local_var_params["basicauthpassword"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthpassword", local_var_params["basicauthpassword"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -147,28 +151,33 @@ class LampOperationsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
+        auth_settings = ["basicAuth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/lamps', 'GET',
+            "/lamps",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2001',  # noqa: E501
+            response_type="InlineResponse2001",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            _request_auth=local_var_params.get("_request_auth"),
+        )
 
     def lamps_lamp_id_get(self, lamp_id, **kwargs):  # noqa: E501
         """Gets a lamp by its id  # noqa: E501
@@ -201,7 +210,7 @@ class LampOperationsApi(object):
                  returns the request thread.
         :rtype: InlineResponse2002
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.lamps_lamp_id_get_with_http_info(lamp_id, **kwargs)  # noqa: E501
 
     def lamps_lamp_id_get_with_http_info(self, lamp_id, **kwargs):  # noqa: E501
@@ -245,45 +254,55 @@ class LampOperationsApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            'lamp_id',
-            'basicauthuser',
-            'basicauthpassword'
-        ]
+        all_params = ["lamp_id", "basicauthuser", "basicauthpassword"]
         all_params.extend(
             [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+                "_request_auth",
             ]
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method lamps_lamp_id_get" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'lamp_id' is set
-        if self.api_client.client_side_validation and ('lamp_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['lamp_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `lamp_id` when calling `lamps_lamp_id_get`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "lamp_id" not in local_var_params
+            or local_var_params["lamp_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `lamp_id` when calling `lamps_lamp_id_get`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'lamp_id' in local_var_params:
-            path_params['lamp-id'] = local_var_params['lamp_id']  # noqa: E501
+        if "lamp_id" in local_var_params:
+            path_params["lamp-id"] = local_var_params["lamp_id"]  # noqa: E501
 
         query_params = []
-        if 'basicauthuser' in local_var_params and local_var_params['basicauthuser'] is not None:  # noqa: E501
-            query_params.append(('basicauthuser', local_var_params['basicauthuser']))  # noqa: E501
-        if 'basicauthpassword' in local_var_params and local_var_params['basicauthpassword'] is not None:  # noqa: E501
-            query_params.append(('basicauthpassword', local_var_params['basicauthpassword']))  # noqa: E501
+        if (
+            "basicauthuser" in local_var_params
+            and local_var_params["basicauthuser"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthuser", local_var_params["basicauthuser"])
+            )  # noqa: E501
+        if (
+            "basicauthpassword" in local_var_params
+            and local_var_params["basicauthpassword"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthpassword", local_var_params["basicauthpassword"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -292,28 +311,33 @@ class LampOperationsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
+        auth_settings = ["basicAuth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/lamps/{lamp-id}', 'GET',
+            "/lamps/{lamp-id}",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2002',  # noqa: E501
+            response_type="InlineResponse2002",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            _request_auth=local_var_params.get("_request_auth"),
+        )
 
     def lamps_lamp_id_state_put(self, lamp_id, lamp_state, **kwargs):  # noqa: E501
         """sets a lamp state  # noqa: E501
@@ -348,10 +372,14 @@ class LampOperationsApi(object):
                  returns the request thread.
         :rtype: InlineResponse2003
         """
-        kwargs['_return_http_data_only'] = True
-        return self.lamps_lamp_id_state_put_with_http_info(lamp_id, lamp_state, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.lamps_lamp_id_state_put_with_http_info(
+            lamp_id, lamp_state, **kwargs
+        )  # noqa: E501
 
-    def lamps_lamp_id_state_put_with_http_info(self, lamp_id, lamp_state, **kwargs):  # noqa: E501
+    def lamps_lamp_id_state_put_with_http_info(
+        self, lamp_id, lamp_state, **kwargs
+    ):  # noqa: E501
         """sets a lamp state  # noqa: E501
 
         sets a lamp state  # noqa: E501
@@ -394,50 +422,63 @@ class LampOperationsApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            'lamp_id',
-            'lamp_state',
-            'basicauthuser',
-            'basicauthpassword'
-        ]
+        all_params = ["lamp_id", "lamp_state", "basicauthuser", "basicauthpassword"]
         all_params.extend(
             [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+                "_request_auth",
             ]
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method lamps_lamp_id_state_put" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'lamp_id' is set
-        if self.api_client.client_side_validation and ('lamp_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['lamp_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `lamp_id` when calling `lamps_lamp_id_state_put`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "lamp_id" not in local_var_params
+            or local_var_params["lamp_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `lamp_id` when calling `lamps_lamp_id_state_put`"
+            )  # noqa: E501
         # verify the required parameter 'lamp_state' is set
-        if self.api_client.client_side_validation and ('lamp_state' not in local_var_params or  # noqa: E501
-                                                        local_var_params['lamp_state'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `lamp_state` when calling `lamps_lamp_id_state_put`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "lamp_state" not in local_var_params
+            or local_var_params["lamp_state"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `lamp_state` when calling `lamps_lamp_id_state_put`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'lamp_id' in local_var_params:
-            path_params['lamp-id'] = local_var_params['lamp_id']  # noqa: E501
+        if "lamp_id" in local_var_params:
+            path_params["lamp-id"] = local_var_params["lamp_id"]  # noqa: E501
 
         query_params = []
-        if 'basicauthuser' in local_var_params and local_var_params['basicauthuser'] is not None:  # noqa: E501
-            query_params.append(('basicauthuser', local_var_params['basicauthuser']))  # noqa: E501
-        if 'basicauthpassword' in local_var_params and local_var_params['basicauthpassword'] is not None:  # noqa: E501
-            query_params.append(('basicauthpassword', local_var_params['basicauthpassword']))  # noqa: E501
+        if (
+            "basicauthuser" in local_var_params
+            and local_var_params["basicauthuser"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthuser", local_var_params["basicauthuser"])
+            )  # noqa: E501
+        if (
+            "basicauthpassword" in local_var_params
+            and local_var_params["basicauthpassword"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthpassword", local_var_params["basicauthpassword"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -445,32 +486,40 @@ class LampOperationsApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'lamp_state' in local_var_params:
-            body_params = local_var_params['lamp_state']
+        if "lamp_state" in local_var_params:
+            body_params = local_var_params["lamp_state"]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
+        auth_settings = ["basicAuth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/lamps/{lamp-id}/state', 'PUT',
+            "/lamps/{lamp-id}/state",
+            "PUT",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2003',  # noqa: E501
+            response_type="InlineResponse2003",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            _request_auth=local_var_params.get("_request_auth"),
+        )

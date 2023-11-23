@@ -18,10 +18,7 @@ import re  # noqa: F401
 import six
 
 from aioketraapi.api_client import ApiClient
-from aioketraapi.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from aioketraapi.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class KeypadOperationsApi(object):
@@ -36,7 +33,9 @@ class KeypadOperationsApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def activate_button_post(self, keypad_name, button_name, level, **kwargs):  # noqa: E501
+    def activate_button_post(
+        self, keypad_name, button_name, level, **kwargs
+    ):  # noqa: E501
         """Activate a button  # noqa: E501
 
         Activates the scene or show represented by the button   # noqa: E501
@@ -71,10 +70,14 @@ class KeypadOperationsApi(object):
                  returns the request thread.
         :rtype: InlineResponse2009
         """
-        kwargs['_return_http_data_only'] = True
-        return self.activate_button_post_with_http_info(keypad_name, button_name, level, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.activate_button_post_with_http_info(
+            keypad_name, button_name, level, **kwargs
+        )  # noqa: E501
 
-    def activate_button_post_with_http_info(self, keypad_name, button_name, level, **kwargs):  # noqa: E501
+    def activate_button_post_with_http_info(
+        self, keypad_name, button_name, level, **kwargs
+    ):  # noqa: E501
         """Activate a button  # noqa: E501
 
         Activates the scene or show represented by the button   # noqa: E501
@@ -120,56 +123,88 @@ class KeypadOperationsApi(object):
         local_var_params = locals()
 
         all_params = [
-            'keypad_name',
-            'button_name',
-            'level',
-            'basicauthuser',
-            'basicauthpassword'
+            "keypad_name",
+            "button_name",
+            "level",
+            "basicauthuser",
+            "basicauthpassword",
         ]
         all_params.extend(
             [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+                "_request_auth",
             ]
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method activate_button_post" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'keypad_name' is set
-        if self.api_client.client_side_validation and ('keypad_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['keypad_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `keypad_name` when calling `activate_button_post`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "keypad_name" not in local_var_params
+            or local_var_params["keypad_name"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `keypad_name` when calling `activate_button_post`"
+            )  # noqa: E501
         # verify the required parameter 'button_name' is set
-        if self.api_client.client_side_validation and ('button_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['button_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `button_name` when calling `activate_button_post`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "button_name" not in local_var_params
+            or local_var_params["button_name"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `button_name` when calling `activate_button_post`"
+            )  # noqa: E501
         # verify the required parameter 'level' is set
-        if self.api_client.client_side_validation and ('level' not in local_var_params or  # noqa: E501
-                                                        local_var_params['level'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `level` when calling `activate_button_post`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "level" not in local_var_params
+            or local_var_params["level"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `level` when calling `activate_button_post`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if 'basicauthuser' in local_var_params and local_var_params['basicauthuser'] is not None:  # noqa: E501
-            query_params.append(('basicauthuser', local_var_params['basicauthuser']))  # noqa: E501
-        if 'basicauthpassword' in local_var_params and local_var_params['basicauthpassword'] is not None:  # noqa: E501
-            query_params.append(('basicauthpassword', local_var_params['basicauthpassword']))  # noqa: E501
-        if 'keypad_name' in local_var_params and local_var_params['keypad_name'] is not None:  # noqa: E501
-            query_params.append(('KeypadName', local_var_params['keypad_name']))  # noqa: E501
-        if 'button_name' in local_var_params and local_var_params['button_name'] is not None:  # noqa: E501
-            query_params.append(('ButtonName', local_var_params['button_name']))  # noqa: E501
+        if (
+            "basicauthuser" in local_var_params
+            and local_var_params["basicauthuser"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthuser", local_var_params["basicauthuser"])
+            )  # noqa: E501
+        if (
+            "basicauthpassword" in local_var_params
+            and local_var_params["basicauthpassword"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthpassword", local_var_params["basicauthpassword"])
+            )  # noqa: E501
+        if (
+            "keypad_name" in local_var_params
+            and local_var_params["keypad_name"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("KeypadName", local_var_params["keypad_name"])
+            )  # noqa: E501
+        if (
+            "button_name" in local_var_params
+            and local_var_params["button_name"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("ButtonName", local_var_params["button_name"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -177,37 +212,47 @@ class KeypadOperationsApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'level' in local_var_params:
-            body_params = local_var_params['level']
+        if "level" in local_var_params:
+            body_params = local_var_params["level"]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
+        auth_settings = ["basicAuth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/ActivateButton', 'POST',
+            "/ActivateButton",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2009',  # noqa: E501
+            response_type="InlineResponse2009",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            _request_auth=local_var_params.get("_request_auth"),
+        )
 
-    def deactivate_button_post(self, keypad_name, button_name, level, **kwargs):  # noqa: E501
+    def deactivate_button_post(
+        self, keypad_name, button_name, level, **kwargs
+    ):  # noqa: E501
         """Deactivate a button  # noqa: E501
 
         Deactivates the scene or show represented by the button   # noqa: E501
@@ -242,10 +287,14 @@ class KeypadOperationsApi(object):
                  returns the request thread.
         :rtype: InlineResponse2009
         """
-        kwargs['_return_http_data_only'] = True
-        return self.deactivate_button_post_with_http_info(keypad_name, button_name, level, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.deactivate_button_post_with_http_info(
+            keypad_name, button_name, level, **kwargs
+        )  # noqa: E501
 
-    def deactivate_button_post_with_http_info(self, keypad_name, button_name, level, **kwargs):  # noqa: E501
+    def deactivate_button_post_with_http_info(
+        self, keypad_name, button_name, level, **kwargs
+    ):  # noqa: E501
         """Deactivate a button  # noqa: E501
 
         Deactivates the scene or show represented by the button   # noqa: E501
@@ -291,56 +340,88 @@ class KeypadOperationsApi(object):
         local_var_params = locals()
 
         all_params = [
-            'keypad_name',
-            'button_name',
-            'level',
-            'basicauthuser',
-            'basicauthpassword'
+            "keypad_name",
+            "button_name",
+            "level",
+            "basicauthuser",
+            "basicauthpassword",
         ]
         all_params.extend(
             [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+                "_request_auth",
             ]
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method deactivate_button_post" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'keypad_name' is set
-        if self.api_client.client_side_validation and ('keypad_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['keypad_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `keypad_name` when calling `deactivate_button_post`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "keypad_name" not in local_var_params
+            or local_var_params["keypad_name"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `keypad_name` when calling `deactivate_button_post`"
+            )  # noqa: E501
         # verify the required parameter 'button_name' is set
-        if self.api_client.client_side_validation and ('button_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['button_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `button_name` when calling `deactivate_button_post`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "button_name" not in local_var_params
+            or local_var_params["button_name"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `button_name` when calling `deactivate_button_post`"
+            )  # noqa: E501
         # verify the required parameter 'level' is set
-        if self.api_client.client_side_validation and ('level' not in local_var_params or  # noqa: E501
-                                                        local_var_params['level'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `level` when calling `deactivate_button_post`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "level" not in local_var_params
+            or local_var_params["level"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `level` when calling `deactivate_button_post`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if 'basicauthuser' in local_var_params and local_var_params['basicauthuser'] is not None:  # noqa: E501
-            query_params.append(('basicauthuser', local_var_params['basicauthuser']))  # noqa: E501
-        if 'basicauthpassword' in local_var_params and local_var_params['basicauthpassword'] is not None:  # noqa: E501
-            query_params.append(('basicauthpassword', local_var_params['basicauthpassword']))  # noqa: E501
-        if 'keypad_name' in local_var_params and local_var_params['keypad_name'] is not None:  # noqa: E501
-            query_params.append(('KeypadName', local_var_params['keypad_name']))  # noqa: E501
-        if 'button_name' in local_var_params and local_var_params['button_name'] is not None:  # noqa: E501
-            query_params.append(('ButtonName', local_var_params['button_name']))  # noqa: E501
+        if (
+            "basicauthuser" in local_var_params
+            and local_var_params["basicauthuser"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthuser", local_var_params["basicauthuser"])
+            )  # noqa: E501
+        if (
+            "basicauthpassword" in local_var_params
+            and local_var_params["basicauthpassword"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthpassword", local_var_params["basicauthpassword"])
+            )  # noqa: E501
+        if (
+            "keypad_name" in local_var_params
+            and local_var_params["keypad_name"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("KeypadName", local_var_params["keypad_name"])
+            )  # noqa: E501
+        if (
+            "button_name" in local_var_params
+            and local_var_params["button_name"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("ButtonName", local_var_params["button_name"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -348,35 +429,43 @@ class KeypadOperationsApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'level' in local_var_params:
-            body_params = local_var_params['level']
+        if "level" in local_var_params:
+            body_params = local_var_params["level"]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
+        auth_settings = ["basicAuth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/DeactivateButton', 'POST',
+            "/DeactivateButton",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2009',  # noqa: E501
+            response_type="InlineResponse2009",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            _request_auth=local_var_params.get("_request_auth"),
+        )
 
     def keypads_get(self, **kwargs):  # noqa: E501
         """Get keypads  # noqa: E501
@@ -413,7 +502,7 @@ class KeypadOperationsApi(object):
                  returns the request thread.
         :rtype: InlineResponse2008
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.keypads_get_with_http_info(**kwargs)  # noqa: E501
 
     def keypads_get_with_http_info(self, **kwargs):  # noqa: E501
@@ -462,46 +551,68 @@ class KeypadOperationsApi(object):
         local_var_params = locals()
 
         all_params = [
-            'basicauthuser',
-            'basicauthpassword',
-            'name',
-            'includeall',
-            'nobuttons'
+            "basicauthuser",
+            "basicauthpassword",
+            "name",
+            "includeall",
+            "nobuttons",
         ]
         all_params.extend(
             [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+                "_request_auth",
             ]
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method keypads_get" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if 'basicauthuser' in local_var_params and local_var_params['basicauthuser'] is not None:  # noqa: E501
-            query_params.append(('basicauthuser', local_var_params['basicauthuser']))  # noqa: E501
-        if 'basicauthpassword' in local_var_params and local_var_params['basicauthpassword'] is not None:  # noqa: E501
-            query_params.append(('basicauthpassword', local_var_params['basicauthpassword']))  # noqa: E501
-        if 'name' in local_var_params and local_var_params['name'] is not None:  # noqa: E501
-            query_params.append(('name', local_var_params['name']))  # noqa: E501
-        if 'includeall' in local_var_params and local_var_params['includeall'] is not None:  # noqa: E501
-            query_params.append(('includeall', local_var_params['includeall']))  # noqa: E501
-        if 'nobuttons' in local_var_params and local_var_params['nobuttons'] is not None:  # noqa: E501
-            query_params.append(('nobuttons', local_var_params['nobuttons']))  # noqa: E501
+        if (
+            "basicauthuser" in local_var_params
+            and local_var_params["basicauthuser"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthuser", local_var_params["basicauthuser"])
+            )  # noqa: E501
+        if (
+            "basicauthpassword" in local_var_params
+            and local_var_params["basicauthpassword"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthpassword", local_var_params["basicauthpassword"])
+            )  # noqa: E501
+        if (
+            "name" in local_var_params and local_var_params["name"] is not None
+        ):  # noqa: E501
+            query_params.append(("name", local_var_params["name"]))  # noqa: E501
+        if (
+            "includeall" in local_var_params
+            and local_var_params["includeall"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("includeall", local_var_params["includeall"])
+            )  # noqa: E501
+        if (
+            "nobuttons" in local_var_params
+            and local_var_params["nobuttons"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("nobuttons", local_var_params["nobuttons"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -510,30 +621,37 @@ class KeypadOperationsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
+        auth_settings = ["basicAuth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/Keypads', 'GET',
+            "/Keypads",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2008',  # noqa: E501
+            response_type="InlineResponse2008",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            _request_auth=local_var_params.get("_request_auth"),
+        )
 
-    def keypads_keypad_id_buttons_button_id_activate_post(self, keypad_id, button_id, level, **kwargs):  # noqa: E501
+    def keypads_keypad_id_buttons_button_id_activate_post(
+        self, keypad_id, button_id, level, **kwargs
+    ):  # noqa: E501
         """Activate a button  # noqa: E501
 
         Activates the scene or show represented by the button   # noqa: E501
@@ -568,10 +686,14 @@ class KeypadOperationsApi(object):
                  returns the request thread.
         :rtype: InlineResponse2009
         """
-        kwargs['_return_http_data_only'] = True
-        return self.keypads_keypad_id_buttons_button_id_activate_post_with_http_info(keypad_id, button_id, level, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.keypads_keypad_id_buttons_button_id_activate_post_with_http_info(
+            keypad_id, button_id, level, **kwargs
+        )  # noqa: E501
 
-    def keypads_keypad_id_buttons_button_id_activate_post_with_http_info(self, keypad_id, button_id, level, **kwargs):  # noqa: E501
+    def keypads_keypad_id_buttons_button_id_activate_post_with_http_info(
+        self, keypad_id, button_id, level, **kwargs
+    ):  # noqa: E501
         """Activate a button  # noqa: E501
 
         Activates the scene or show represented by the button   # noqa: E501
@@ -617,56 +739,78 @@ class KeypadOperationsApi(object):
         local_var_params = locals()
 
         all_params = [
-            'keypad_id',
-            'button_id',
-            'level',
-            'basicauthuser',
-            'basicauthpassword'
+            "keypad_id",
+            "button_id",
+            "level",
+            "basicauthuser",
+            "basicauthpassword",
         ]
         all_params.extend(
             [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+                "_request_auth",
             ]
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method keypads_keypad_id_buttons_button_id_activate_post" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'keypad_id' is set
-        if self.api_client.client_side_validation and ('keypad_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['keypad_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `keypad_id` when calling `keypads_keypad_id_buttons_button_id_activate_post`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "keypad_id" not in local_var_params
+            or local_var_params["keypad_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `keypad_id` when calling `keypads_keypad_id_buttons_button_id_activate_post`"
+            )  # noqa: E501
         # verify the required parameter 'button_id' is set
-        if self.api_client.client_side_validation and ('button_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['button_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `button_id` when calling `keypads_keypad_id_buttons_button_id_activate_post`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "button_id" not in local_var_params
+            or local_var_params["button_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `button_id` when calling `keypads_keypad_id_buttons_button_id_activate_post`"
+            )  # noqa: E501
         # verify the required parameter 'level' is set
-        if self.api_client.client_side_validation and ('level' not in local_var_params or  # noqa: E501
-                                                        local_var_params['level'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `level` when calling `keypads_keypad_id_buttons_button_id_activate_post`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "level" not in local_var_params
+            or local_var_params["level"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `level` when calling `keypads_keypad_id_buttons_button_id_activate_post`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'keypad_id' in local_var_params:
-            path_params['keypad-id'] = local_var_params['keypad_id']  # noqa: E501
-        if 'button_id' in local_var_params:
-            path_params['button-id'] = local_var_params['button_id']  # noqa: E501
+        if "keypad_id" in local_var_params:
+            path_params["keypad-id"] = local_var_params["keypad_id"]  # noqa: E501
+        if "button_id" in local_var_params:
+            path_params["button-id"] = local_var_params["button_id"]  # noqa: E501
 
         query_params = []
-        if 'basicauthuser' in local_var_params and local_var_params['basicauthuser'] is not None:  # noqa: E501
-            query_params.append(('basicauthuser', local_var_params['basicauthuser']))  # noqa: E501
-        if 'basicauthpassword' in local_var_params and local_var_params['basicauthpassword'] is not None:  # noqa: E501
-            query_params.append(('basicauthpassword', local_var_params['basicauthpassword']))  # noqa: E501
+        if (
+            "basicauthuser" in local_var_params
+            and local_var_params["basicauthuser"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthuser", local_var_params["basicauthuser"])
+            )  # noqa: E501
+        if (
+            "basicauthpassword" in local_var_params
+            and local_var_params["basicauthpassword"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthpassword", local_var_params["basicauthpassword"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -674,37 +818,47 @@ class KeypadOperationsApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'level' in local_var_params:
-            body_params = local_var_params['level']
+        if "level" in local_var_params:
+            body_params = local_var_params["level"]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
+        auth_settings = ["basicAuth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/Keypads/{keypad-id}/Buttons/{button-id}/Activate', 'POST',
+            "/Keypads/{keypad-id}/Buttons/{button-id}/Activate",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2009',  # noqa: E501
+            response_type="InlineResponse2009",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            _request_auth=local_var_params.get("_request_auth"),
+        )
 
-    def keypads_keypad_id_buttons_button_id_deactivate_post(self, keypad_id, button_id, level, **kwargs):  # noqa: E501
+    def keypads_keypad_id_buttons_button_id_deactivate_post(
+        self, keypad_id, button_id, level, **kwargs
+    ):  # noqa: E501
         """Deactivate a button  # noqa: E501
 
         Deactivates the scene or show represented by the button   # noqa: E501
@@ -739,10 +893,14 @@ class KeypadOperationsApi(object):
                  returns the request thread.
         :rtype: InlineResponse2009
         """
-        kwargs['_return_http_data_only'] = True
-        return self.keypads_keypad_id_buttons_button_id_deactivate_post_with_http_info(keypad_id, button_id, level, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.keypads_keypad_id_buttons_button_id_deactivate_post_with_http_info(
+            keypad_id, button_id, level, **kwargs
+        )  # noqa: E501
 
-    def keypads_keypad_id_buttons_button_id_deactivate_post_with_http_info(self, keypad_id, button_id, level, **kwargs):  # noqa: E501
+    def keypads_keypad_id_buttons_button_id_deactivate_post_with_http_info(
+        self, keypad_id, button_id, level, **kwargs
+    ):  # noqa: E501
         """Deactivate a button  # noqa: E501
 
         Deactivates the scene or show represented by the button   # noqa: E501
@@ -788,56 +946,79 @@ class KeypadOperationsApi(object):
         local_var_params = locals()
 
         all_params = [
-            'keypad_id',
-            'button_id',
-            'level',
-            'basicauthuser',
-            'basicauthpassword'
+            "keypad_id",
+            "button_id",
+            "level",
+            "basicauthuser",
+            "basicauthpassword",
         ]
         all_params.extend(
             [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+                "_request_auth",
             ]
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method keypads_keypad_id_buttons_button_id_deactivate_post" % key
+                    " to method keypads_keypad_id_buttons_button_id_deactivate_post"
+                    % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'keypad_id' is set
-        if self.api_client.client_side_validation and ('keypad_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['keypad_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `keypad_id` when calling `keypads_keypad_id_buttons_button_id_deactivate_post`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "keypad_id" not in local_var_params
+            or local_var_params["keypad_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `keypad_id` when calling `keypads_keypad_id_buttons_button_id_deactivate_post`"
+            )  # noqa: E501
         # verify the required parameter 'button_id' is set
-        if self.api_client.client_side_validation and ('button_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['button_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `button_id` when calling `keypads_keypad_id_buttons_button_id_deactivate_post`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "button_id" not in local_var_params
+            or local_var_params["button_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `button_id` when calling `keypads_keypad_id_buttons_button_id_deactivate_post`"
+            )  # noqa: E501
         # verify the required parameter 'level' is set
-        if self.api_client.client_side_validation and ('level' not in local_var_params or  # noqa: E501
-                                                        local_var_params['level'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `level` when calling `keypads_keypad_id_buttons_button_id_deactivate_post`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "level" not in local_var_params
+            or local_var_params["level"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `level` when calling `keypads_keypad_id_buttons_button_id_deactivate_post`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'keypad_id' in local_var_params:
-            path_params['keypad-id'] = local_var_params['keypad_id']  # noqa: E501
-        if 'button_id' in local_var_params:
-            path_params['button-id'] = local_var_params['button_id']  # noqa: E501
+        if "keypad_id" in local_var_params:
+            path_params["keypad-id"] = local_var_params["keypad_id"]  # noqa: E501
+        if "button_id" in local_var_params:
+            path_params["button-id"] = local_var_params["button_id"]  # noqa: E501
 
         query_params = []
-        if 'basicauthuser' in local_var_params and local_var_params['basicauthuser'] is not None:  # noqa: E501
-            query_params.append(('basicauthuser', local_var_params['basicauthuser']))  # noqa: E501
-        if 'basicauthpassword' in local_var_params and local_var_params['basicauthpassword'] is not None:  # noqa: E501
-            query_params.append(('basicauthpassword', local_var_params['basicauthpassword']))  # noqa: E501
+        if (
+            "basicauthuser" in local_var_params
+            and local_var_params["basicauthuser"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthuser", local_var_params["basicauthuser"])
+            )  # noqa: E501
+        if (
+            "basicauthpassword" in local_var_params
+            and local_var_params["basicauthpassword"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthpassword", local_var_params["basicauthpassword"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -845,37 +1026,47 @@ class KeypadOperationsApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'level' in local_var_params:
-            body_params = local_var_params['level']
+        if "level" in local_var_params:
+            body_params = local_var_params["level"]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
+        auth_settings = ["basicAuth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/Keypads/{keypad-id}/Buttons/{button-id}/Deactivate', 'POST',
+            "/Keypads/{keypad-id}/Buttons/{button-id}/Deactivate",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2009',  # noqa: E501
+            response_type="InlineResponse2009",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            _request_auth=local_var_params.get("_request_auth"),
+        )
 
-    def keypads_keypad_id_buttons_button_id_get(self, keypad_id, button_id, **kwargs):  # noqa: E501
+    def keypads_keypad_id_buttons_button_id_get(
+        self, keypad_id, button_id, **kwargs
+    ):  # noqa: E501
         """Gets the specified button for a specified keypad  # noqa: E501
 
         Gets the button specified by {button-id} for the keypad specified by {keypad-id}.   # noqa: E501
@@ -908,10 +1099,14 @@ class KeypadOperationsApi(object):
                  returns the request thread.
         :rtype: InlineResponse20011
         """
-        kwargs['_return_http_data_only'] = True
-        return self.keypads_keypad_id_buttons_button_id_get_with_http_info(keypad_id, button_id, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.keypads_keypad_id_buttons_button_id_get_with_http_info(
+            keypad_id, button_id, **kwargs
+        )  # noqa: E501
 
-    def keypads_keypad_id_buttons_button_id_get_with_http_info(self, keypad_id, button_id, **kwargs):  # noqa: E501
+    def keypads_keypad_id_buttons_button_id_get_with_http_info(
+        self, keypad_id, button_id, **kwargs
+    ):  # noqa: E501
         """Gets the specified button for a specified keypad  # noqa: E501
 
         Gets the button specified by {button-id} for the keypad specified by {keypad-id}.   # noqa: E501
@@ -954,52 +1149,65 @@ class KeypadOperationsApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            'keypad_id',
-            'button_id',
-            'basicauthuser',
-            'basicauthpassword'
-        ]
+        all_params = ["keypad_id", "button_id", "basicauthuser", "basicauthpassword"]
         all_params.extend(
             [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+                "_request_auth",
             ]
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method keypads_keypad_id_buttons_button_id_get" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'keypad_id' is set
-        if self.api_client.client_side_validation and ('keypad_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['keypad_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `keypad_id` when calling `keypads_keypad_id_buttons_button_id_get`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "keypad_id" not in local_var_params
+            or local_var_params["keypad_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `keypad_id` when calling `keypads_keypad_id_buttons_button_id_get`"
+            )  # noqa: E501
         # verify the required parameter 'button_id' is set
-        if self.api_client.client_side_validation and ('button_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['button_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `button_id` when calling `keypads_keypad_id_buttons_button_id_get`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "button_id" not in local_var_params
+            or local_var_params["button_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `button_id` when calling `keypads_keypad_id_buttons_button_id_get`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'keypad_id' in local_var_params:
-            path_params['keypad-id'] = local_var_params['keypad_id']  # noqa: E501
-        if 'button_id' in local_var_params:
-            path_params['button-id'] = local_var_params['button_id']  # noqa: E501
+        if "keypad_id" in local_var_params:
+            path_params["keypad-id"] = local_var_params["keypad_id"]  # noqa: E501
+        if "button_id" in local_var_params:
+            path_params["button-id"] = local_var_params["button_id"]  # noqa: E501
 
         query_params = []
-        if 'basicauthuser' in local_var_params and local_var_params['basicauthuser'] is not None:  # noqa: E501
-            query_params.append(('basicauthuser', local_var_params['basicauthuser']))  # noqa: E501
-        if 'basicauthpassword' in local_var_params and local_var_params['basicauthpassword'] is not None:  # noqa: E501
-            query_params.append(('basicauthpassword', local_var_params['basicauthpassword']))  # noqa: E501
+        if (
+            "basicauthuser" in local_var_params
+            and local_var_params["basicauthuser"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthuser", local_var_params["basicauthuser"])
+            )  # noqa: E501
+        if (
+            "basicauthpassword" in local_var_params
+            and local_var_params["basicauthpassword"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthpassword", local_var_params["basicauthpassword"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -1008,30 +1216,37 @@ class KeypadOperationsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
+        auth_settings = ["basicAuth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/Keypads/{keypad-id}/Buttons/{button-id}', 'GET',
+            "/Keypads/{keypad-id}/Buttons/{button-id}",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20011',  # noqa: E501
+            response_type="InlineResponse20011",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            _request_auth=local_var_params.get("_request_auth"),
+        )
 
-    def keypads_keypad_id_buttons_button_id_push_button_post(self, keypad_id, button_id, **kwargs):  # noqa: E501
+    def keypads_keypad_id_buttons_button_id_push_button_post(
+        self, keypad_id, button_id, **kwargs
+    ):  # noqa: E501
         """Pushes a button  # noqa: E501
 
         Performs the same action as a physical press of the button.  The action performed is determined by the current state of the button and the type of keypad.   Added in hub firmware version 1.12 (API schema 2).   # noqa: E501
@@ -1066,10 +1281,14 @@ class KeypadOperationsApi(object):
                  returns the request thread.
         :rtype: InlineResponse2009
         """
-        kwargs['_return_http_data_only'] = True
-        return self.keypads_keypad_id_buttons_button_id_push_button_post_with_http_info(keypad_id, button_id, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.keypads_keypad_id_buttons_button_id_push_button_post_with_http_info(
+            keypad_id, button_id, **kwargs
+        )  # noqa: E501
 
-    def keypads_keypad_id_buttons_button_id_push_button_post_with_http_info(self, keypad_id, button_id, **kwargs):  # noqa: E501
+    def keypads_keypad_id_buttons_button_id_push_button_post_with_http_info(
+        self, keypad_id, button_id, **kwargs
+    ):  # noqa: E501
         """Pushes a button  # noqa: E501
 
         Performs the same action as a physical press of the button.  The action performed is determined by the current state of the button and the type of keypad.   Added in hub firmware version 1.12 (API schema 2).   # noqa: E501
@@ -1115,54 +1334,78 @@ class KeypadOperationsApi(object):
         local_var_params = locals()
 
         all_params = [
-            'keypad_id',
-            'button_id',
-            'basicauthuser',
-            'basicauthpassword',
-            'idempotency_key'
+            "keypad_id",
+            "button_id",
+            "basicauthuser",
+            "basicauthpassword",
+            "idempotency_key",
         ]
         all_params.extend(
             [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+                "_request_auth",
             ]
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method keypads_keypad_id_buttons_button_id_push_button_post" % key
+                    " to method keypads_keypad_id_buttons_button_id_push_button_post"
+                    % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'keypad_id' is set
-        if self.api_client.client_side_validation and ('keypad_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['keypad_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `keypad_id` when calling `keypads_keypad_id_buttons_button_id_push_button_post`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "keypad_id" not in local_var_params
+            or local_var_params["keypad_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `keypad_id` when calling `keypads_keypad_id_buttons_button_id_push_button_post`"
+            )  # noqa: E501
         # verify the required parameter 'button_id' is set
-        if self.api_client.client_side_validation and ('button_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['button_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `button_id` when calling `keypads_keypad_id_buttons_button_id_push_button_post`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "button_id" not in local_var_params
+            or local_var_params["button_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `button_id` when calling `keypads_keypad_id_buttons_button_id_push_button_post`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'keypad_id' in local_var_params:
-            path_params['keypad-id'] = local_var_params['keypad_id']  # noqa: E501
-        if 'button_id' in local_var_params:
-            path_params['button-id'] = local_var_params['button_id']  # noqa: E501
+        if "keypad_id" in local_var_params:
+            path_params["keypad-id"] = local_var_params["keypad_id"]  # noqa: E501
+        if "button_id" in local_var_params:
+            path_params["button-id"] = local_var_params["button_id"]  # noqa: E501
 
         query_params = []
-        if 'basicauthuser' in local_var_params and local_var_params['basicauthuser'] is not None:  # noqa: E501
-            query_params.append(('basicauthuser', local_var_params['basicauthuser']))  # noqa: E501
-        if 'basicauthpassword' in local_var_params and local_var_params['basicauthpassword'] is not None:  # noqa: E501
-            query_params.append(('basicauthpassword', local_var_params['basicauthpassword']))  # noqa: E501
-        if 'idempotency_key' in local_var_params and local_var_params['idempotency_key'] is not None:  # noqa: E501
-            query_params.append(('idempotency_key', local_var_params['idempotency_key']))  # noqa: E501
+        if (
+            "basicauthuser" in local_var_params
+            and local_var_params["basicauthuser"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthuser", local_var_params["basicauthuser"])
+            )  # noqa: E501
+        if (
+            "basicauthpassword" in local_var_params
+            and local_var_params["basicauthpassword"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthpassword", local_var_params["basicauthpassword"])
+            )  # noqa: E501
+        if (
+            "idempotency_key" in local_var_params
+            and local_var_params["idempotency_key"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("idempotency_key", local_var_params["idempotency_key"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -1171,28 +1414,33 @@ class KeypadOperationsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
+        auth_settings = ["basicAuth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/Keypads/{keypad-id}/Buttons/{button-id}/PushButton', 'POST',
+            "/Keypads/{keypad-id}/Buttons/{button-id}/PushButton",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2009',  # noqa: E501
+            response_type="InlineResponse2009",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            _request_auth=local_var_params.get("_request_auth"),
+        )
 
     def keypads_keypad_id_buttons_get(self, keypad_id, **kwargs):  # noqa: E501
         """Gets the buttons for a keypad  # noqa: E501
@@ -1227,10 +1475,14 @@ class KeypadOperationsApi(object):
                  returns the request thread.
         :rtype: InlineResponse20010
         """
-        kwargs['_return_http_data_only'] = True
-        return self.keypads_keypad_id_buttons_get_with_http_info(keypad_id, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.keypads_keypad_id_buttons_get_with_http_info(
+            keypad_id, **kwargs
+        )  # noqa: E501
 
-    def keypads_keypad_id_buttons_get_with_http_info(self, keypad_id, **kwargs):  # noqa: E501
+    def keypads_keypad_id_buttons_get_with_http_info(
+        self, keypad_id, **kwargs
+    ):  # noqa: E501
         """Gets the buttons for a keypad  # noqa: E501
 
         Gets the buttons for the keypad specified by {keypad-id}.  If a keypad name is specified instead of a uuid, the buttons for the first keypad matching the specified name will be returned   # noqa: E501
@@ -1273,48 +1525,59 @@ class KeypadOperationsApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            'keypad_id',
-            'basicauthuser',
-            'basicauthpassword',
-            'name'
-        ]
+        all_params = ["keypad_id", "basicauthuser", "basicauthpassword", "name"]
         all_params.extend(
             [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+                "_request_auth",
             ]
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method keypads_keypad_id_buttons_get" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'keypad_id' is set
-        if self.api_client.client_side_validation and ('keypad_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['keypad_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `keypad_id` when calling `keypads_keypad_id_buttons_get`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "keypad_id" not in local_var_params
+            or local_var_params["keypad_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `keypad_id` when calling `keypads_keypad_id_buttons_get`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'keypad_id' in local_var_params:
-            path_params['keypad-id'] = local_var_params['keypad_id']  # noqa: E501
+        if "keypad_id" in local_var_params:
+            path_params["keypad-id"] = local_var_params["keypad_id"]  # noqa: E501
 
         query_params = []
-        if 'basicauthuser' in local_var_params and local_var_params['basicauthuser'] is not None:  # noqa: E501
-            query_params.append(('basicauthuser', local_var_params['basicauthuser']))  # noqa: E501
-        if 'basicauthpassword' in local_var_params and local_var_params['basicauthpassword'] is not None:  # noqa: E501
-            query_params.append(('basicauthpassword', local_var_params['basicauthpassword']))  # noqa: E501
-        if 'name' in local_var_params and local_var_params['name'] is not None:  # noqa: E501
-            query_params.append(('name', local_var_params['name']))  # noqa: E501
+        if (
+            "basicauthuser" in local_var_params
+            and local_var_params["basicauthuser"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthuser", local_var_params["basicauthuser"])
+            )  # noqa: E501
+        if (
+            "basicauthpassword" in local_var_params
+            and local_var_params["basicauthpassword"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthpassword", local_var_params["basicauthpassword"])
+            )  # noqa: E501
+        if (
+            "name" in local_var_params and local_var_params["name"] is not None
+        ):  # noqa: E501
+            query_params.append(("name", local_var_params["name"]))  # noqa: E501
 
         header_params = {}
 
@@ -1323,28 +1586,33 @@ class KeypadOperationsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
+        auth_settings = ["basicAuth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/Keypads/{keypad-id}/Buttons', 'GET',
+            "/Keypads/{keypad-id}/Buttons",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20010',  # noqa: E501
+            response_type="InlineResponse20010",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            _request_auth=local_var_params.get("_request_auth"),
+        )
 
     def keypads_keypad_id_get(self, keypad_id, **kwargs):  # noqa: E501
         """Gets a single keypad  # noqa: E501
@@ -1377,8 +1645,10 @@ class KeypadOperationsApi(object):
                  returns the request thread.
         :rtype: InlineResponse2009
         """
-        kwargs['_return_http_data_only'] = True
-        return self.keypads_keypad_id_get_with_http_info(keypad_id, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.keypads_keypad_id_get_with_http_info(
+            keypad_id, **kwargs
+        )  # noqa: E501
 
     def keypads_keypad_id_get_with_http_info(self, keypad_id, **kwargs):  # noqa: E501
         """Gets a single keypad  # noqa: E501
@@ -1421,45 +1691,55 @@ class KeypadOperationsApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            'keypad_id',
-            'basicauthuser',
-            'basicauthpassword'
-        ]
+        all_params = ["keypad_id", "basicauthuser", "basicauthpassword"]
         all_params.extend(
             [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+                "_request_auth",
             ]
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method keypads_keypad_id_get" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'keypad_id' is set
-        if self.api_client.client_side_validation and ('keypad_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['keypad_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `keypad_id` when calling `keypads_keypad_id_get`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "keypad_id" not in local_var_params
+            or local_var_params["keypad_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `keypad_id` when calling `keypads_keypad_id_get`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'keypad_id' in local_var_params:
-            path_params['keypad-id'] = local_var_params['keypad_id']  # noqa: E501
+        if "keypad_id" in local_var_params:
+            path_params["keypad-id"] = local_var_params["keypad_id"]  # noqa: E501
 
         query_params = []
-        if 'basicauthuser' in local_var_params and local_var_params['basicauthuser'] is not None:  # noqa: E501
-            query_params.append(('basicauthuser', local_var_params['basicauthuser']))  # noqa: E501
-        if 'basicauthpassword' in local_var_params and local_var_params['basicauthpassword'] is not None:  # noqa: E501
-            query_params.append(('basicauthpassword', local_var_params['basicauthpassword']))  # noqa: E501
+        if (
+            "basicauthuser" in local_var_params
+            and local_var_params["basicauthuser"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthuser", local_var_params["basicauthuser"])
+            )  # noqa: E501
+        if (
+            "basicauthpassword" in local_var_params
+            and local_var_params["basicauthpassword"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthpassword", local_var_params["basicauthpassword"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -1468,30 +1748,37 @@ class KeypadOperationsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
+        auth_settings = ["basicAuth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/Keypads/{keypad-id}', 'GET',
+            "/Keypads/{keypad-id}",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2009',  # noqa: E501
+            response_type="InlineResponse2009",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            _request_auth=local_var_params.get("_request_auth"),
+        )
 
-    def keypads_keypad_id_set_level_post(self, keypad_id, level, **kwargs):  # noqa: E501
+    def keypads_keypad_id_set_level_post(
+        self, keypad_id, level, **kwargs
+    ):  # noqa: E501
         """sets the master intensity level for a single keypad  # noqa: E501
 
         Sets the keypad's intensity (brightness) slider to the level specified by the level parameter  # noqa: E501
@@ -1524,10 +1811,14 @@ class KeypadOperationsApi(object):
                  returns the request thread.
         :rtype: InlineResponse2009
         """
-        kwargs['_return_http_data_only'] = True
-        return self.keypads_keypad_id_set_level_post_with_http_info(keypad_id, level, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.keypads_keypad_id_set_level_post_with_http_info(
+            keypad_id, level, **kwargs
+        )  # noqa: E501
 
-    def keypads_keypad_id_set_level_post_with_http_info(self, keypad_id, level, **kwargs):  # noqa: E501
+    def keypads_keypad_id_set_level_post_with_http_info(
+        self, keypad_id, level, **kwargs
+    ):  # noqa: E501
         """sets the master intensity level for a single keypad  # noqa: E501
 
         Sets the keypad's intensity (brightness) slider to the level specified by the level parameter  # noqa: E501
@@ -1570,52 +1861,67 @@ class KeypadOperationsApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            'keypad_id',
-            'level',
-            'basicauthuser',
-            'basicauthpassword'
-        ]
+        all_params = ["keypad_id", "level", "basicauthuser", "basicauthpassword"]
         all_params.extend(
             [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+                "_request_auth",
             ]
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method keypads_keypad_id_set_level_post" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'keypad_id' is set
-        if self.api_client.client_side_validation and ('keypad_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['keypad_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `keypad_id` when calling `keypads_keypad_id_set_level_post`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "keypad_id" not in local_var_params
+            or local_var_params["keypad_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `keypad_id` when calling `keypads_keypad_id_set_level_post`"
+            )  # noqa: E501
         # verify the required parameter 'level' is set
-        if self.api_client.client_side_validation and ('level' not in local_var_params or  # noqa: E501
-                                                        local_var_params['level'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `level` when calling `keypads_keypad_id_set_level_post`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "level" not in local_var_params
+            or local_var_params["level"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `level` when calling `keypads_keypad_id_set_level_post`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'keypad_id' in local_var_params:
-            path_params['keypad-id'] = local_var_params['keypad_id']  # noqa: E501
+        if "keypad_id" in local_var_params:
+            path_params["keypad-id"] = local_var_params["keypad_id"]  # noqa: E501
 
         query_params = []
-        if 'basicauthuser' in local_var_params and local_var_params['basicauthuser'] is not None:  # noqa: E501
-            query_params.append(('basicauthuser', local_var_params['basicauthuser']))  # noqa: E501
-        if 'basicauthpassword' in local_var_params and local_var_params['basicauthpassword'] is not None:  # noqa: E501
-            query_params.append(('basicauthpassword', local_var_params['basicauthpassword']))  # noqa: E501
-        if 'level' in local_var_params and local_var_params['level'] is not None:  # noqa: E501
-            query_params.append(('Level', local_var_params['level']))  # noqa: E501
+        if (
+            "basicauthuser" in local_var_params
+            and local_var_params["basicauthuser"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthuser", local_var_params["basicauthuser"])
+            )  # noqa: E501
+        if (
+            "basicauthpassword" in local_var_params
+            and local_var_params["basicauthpassword"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthpassword", local_var_params["basicauthpassword"])
+            )  # noqa: E501
+        if (
+            "level" in local_var_params and local_var_params["level"] is not None
+        ):  # noqa: E501
+            query_params.append(("Level", local_var_params["level"]))  # noqa: E501
 
         header_params = {}
 
@@ -1624,28 +1930,33 @@ class KeypadOperationsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
+        auth_settings = ["basicAuth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/Keypads/{keypad-id}/SetLevel', 'POST',
+            "/Keypads/{keypad-id}/SetLevel",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2009',  # noqa: E501
+            response_type="InlineResponse2009",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            _request_auth=local_var_params.get("_request_auth"),
+        )
 
     def push_button_post(self, keypad_name, button_name, **kwargs):  # noqa: E501
         """Deactivate a button  # noqa: E501
@@ -1682,10 +1993,14 @@ class KeypadOperationsApi(object):
                  returns the request thread.
         :rtype: InlineResponse2009
         """
-        kwargs['_return_http_data_only'] = True
-        return self.push_button_post_with_http_info(keypad_name, button_name, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.push_button_post_with_http_info(
+            keypad_name, button_name, **kwargs
+        )  # noqa: E501
 
-    def push_button_post_with_http_info(self, keypad_name, button_name, **kwargs):  # noqa: E501
+    def push_button_post_with_http_info(
+        self, keypad_name, button_name, **kwargs
+    ):  # noqa: E501
         """Deactivate a button  # noqa: E501
 
         Performs the same action as a physical press of the button.  The action performed is determined by the current state of the button and the type of keypad.   # noqa: E501
@@ -1731,54 +2046,87 @@ class KeypadOperationsApi(object):
         local_var_params = locals()
 
         all_params = [
-            'keypad_name',
-            'button_name',
-            'basicauthuser',
-            'basicauthpassword',
-            'idempotency_key'
+            "keypad_name",
+            "button_name",
+            "basicauthuser",
+            "basicauthpassword",
+            "idempotency_key",
         ]
         all_params.extend(
             [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+                "_request_auth",
             ]
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method push_button_post" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'keypad_name' is set
-        if self.api_client.client_side_validation and ('keypad_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['keypad_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `keypad_name` when calling `push_button_post`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "keypad_name" not in local_var_params
+            or local_var_params["keypad_name"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `keypad_name` when calling `push_button_post`"
+            )  # noqa: E501
         # verify the required parameter 'button_name' is set
-        if self.api_client.client_side_validation and ('button_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['button_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `button_name` when calling `push_button_post`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "button_name" not in local_var_params
+            or local_var_params["button_name"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `button_name` when calling `push_button_post`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if 'basicauthuser' in local_var_params and local_var_params['basicauthuser'] is not None:  # noqa: E501
-            query_params.append(('basicauthuser', local_var_params['basicauthuser']))  # noqa: E501
-        if 'basicauthpassword' in local_var_params and local_var_params['basicauthpassword'] is not None:  # noqa: E501
-            query_params.append(('basicauthpassword', local_var_params['basicauthpassword']))  # noqa: E501
-        if 'keypad_name' in local_var_params and local_var_params['keypad_name'] is not None:  # noqa: E501
-            query_params.append(('KeypadName', local_var_params['keypad_name']))  # noqa: E501
-        if 'button_name' in local_var_params and local_var_params['button_name'] is not None:  # noqa: E501
-            query_params.append(('ButtonName', local_var_params['button_name']))  # noqa: E501
-        if 'idempotency_key' in local_var_params and local_var_params['idempotency_key'] is not None:  # noqa: E501
-            query_params.append(('idempotency_key', local_var_params['idempotency_key']))  # noqa: E501
+        if (
+            "basicauthuser" in local_var_params
+            and local_var_params["basicauthuser"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthuser", local_var_params["basicauthuser"])
+            )  # noqa: E501
+        if (
+            "basicauthpassword" in local_var_params
+            and local_var_params["basicauthpassword"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthpassword", local_var_params["basicauthpassword"])
+            )  # noqa: E501
+        if (
+            "keypad_name" in local_var_params
+            and local_var_params["keypad_name"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("KeypadName", local_var_params["keypad_name"])
+            )  # noqa: E501
+        if (
+            "button_name" in local_var_params
+            and local_var_params["button_name"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("ButtonName", local_var_params["button_name"])
+            )  # noqa: E501
+        if (
+            "idempotency_key" in local_var_params
+            and local_var_params["idempotency_key"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("idempotency_key", local_var_params["idempotency_key"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -1787,28 +2135,33 @@ class KeypadOperationsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
+        auth_settings = ["basicAuth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/PushButton', 'POST',
+            "/PushButton",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2009',  # noqa: E501
+            response_type="InlineResponse2009",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            _request_auth=local_var_params.get("_request_auth"),
+        )
 
     def root_get(self, **kwargs):  # noqa: E501
         """Get keypads and groups  (and scenes in API schema 4 or later)  # noqa: E501
@@ -1839,7 +2192,7 @@ class KeypadOperationsApi(object):
                  returns the request thread.
         :rtype: InlineResponse200
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.root_get_with_http_info(**kwargs)  # noqa: E501
 
     def root_get_with_http_info(self, **kwargs):  # noqa: E501
@@ -1881,38 +2234,45 @@ class KeypadOperationsApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            'basicauthuser',
-            'basicauthpassword'
-        ]
+        all_params = ["basicauthuser", "basicauthpassword"]
         all_params.extend(
             [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+                "_request_auth",
             ]
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method root_get" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if 'basicauthuser' in local_var_params and local_var_params['basicauthuser'] is not None:  # noqa: E501
-            query_params.append(('basicauthuser', local_var_params['basicauthuser']))  # noqa: E501
-        if 'basicauthpassword' in local_var_params and local_var_params['basicauthpassword'] is not None:  # noqa: E501
-            query_params.append(('basicauthpassword', local_var_params['basicauthpassword']))  # noqa: E501
+        if (
+            "basicauthuser" in local_var_params
+            and local_var_params["basicauthuser"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthuser", local_var_params["basicauthuser"])
+            )  # noqa: E501
+        if (
+            "basicauthpassword" in local_var_params
+            and local_var_params["basicauthpassword"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthpassword", local_var_params["basicauthpassword"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -1921,25 +2281,30 @@ class KeypadOperationsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
+        auth_settings = ["basicAuth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/', 'GET',
+            "/",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse200',  # noqa: E501
+            response_type="InlineResponse200",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            _request_auth=local_var_params.get("_request_auth"),
+        )

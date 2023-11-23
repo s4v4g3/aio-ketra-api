@@ -33,26 +33,36 @@ class Button(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'active': 'bool',
-        'id': 'str',
-        'level': 'int',
-        'name': 'str',
-        'position': 'int',
-        'is_power_button': 'bool',
-        'scene_is_modified': 'bool'
+        "active": "bool",
+        "id": "str",
+        "level": "int",
+        "name": "str",
+        "position": "int",
+        "is_power_button": "bool",
+        "scene_is_modified": "bool",
     }
 
     attribute_map = {
-        'active': 'Active',
-        'id': 'Id',
-        'level': 'Level',
-        'name': 'Name',
-        'position': 'Position',
-        'is_power_button': 'IsPowerButton',
-        'scene_is_modified': 'SceneIsModified'
+        "active": "Active",
+        "id": "Id",
+        "level": "Level",
+        "name": "Name",
+        "position": "Position",
+        "is_power_button": "IsPowerButton",
+        "scene_is_modified": "SceneIsModified",
     }
 
-    def __init__(self, active=None, id=None, level=None, name=None, position=None, is_power_button=None, scene_is_modified=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        active=None,
+        id=None,
+        level=None,
+        name=None,
+        position=None,
+        is_power_button=None,
+        scene_is_modified=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """Button - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -250,18 +260,20 @@ class Button(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

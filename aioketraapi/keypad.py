@@ -4,25 +4,28 @@ from aioketraapi.models.level import Level as LevelModel
 from aioketraapi.api.keypad_operations_api import KeypadOperationsApi
 
 
-
 class Keypad(KeypadModel):
     def __init__(self, keypad_model: KeypadModel, hub):
         super().__init__(**keypad_model.to_dict())
         self.hub = hub
         self._buttons = []
         if keypad_model.buttons is not None:
-            self._buttons = [KeypadButton(button, self, hub) for button in keypad_model.buttons]
+            self._buttons = [
+                KeypadButton(button, self, hub) for button in keypad_model.buttons
+            ]
         self._button_map = {}
         for button in self._buttons:
             self._button_map[button.id] = button
 
     async def update_state(self):
         async with self.hub.create_client_session() as api_client:
-            updated_keypad = await KeypadOperationsApi(api_client).keypads_keypad_id_get(self.id)
+            updated_keypad = await KeypadOperationsApi(
+                api_client
+            ).keypads_keypad_id_get(self.id)
             self.update_from_model(updated_keypad.content)
 
     def update_from_model(self, keypad_model: KeypadModel):
-        for k,v in keypad_model.to_dict().items():
+        for k, v in keypad_model.to_dict().items():
             setattr(self, k, v)
         if keypad_model.buttons is not None:
             for button in keypad_model.buttons:
@@ -44,27 +47,28 @@ class KeypadButton(ButtonModel):
         self.hub = hub
 
     def update_from_model(self, button_model: ButtonModel):
-        for k,v in button_model.to_dict().items():
+        for k, v in button_model.to_dict().items():
             setattr(self, k, v)
 
     async def activate(self, level=65535):
         async with self.hub.create_client_session() as api_client:
-            updated_keypad = await KeypadOperationsApi(api_client).keypads_keypad_id_buttons_button_id_activate_post(
-                self.keypad.id,
-                self.id,
-                LevelModel(level))
+            updated_keypad = await KeypadOperationsApi(
+                api_client
+            ).keypads_keypad_id_buttons_button_id_activate_post(
+                self.keypad.id, self.id, LevelModel(level)
+            )
             self.keypad.update_from_model(updated_keypad.content)
 
     async def deactivate(self):
         async with self.hub.create_client_session() as api_client:
-            updated_keypad = await KeypadOperationsApi(api_client).keypads_keypad_id_buttons_button_id_deactivate_post(
-                self.keypad.id,
-                self.id,
-                LevelModel())
+            updated_keypad = await KeypadOperationsApi(
+                api_client
+            ).keypads_keypad_id_buttons_button_id_deactivate_post(
+                self.keypad.id, self.id, LevelModel()
+            )
             self.keypad.update_from_model(updated_keypad.content)
 
     @property
     def scene_name(self):
-        _, _, kp_name = self.keypad.name.rpartition('/')
+        _, _, kp_name = self.keypad.name.rpartition("/")
         return f"{kp_name} {self.name}"
-

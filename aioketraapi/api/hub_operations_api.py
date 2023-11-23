@@ -18,10 +18,7 @@ import re  # noqa: F401
 import six
 
 from aioketraapi.api_client import ApiClient
-from aioketraapi.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from aioketraapi.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class HubOperationsApi(object):
@@ -65,7 +62,7 @@ class HubOperationsApi(object):
                  returns the request thread.
         :rtype: InlineResponse2004
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.hub_get_with_http_info(**kwargs)  # noqa: E501
 
     def hub_get_with_http_info(self, **kwargs):  # noqa: E501
@@ -107,38 +104,44 @@ class HubOperationsApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            'basicauthuser',
-            'basicauthpassword'
-        ]
+        all_params = ["basicauthuser", "basicauthpassword"]
         all_params.extend(
             [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth'
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+                "_request_auth",
             ]
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method hub_get" % key
+                    "Got an unexpected keyword argument '%s'" " to method hub_get" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if 'basicauthuser' in local_var_params and local_var_params['basicauthuser'] is not None:  # noqa: E501
-            query_params.append(('basicauthuser', local_var_params['basicauthuser']))  # noqa: E501
-        if 'basicauthpassword' in local_var_params and local_var_params['basicauthpassword'] is not None:  # noqa: E501
-            query_params.append(('basicauthpassword', local_var_params['basicauthpassword']))  # noqa: E501
+        if (
+            "basicauthuser" in local_var_params
+            and local_var_params["basicauthuser"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthuser", local_var_params["basicauthuser"])
+            )  # noqa: E501
+        if (
+            "basicauthpassword" in local_var_params
+            and local_var_params["basicauthpassword"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("basicauthpassword", local_var_params["basicauthpassword"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -147,25 +150,30 @@ class HubOperationsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
+        auth_settings = ["basicAuth"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/Hub', 'GET',
+            "/Hub",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2004',  # noqa: E501
+            response_type="InlineResponse2004",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            _request_auth=local_var_params.get("_request_auth"),
+        )

@@ -19,6 +19,7 @@ import aioketraapi
 from aioketraapi.models.inline_response20011 import InlineResponse20011  # noqa: E501
 from aioketraapi.rest import ApiException
 
+
 class TestInlineResponse20011(unittest.TestCase):
     """InlineResponse20011 unit test stubs"""
 
@@ -30,26 +31,26 @@ class TestInlineResponse20011(unittest.TestCase):
 
     def make_instance(self, include_optional):
         """Test InlineResponse20011
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
+        include_option is a boolean, when False only required
+        params are included, when True both required and
+        optional params are included"""
         # model = aioketraapi.models.inline_response20011.InlineResponse20011()  # noqa: E501
-        if include_optional :
+        if include_optional:
             return InlineResponse20011(
-                success = True, 
-                error = '0', 
-                content = aioketraapi.models.button.Button(
-                    active = True, 
-                    id = '0', 
-                    level = 56, 
-                    name = '0', 
-                    position = 56, 
-                    is_power_button = True, 
-                    scene_is_modified = True, )
+                success=True,
+                error="0",
+                content=aioketraapi.models.button.Button(
+                    active=True,
+                    id="0",
+                    level=56,
+                    name="0",
+                    position=56,
+                    is_power_button=True,
+                    scene_is_modified=True,
+                ),
             )
-        else :
-            return InlineResponse20011(
-        )
+        else:
+            return InlineResponse20011()
 
     def testInlineResponse20011(self):
         """Test InlineResponse20011"""
@@ -57,5 +58,5 @@ class TestInlineResponse20011(unittest.TestCase):
         inst_req_and_optional = self.make_instance(include_optional=True)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

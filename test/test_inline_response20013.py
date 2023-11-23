@@ -19,6 +19,7 @@ import aioketraapi
 from aioketraapi.models.inline_response20013 import InlineResponse20013  # noqa: E501
 from aioketraapi.rest import ApiException
 
+
 class TestInlineResponse20013(unittest.TestCase):
     """InlineResponse20013 unit test stubs"""
 
@@ -30,29 +31,25 @@ class TestInlineResponse20013(unittest.TestCase):
 
     def make_instance(self, include_optional):
         """Test InlineResponse20013
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
+        include_option is a boolean, when False only required
+        params are included, when True both required and
+        optional params are included"""
         # model = aioketraapi.models.inline_response20013.InlineResponse20013()  # noqa: E501
-        if include_optional :
+        if include_optional:
             return InlineResponse20013(
-                success = True, 
-                error = '0', 
-                content = aioketraapi.models.group.Group(
-                    id = '0', 
-                    name = '0', 
-                    child_groups = [
-                        '0'
-                        ], 
-                    parent_groups = [
-                        '0'
-                        ], 
-                    address = 56, 
-                    state = aioketraapi.models.lamp_state.LampState(), )
+                success=True,
+                error="0",
+                content=aioketraapi.models.group.Group(
+                    id="0",
+                    name="0",
+                    child_groups=["0"],
+                    parent_groups=["0"],
+                    address=56,
+                    state=aioketraapi.models.lamp_state.LampState(),
+                ),
             )
-        else :
-            return InlineResponse20013(
-        )
+        else:
+            return InlineResponse20013()
 
     def testInlineResponse20013(self):
         """Test InlineResponse20013"""
@@ -60,5 +57,5 @@ class TestInlineResponse20013(unittest.TestCase):
         inst_req_and_optional = self.make_instance(include_optional=True)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

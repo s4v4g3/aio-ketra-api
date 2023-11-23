@@ -19,6 +19,7 @@ import aioketraapi
 from aioketraapi.models.button import Button  # noqa: E501
 from aioketraapi.rest import ApiException
 
+
 class TestButton(unittest.TestCase):
     """Button unit test stubs"""
 
@@ -30,23 +31,22 @@ class TestButton(unittest.TestCase):
 
     def make_instance(self, include_optional):
         """Test Button
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
+        include_option is a boolean, when False only required
+        params are included, when True both required and
+        optional params are included"""
         # model = aioketraapi.models.button.Button()  # noqa: E501
-        if include_optional :
+        if include_optional:
             return Button(
-                active = True, 
-                id = '0', 
-                level = 56, 
-                name = '0', 
-                position = 56, 
-                is_power_button = True, 
-                scene_is_modified = True
+                active=True,
+                id="0",
+                level=56,
+                name="0",
+                position=56,
+                is_power_button=True,
+                scene_is_modified=True,
             )
-        else :
-            return Button(
-        )
+        else:
+            return Button()
 
     def testButton(self):
         """Test Button"""
@@ -54,5 +54,5 @@ class TestButton(unittest.TestCase):
         inst_req_and_optional = self.make_instance(include_optional=True)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

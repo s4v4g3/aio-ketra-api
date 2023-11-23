@@ -19,6 +19,7 @@ import aioketraapi
 from aioketraapi.models.inline_response2008 import InlineResponse2008  # noqa: E501
 from aioketraapi.rest import ApiException
 
+
 class TestInlineResponse2008(unittest.TestCase):
     """InlineResponse2008 unit test stubs"""
 
@@ -30,36 +31,37 @@ class TestInlineResponse2008(unittest.TestCase):
 
     def make_instance(self, include_optional):
         """Test InlineResponse2008
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
+        include_option is a boolean, when False only required
+        params are included, when True both required and
+        optional params are included"""
         # model = aioketraapi.models.inline_response2008.InlineResponse2008()  # noqa: E501
-        if include_optional :
+        if include_optional:
             return InlineResponse2008(
-                success = True, 
-                error = '0', 
-                content = [
+                success=True,
+                error="0",
+                content=[
                     aioketraapi.models.keypad.Keypad(
-                        id = '0', 
-                        is_virtual = True, 
-                        level = 56, 
-                        name = '0', 
-                        serial_number = '0', 
-                        buttons = [
+                        id="0",
+                        is_virtual=True,
+                        level=56,
+                        name="0",
+                        serial_number="0",
+                        buttons=[
                             aioketraapi.models.button.Button(
-                                active = True, 
-                                id = '0', 
-                                level = 56, 
-                                name = '0', 
-                                position = 56, 
-                                is_power_button = True, 
-                                scene_is_modified = True, )
-                            ], )
-                    ]
+                                active=True,
+                                id="0",
+                                level=56,
+                                name="0",
+                                position=56,
+                                is_power_button=True,
+                                scene_is_modified=True,
+                            )
+                        ],
+                    )
+                ],
             )
-        else :
-            return InlineResponse2008(
-        )
+        else:
+            return InlineResponse2008()
 
     def testInlineResponse2008(self):
         """Test InlineResponse2008"""
@@ -67,5 +69,5 @@ class TestInlineResponse2008(unittest.TestCase):
         inst_req_and_optional = self.make_instance(include_optional=True)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

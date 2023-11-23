@@ -19,6 +19,7 @@ import aioketraapi
 from aioketraapi.models.publish_begin import PublishBegin  # noqa: E501
 from aioketraapi.rest import ApiException
 
+
 class TestPublishBegin(unittest.TestCase):
     """PublishBegin unit test stubs"""
 
@@ -30,20 +31,24 @@ class TestPublishBegin(unittest.TestCase):
 
     def make_instance(self, include_optional):
         """Test PublishBegin
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
+        include_option is a boolean, when False only required
+        params are included, when True both required and
+        optional params are included"""
         # model = aioketraapi.models.publish_begin.PublishBegin()  # noqa: E501
-        if include_optional :
+        if include_optional:
             return PublishBegin(
-                notification_type = 'ButtonChange', 
-                time_utc = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
+                notification_type="ButtonChange",
+                time_utc=datetime.datetime.strptime(
+                    "2013-10-20 19:20:30.00", "%Y-%m-%d %H:%M:%S.%f"
+                ),
             )
-        else :
+        else:
             return PublishBegin(
-                notification_type = 'ButtonChange',
-                time_utc = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-        )
+                notification_type="ButtonChange",
+                time_utc=datetime.datetime.strptime(
+                    "2013-10-20 19:20:30.00", "%Y-%m-%d %H:%M:%S.%f"
+                ),
+            )
 
     def testPublishBegin(self):
         """Test PublishBegin"""
@@ -51,5 +56,5 @@ class TestPublishBegin(unittest.TestCase):
         inst_req_and_optional = self.make_instance(include_optional=True)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

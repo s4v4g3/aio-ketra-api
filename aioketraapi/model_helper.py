@@ -1,6 +1,3 @@
-
-
-
 def model_to_json(model) -> dict:
     model_json = model.to_dict()
     for attr in list(model_json.keys()):

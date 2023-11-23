@@ -16,8 +16,11 @@ import unittest
 import datetime
 
 import aioketraapi
-from aioketraapi.models.websocket_v2_notification import WebsocketV2Notification  # noqa: E501
+from aioketraapi.models.websocket_v2_notification import (
+    WebsocketV2Notification,
+)  # noqa: E501
 from aioketraapi.rest import ApiException
+
 
 class TestWebsocketV2Notification(unittest.TestCase):
     """WebsocketV2Notification unit test stubs"""
@@ -30,20 +33,24 @@ class TestWebsocketV2Notification(unittest.TestCase):
 
     def make_instance(self, include_optional):
         """Test WebsocketV2Notification
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
+        include_option is a boolean, when False only required
+        params are included, when True both required and
+        optional params are included"""
         # model = aioketraapi.models.websocket_v2_notification.WebsocketV2Notification()  # noqa: E501
-        if include_optional :
+        if include_optional:
             return WebsocketV2Notification(
-                notification_type = 'ButtonChange', 
-                time_utc = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
+                notification_type="ButtonChange",
+                time_utc=datetime.datetime.strptime(
+                    "2013-10-20 19:20:30.00", "%Y-%m-%d %H:%M:%S.%f"
+                ),
             )
-        else :
+        else:
             return WebsocketV2Notification(
-                notification_type = 'ButtonChange',
-                time_utc = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-        )
+                notification_type="ButtonChange",
+                time_utc=datetime.datetime.strptime(
+                    "2013-10-20 19:20:30.00", "%Y-%m-%d %H:%M:%S.%f"
+                ),
+            )
 
     def testWebsocketV2Notification(self):
         """Test WebsocketV2Notification"""
@@ -51,5 +58,5 @@ class TestWebsocketV2Notification(unittest.TestCase):
         inst_req_and_optional = self.make_instance(include_optional=True)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -33,42 +33,60 @@ class LampState(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'brightness': 'float',
-        'master_brightness': 'float',
-        'net_brightness': 'float',
-        'dim_curve_active': 'bool',
-        'dim_curve': 'str',
-        'power_on': 'bool',
-        'vibrancy': 'float',
-        'cct': 'int',
-        'x_chromaticity': 'float',
-        'y_chromaticity': 'float',
-        'transition_time': 'int',
-        'updated_at': 'str',
-        'transition_complete': 'bool',
-        'active_shows': 'list[int]',
-        'start_state': 'LampStateParameters'
+        "brightness": "float",
+        "master_brightness": "float",
+        "net_brightness": "float",
+        "dim_curve_active": "bool",
+        "dim_curve": "str",
+        "power_on": "bool",
+        "vibrancy": "float",
+        "cct": "int",
+        "x_chromaticity": "float",
+        "y_chromaticity": "float",
+        "transition_time": "int",
+        "updated_at": "str",
+        "transition_complete": "bool",
+        "active_shows": "list[int]",
+        "start_state": "LampStateParameters",
     }
 
     attribute_map = {
-        'brightness': 'Brightness',
-        'master_brightness': 'MasterBrightness',
-        'net_brightness': 'NetBrightness',
-        'dim_curve_active': 'DimCurveActive',
-        'dim_curve': 'DimCurve',
-        'power_on': 'PowerOn',
-        'vibrancy': 'Vibrancy',
-        'cct': 'CCT',
-        'x_chromaticity': 'xChromaticity',
-        'y_chromaticity': 'yChromaticity',
-        'transition_time': 'TransitionTime',
-        'updated_at': 'UpdatedAt',
-        'transition_complete': 'TransitionComplete',
-        'active_shows': 'ActiveShows',
-        'start_state': 'StartState'
+        "brightness": "Brightness",
+        "master_brightness": "MasterBrightness",
+        "net_brightness": "NetBrightness",
+        "dim_curve_active": "DimCurveActive",
+        "dim_curve": "DimCurve",
+        "power_on": "PowerOn",
+        "vibrancy": "Vibrancy",
+        "cct": "CCT",
+        "x_chromaticity": "xChromaticity",
+        "y_chromaticity": "yChromaticity",
+        "transition_time": "TransitionTime",
+        "updated_at": "UpdatedAt",
+        "transition_complete": "TransitionComplete",
+        "active_shows": "ActiveShows",
+        "start_state": "StartState",
     }
 
-    def __init__(self, brightness=None, master_brightness=None, net_brightness=None, dim_curve_active=None, dim_curve=None, power_on=None, vibrancy=None, cct=None, x_chromaticity=None, y_chromaticity=None, transition_time=None, updated_at=None, transition_complete=None, active_shows=None, start_state=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        brightness=None,
+        master_brightness=None,
+        net_brightness=None,
+        dim_curve_active=None,
+        dim_curve=None,
+        power_on=None,
+        vibrancy=None,
+        cct=None,
+        x_chromaticity=None,
+        y_chromaticity=None,
+        transition_time=None,
+        updated_at=None,
+        transition_complete=None,
+        active_shows=None,
+        start_state=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """LampState - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -142,12 +160,22 @@ class LampState(object):
         :param brightness: The brightness of this LampState.  # noqa: E501
         :type brightness: float
         """
-        if (self.local_vars_configuration.client_side_validation and
-                brightness is not None and brightness > 1):  # noqa: E501
-            raise ValueError("Invalid value for `brightness`, must be a value less than or equal to `1`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                brightness is not None and brightness < 0):  # noqa: E501
-            raise ValueError("Invalid value for `brightness`, must be a value greater than or equal to `0`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and brightness is not None
+            and brightness > 1
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `brightness`, must be a value less than or equal to `1`"
+            )  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and brightness is not None
+            and brightness < 0
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `brightness`, must be a value greater than or equal to `0`"
+            )  # noqa: E501
 
         self._brightness = brightness
 
@@ -171,12 +199,22 @@ class LampState(object):
         :param master_brightness: The master_brightness of this LampState.  # noqa: E501
         :type master_brightness: float
         """
-        if (self.local_vars_configuration.client_side_validation and
-                master_brightness is not None and master_brightness > 1):  # noqa: E501
-            raise ValueError("Invalid value for `master_brightness`, must be a value less than or equal to `1`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                master_brightness is not None and master_brightness < 0):  # noqa: E501
-            raise ValueError("Invalid value for `master_brightness`, must be a value greater than or equal to `0`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and master_brightness is not None
+            and master_brightness > 1
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `master_brightness`, must be a value less than or equal to `1`"
+            )  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and master_brightness is not None
+            and master_brightness < 0
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `master_brightness`, must be a value greater than or equal to `0`"
+            )  # noqa: E501
 
         self._master_brightness = master_brightness
 
@@ -200,12 +238,22 @@ class LampState(object):
         :param net_brightness: The net_brightness of this LampState.  # noqa: E501
         :type net_brightness: float
         """
-        if (self.local_vars_configuration.client_side_validation and
-                net_brightness is not None and net_brightness > 1):  # noqa: E501
-            raise ValueError("Invalid value for `net_brightness`, must be a value less than or equal to `1`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                net_brightness is not None and net_brightness < 0):  # noqa: E501
-            raise ValueError("Invalid value for `net_brightness`, must be a value greater than or equal to `0`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and net_brightness is not None
+            and net_brightness > 1
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `net_brightness`, must be a value less than or equal to `1`"
+            )  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and net_brightness is not None
+            and net_brightness < 0
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `net_brightness`, must be a value greater than or equal to `0`"
+            )  # noqa: E501
 
         self._net_brightness = net_brightness
 
@@ -252,11 +300,21 @@ class LampState(object):
         :param dim_curve: The dim_curve of this LampState.  # noqa: E501
         :type dim_curve: str
         """
-        allowed_values = ["Xenon", "GE Ultra Soft White", "Philips EcoVantage A19", "Philips Halogen PAR38", "none"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and dim_curve not in allowed_values:  # noqa: E501
+        allowed_values = [
+            "Xenon",
+            "GE Ultra Soft White",
+            "Philips EcoVantage A19",
+            "Philips Halogen PAR38",
+            "none",
+        ]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and dim_curve not in allowed_values
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `dim_curve` ({0}), must be one of {1}"  # noqa: E501
-                .format(dim_curve, allowed_values)
+                "Invalid value for `dim_curve` ({0}), must be one of {1}".format(  # noqa: E501
+                    dim_curve, allowed_values
+                )
             )
 
         self._dim_curve = dim_curve
@@ -304,12 +362,22 @@ class LampState(object):
         :param vibrancy: The vibrancy of this LampState.  # noqa: E501
         :type vibrancy: float
         """
-        if (self.local_vars_configuration.client_side_validation and
-                vibrancy is not None and vibrancy > 1):  # noqa: E501
-            raise ValueError("Invalid value for `vibrancy`, must be a value less than or equal to `1`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                vibrancy is not None and vibrancy < 0):  # noqa: E501
-            raise ValueError("Invalid value for `vibrancy`, must be a value greater than or equal to `0`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and vibrancy is not None
+            and vibrancy > 1
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `vibrancy`, must be a value less than or equal to `1`"
+            )  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and vibrancy is not None
+            and vibrancy < 0
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `vibrancy`, must be a value greater than or equal to `0`"
+            )  # noqa: E501
 
         self._vibrancy = vibrancy
 
@@ -333,12 +401,22 @@ class LampState(object):
         :param cct: The cct of this LampState.  # noqa: E501
         :type cct: int
         """
-        if (self.local_vars_configuration.client_side_validation and
-                cct is not None and cct > 25000):  # noqa: E501
-            raise ValueError("Invalid value for `cct`, must be a value less than or equal to `25000`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                cct is not None and cct < 0):  # noqa: E501
-            raise ValueError("Invalid value for `cct`, must be a value greater than or equal to `0`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and cct is not None
+            and cct > 25000
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `cct`, must be a value less than or equal to `25000`"
+            )  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and cct is not None
+            and cct < 0
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `cct`, must be a value greater than or equal to `0`"
+            )  # noqa: E501
 
         self._cct = cct
 
@@ -362,12 +440,22 @@ class LampState(object):
         :param x_chromaticity: The x_chromaticity of this LampState.  # noqa: E501
         :type x_chromaticity: float
         """
-        if (self.local_vars_configuration.client_side_validation and
-                x_chromaticity is not None and x_chromaticity > 1):  # noqa: E501
-            raise ValueError("Invalid value for `x_chromaticity`, must be a value less than or equal to `1`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                x_chromaticity is not None and x_chromaticity < 0):  # noqa: E501
-            raise ValueError("Invalid value for `x_chromaticity`, must be a value greater than or equal to `0`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and x_chromaticity is not None
+            and x_chromaticity > 1
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `x_chromaticity`, must be a value less than or equal to `1`"
+            )  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and x_chromaticity is not None
+            and x_chromaticity < 0
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `x_chromaticity`, must be a value greater than or equal to `0`"
+            )  # noqa: E501
 
         self._x_chromaticity = x_chromaticity
 
@@ -391,12 +479,22 @@ class LampState(object):
         :param y_chromaticity: The y_chromaticity of this LampState.  # noqa: E501
         :type y_chromaticity: float
         """
-        if (self.local_vars_configuration.client_side_validation and
-                y_chromaticity is not None and y_chromaticity > 1):  # noqa: E501
-            raise ValueError("Invalid value for `y_chromaticity`, must be a value less than or equal to `1`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                y_chromaticity is not None and y_chromaticity < 0):  # noqa: E501
-            raise ValueError("Invalid value for `y_chromaticity`, must be a value greater than or equal to `0`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and y_chromaticity is not None
+            and y_chromaticity > 1
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `y_chromaticity`, must be a value less than or equal to `1`"
+            )  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and y_chromaticity is not None
+            and y_chromaticity < 0
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `y_chromaticity`, must be a value greater than or equal to `0`"
+            )  # noqa: E501
 
         self._y_chromaticity = y_chromaticity
 
@@ -420,12 +518,22 @@ class LampState(object):
         :param transition_time: The transition_time of this LampState.  # noqa: E501
         :type transition_time: int
         """
-        if (self.local_vars_configuration.client_side_validation and
-                transition_time is not None and transition_time > 6553500):  # noqa: E501
-            raise ValueError("Invalid value for `transition_time`, must be a value less than or equal to `6553500`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                transition_time is not None and transition_time < 0):  # noqa: E501
-            raise ValueError("Invalid value for `transition_time`, must be a value greater than or equal to `0`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and transition_time is not None
+            and transition_time > 6553500
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `transition_time`, must be a value less than or equal to `6553500`"
+            )  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and transition_time is not None
+            and transition_time < 0
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `transition_time`, must be a value greater than or equal to `0`"
+            )  # noqa: E501
 
         self._transition_time = transition_time
 
@@ -526,18 +634,20 @@ class LampState(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

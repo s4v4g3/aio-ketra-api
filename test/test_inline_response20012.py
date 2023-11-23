@@ -19,6 +19,7 @@ import aioketraapi
 from aioketraapi.models.inline_response20012 import InlineResponse20012  # noqa: E501
 from aioketraapi.rest import ApiException
 
+
 class TestInlineResponse20012(unittest.TestCase):
     """InlineResponse20012 unit test stubs"""
 
@@ -30,31 +31,27 @@ class TestInlineResponse20012(unittest.TestCase):
 
     def make_instance(self, include_optional):
         """Test InlineResponse20012
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
+        include_option is a boolean, when False only required
+        params are included, when True both required and
+        optional params are included"""
         # model = aioketraapi.models.inline_response20012.InlineResponse20012()  # noqa: E501
-        if include_optional :
+        if include_optional:
             return InlineResponse20012(
-                success = True, 
-                error = '0', 
-                content = [
+                success=True,
+                error="0",
+                content=[
                     aioketraapi.models.group.Group(
-                        id = '0', 
-                        name = '0', 
-                        child_groups = [
-                            '0'
-                            ], 
-                        parent_groups = [
-                            '0'
-                            ], 
-                        address = 56, 
-                        state = aioketraapi.models.lamp_state.LampState(), )
-                    ]
+                        id="0",
+                        name="0",
+                        child_groups=["0"],
+                        parent_groups=["0"],
+                        address=56,
+                        state=aioketraapi.models.lamp_state.LampState(),
+                    )
+                ],
             )
-        else :
-            return InlineResponse20012(
-        )
+        else:
+            return InlineResponse20012()
 
     def testInlineResponse20012(self):
         """Test InlineResponse20012"""
@@ -62,5 +59,5 @@ class TestInlineResponse20012(unittest.TestCase):
         inst_req_and_optional = self.make_instance(include_optional=True)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

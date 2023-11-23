@@ -19,6 +19,7 @@ import aioketraapi
 from aioketraapi.models.lamp_state_parameters import LampStateParameters  # noqa: E501
 from aioketraapi.rest import ApiException
 
+
 class TestLampStateParameters(unittest.TestCase):
     """LampStateParameters unit test stubs"""
 
@@ -30,26 +31,25 @@ class TestLampStateParameters(unittest.TestCase):
 
     def make_instance(self, include_optional):
         """Test LampStateParameters
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
+        include_option is a boolean, when False only required
+        params are included, when True both required and
+        optional params are included"""
         # model = aioketraapi.models.lamp_state_parameters.LampStateParameters()  # noqa: E501
-        if include_optional :
+        if include_optional:
             return LampStateParameters(
-                brightness = 0, 
-                master_brightness = 0, 
-                net_brightness = 0, 
-                dim_curve_active = True, 
-                dim_curve = 'Xenon', 
-                power_on = True, 
-                vibrancy = 0, 
-                cct = 0, 
-                x_chromaticity = 0, 
-                y_chromaticity = 0
+                brightness=0,
+                master_brightness=0,
+                net_brightness=0,
+                dim_curve_active=True,
+                dim_curve="Xenon",
+                power_on=True,
+                vibrancy=0,
+                cct=0,
+                x_chromaticity=0,
+                y_chromaticity=0,
             )
-        else :
-            return LampStateParameters(
-        )
+        else:
+            return LampStateParameters()
 
     def testLampStateParameters(self):
         """Test LampStateParameters"""
@@ -57,5 +57,5 @@ class TestLampStateParameters(unittest.TestCase):
         inst_req_and_optional = self.make_instance(include_optional=True)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
